@@ -1,7 +1,6 @@
 import Home from './components/Home/Home';
 import { Route, Routes } from 'react-router';
 import Books  from './components/Books/Books';
-import Quotes from './components/Quotes/Quotes';
 
 
 import './App.css';
