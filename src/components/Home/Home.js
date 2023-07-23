@@ -1,12 +1,11 @@
-import NavBar from '../NavBar/NavBar';
+// import NavBar from '../NavBar/NavBar';
 import Header from '../Header/Header';
 import Books from '../Books/Books';
 function Home(){
     return(
         <div>
-        <NavBar />
+        {/* <NavBar /> */}
         <Header />
-        
        <Books/>
         </div>
     )
