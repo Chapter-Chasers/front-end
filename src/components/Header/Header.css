@@ -1,34 +1,50 @@
-.carousel-container {
-    border-radius: 25px;
-    width: 1000px;
-    height: 400px;
-    margin: 0 auto; 
-    padding: 20px; 
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    
-   
-  }
-  
-  .carousel {
-    border-radius: 250px;
-    width: 600px; 
-    height: 300px;
-    position: absolute;
-    margin: 0 auto; 
-    
-  }
-  .carousel-inner {
-    border-radius: 20px ;
-    overflow: hidden;
-    margin: 0 auto;
+.header {
+  margin-top: 30px;
+  height: 50vh;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-image: url("https://startbootstrap.github.io/startbootstrap-stylish-portfolio/assets/img/bg-masthead.jpg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* mix-blend-mode: overlay; */
+}
 
-  }
+.carousel{
+  width: 100%;
+}
 
-  h5,p{
-    color:white;
-    font-weight: 600;
-  }
+.carousel-indicators {
+  visibility: hidden;
+}
+
+.carousel-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.carousel-content p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* .carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 40px;
+ 
+  height: 40px;
   
+  background-color: rgba(0, 0, 0, 0.5);
   
+}
+
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+ 
+} */
