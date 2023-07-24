@@ -21,9 +21,12 @@ const CarouselWithQuote = () => {
             console.log('Error fetching quote:', error);
         }
     };
-
+    const handleCarouselSelect = (selectedIndex, e) => {
+        // When the user presses the arrow buttons, fetch a new quote and update the state
+        fetchQuote();
+      };
     return (
-        <Carousel>
+        <Carousel onSelect={handleCarouselSelect}>
             <Carousel.Item>
                 <div className="carousel-content">
                     <p>{quote}</p>
