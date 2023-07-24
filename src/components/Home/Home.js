@@ -38,6 +38,11 @@ function Home() {
     }
     return (
         <div>
+
+        <NavBar />
+        <Header />
+       <Books/>
+
             <NavBar />
             <Header />
             <div>
@@ -74,6 +79,7 @@ function Home() {
                 <BookList data={data} />
             </div>
             <Books />
+
         </div>
     )
 }
