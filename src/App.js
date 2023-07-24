@@ -7,13 +7,11 @@ import Footer from './components/footer/Footer';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import React from 'react';
-import Cart from './components/cart/Cart';
-import NavBar from './components/NavBar/NavBar';
-import Footer from './components/footer/Footer';
+
 function App() {
   return (
     <div className="App">
-      <NavBar />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/allBooks" element={<Home />} />
