@@ -1,6 +1,5 @@
-import NavBar from '../NavBar/NavBar';
+
 import Header from '../Header/Header';
-import Books from '../Books/Book';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -27,39 +26,48 @@ function Home() {
                 alert(error);
             });
     }
-
+    async function getQoutes() {
+        await fetch(`${process.env.REACT_APP_QOUTE_URL}`).then(
+            (response) => (response.json())
+        ).then((responseJson) => {
+            setData(responseJson);
+        }).catch(error => {
+            alert(error);
+        });
+    }
     useEffect(() => {
         getAllBooks()
     }, []);
+    // useEffect(()=>{
+    //     getQoutes()
+    // },[])
 
-    async function setSearchDataHandler(data) {
-        console.log('home data = ' + data);
-        await setData(data);
+    function setSearchDataHandler(data) {
+        console.log('home data = ' + Object.keys(data));
+        setData(data);
     }
     return (
-        <div>
-        <NavBar />
-        <Header />
-       <Books/>
-            <div>
+        <>
+            <Header />
+            <section className='home'>
                 <Container>
-                    <Row>
-                        <Col>
-                            <ButtonGroup size="lg" className="mb-2">
+                    {/* <Row>
+                        <Col className='d-flex justify-content-center mt-3'>
+                            <ButtonGroup size="md" className="button-group">
                                 <Button onClick={getAllBooks}>Books</Button>
-                                <Button>Quotes</Button>
+                                <Button onClick={getQoutes}>Quotes</Button>
                             </ButtonGroup>
                             <br />
                         </Col>
 
-                    </Row>
+                    </Row> */}
                     <Row>
                         <Col>
-                            <Category />
+                            <Category setSearchData={setSearchDataHandler} className="category-list" />
                         </Col>
                         <Col md="auto">
 
-                            <Container className="mt-5">
+                            <Container className="search-box">
                                 <Row>
                                     <Col sm={16}>
                                         <Search setSearchData={setSearchDataHandler} />
@@ -71,12 +79,14 @@ function Home() {
 
                         </Col>
                     </Row>
+                    <Container className="book-list">
+                        <BookList data={data} />
+                    </Container>
                 </Container>
-                <BookList data={data} />
-            </div>
-            <Books />
 
-        </div>
+
+            </section>
+        </>
     )
 }
 

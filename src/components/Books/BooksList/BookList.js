@@ -1,12 +1,15 @@
 import Book from '../Book';
+import './BookList.css'
 function BookList(props) {
     const bookArray = props?.data?.items;
 
     return (
-        <div>
-            {bookArray?.map((obj, i) => (
-                <Book book={obj} key={i}/>
-            ))
+        <div className="book-list-container">
+            {bookArray?.map((obj, i) => {
+                return <div className="book-item-wrapper">
+                    < Book book={obj} key={i} />
+                </div>
+            })
             }
         </div>
     )

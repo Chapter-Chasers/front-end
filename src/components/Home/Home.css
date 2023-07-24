@@ -1,0 +1,47 @@
+.home {
+    min-height: 100vh;
+    margin: 22px 0; 
+    padding: 20px;
+}
+/* Add your custom styles for the Home component here */
+.button-group {
+    margin-top: 20px;
+}
+
+.search-box {
+    margin-top: 20px;
+}
+
+.category-list {
+    margin-top: 20px;
+}
+
+.book-list {
+    margin-top: 30px;
+}
+
+/* Style for each book item in the book list */
+.book-item {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.book-item img {
+    max-width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.book-item h3 {
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.book-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
