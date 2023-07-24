@@ -9,7 +9,7 @@ import Category from '../Categorey/Category';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import BookList from '../Books/BooksList/BookList';
-
+import Emailsub from '../emailsub/Emailsub';
 import { useState, useEffect } from "react";
 import { Navbar } from 'react-bootstrap';
 
@@ -87,6 +87,7 @@ function Home() {
                     </Container>
                 </Container>
             </section>
+            <Emailsub />
         </>
 
     )
