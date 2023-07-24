@@ -38,13 +38,9 @@ function Home() {
     }
     return (
         <div>
-
         <NavBar />
         <Header />
        <Books/>
-
-            <NavBar />
-            <Header />
             <div>
                 <Container>
                     <Row>
