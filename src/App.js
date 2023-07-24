@@ -7,6 +7,8 @@ import Footer from './components/footer/Footer';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import React from 'react';
+import BookDetails from './components/bookDetails/BookDetails'
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
         <Route path="/finishedBooks" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/aboutUs" element={<Home />} />
+        <Route path="/bookDetails" element={<BookDetails />} />
       </Routes>
       <Footer />
     </div>
