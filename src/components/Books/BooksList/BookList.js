@@ -1,4 +1,4 @@
-import Book from './Book';
+import Book from '../Book';
 function BookList(props) {
     const bookArray = props?.data?.items;
 
