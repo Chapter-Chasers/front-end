@@ -1,4 +1,4 @@
-import NavBar from '../NavBar/NavBar';
+
 import Header from '../Header/Header';
 import Books from '../Books/Book';
 import Container from 'react-bootstrap/Container';
@@ -10,7 +10,9 @@ import Category from '../Categorey/Category';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import BookList from '../Books/BooksList/BookList';
+
 import { useState, useEffect } from "react";
+import { Navbar } from 'react-bootstrap';
 
 
 function Home() {
@@ -38,7 +40,7 @@ function Home() {
     }
     return (
         <div>
-        <NavBar />
+   <Navbar/>
         <Header />
        <Books/>
             <div>
@@ -75,7 +77,7 @@ function Home() {
                 <BookList data={data} />
             </div>
             <Books />
-
+<footer/>
         </div>
     )
 }
