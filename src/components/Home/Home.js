@@ -9,7 +9,9 @@ import Category from '../Categorey/Category';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import BookList from '../Books/BooksList/BookList';
+
 import { useState, useEffect } from "react";
+import { Navbar } from 'react-bootstrap';
 
 
 function Home() {
@@ -50,6 +52,7 @@ function Home() {
         <>
             <Header />
             <section className='home'>
+
                 <Container>
                     {/* <Row>
                         <Col className='d-flex justify-content-center mt-3'>
@@ -83,10 +86,9 @@ function Home() {
                         <BookList data={data} />
                     </Container>
                 </Container>
-
-
             </section>
         </>
+
     )
 }
 

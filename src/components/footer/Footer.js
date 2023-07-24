@@ -1,6 +1,8 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+
 import './Footer.css'
+
 export default function Footer() {
 
     const gmailLink = "https://mail.google.com/mail/u/0/#inbox";

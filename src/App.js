@@ -1,7 +1,10 @@
 
 // import logo from './logo.svg';
 import Home from './components/Home/Home';
-import { Route, Routes } from 'react-router';
+import Navbar from './components/NavBar/NavBar';
+import Cart from './components/cart/Cart';
+import Footer from './components/footer/Footer';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import React from 'react';
 import Cart from './components/cart/Cart';
@@ -22,6 +25,7 @@ function App() {
       </Routes>
       <Footer />
     </div>
+
   );
 }
 

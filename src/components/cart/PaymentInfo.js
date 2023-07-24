@@ -6,7 +6,7 @@ import './Cart.css';
 export default function PaymentInfo() {
   return (
     <section>
-      {/* <Card.Body> */}
+      <Card.Body>
         {/* <Card.Title>Payment Information</Card.Title> */}
         <form className="payment-form">
           <div className="form-group">
@@ -23,7 +23,7 @@ export default function PaymentInfo() {
           </div>
           <button type="submit">Pay Now</button>
         </form>
-      {/* </Card.Body> */}
+      </Card.Body>
     </section>
   );
 }
