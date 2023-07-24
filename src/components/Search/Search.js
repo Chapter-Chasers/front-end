@@ -16,7 +16,7 @@ function Search(props) {
                 break;
             case 'Auothar':
                 //call API search by Auother
-                await fetch(`http://localhost:3001/searchAuthor?author=${serachText}`)
+                await fetch(`${process.env.REACT_APP_Google_URL}searchAuthor?author=${serachText}`)
                     .then(
                         (response) => (response.json())
                     ).then((responseJson) => {
@@ -27,7 +27,7 @@ function Search(props) {
                 break;
             case 'ISBN':
                 //call API search by ISBN
-                await fetch(`http://localhost:3001/search?isbn=${serachText}`)
+                await fetch(`${process.env.REACT_APP_Google_URL}/search?isbn=${serachText}`)
                     .then(
                         (response) => (response.json())
                     ).then((responseJson) => {

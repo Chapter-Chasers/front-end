@@ -10,7 +10,7 @@ const CarouselWithQuote = () => {
 
     const fetchQuote = async () => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_QOUTE_URL}`); // Replace with the actual API URL
+            const response = await fetch(`${process.env.REACT_APP_QOUTE_URL}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok.');
             }

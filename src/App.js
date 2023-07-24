@@ -2,11 +2,7 @@
 // import logo from './logo.svg';
 import Home from './components/Home/Home';
 import { Route, Routes } from 'react-router';
-import Books  from './components/Books/Books';
-
-
 import './App.css';
-import Home from './components/Home';
 import React from 'react';
 function App() {
   return (
