@@ -23,33 +23,32 @@
 }
 
 /* Card Styles */
-.card {
+.footer .members .card {
   background-color: rgb(63, 46, 62);
   margin: 10px;
   color: rgb(239, 225, 209);
   border: none;
   flex: 0 0 10rem;
-  height: 8rem;
 }
 
-.card:hover {
+.footer .members .card:hover {
   transform: scale(1.05);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.card-header {
+.footer .members .card-header {
   background-color: rgb(167, 130, 149);
   border-bottom: none;
   color: rgb(51, 29, 44);
   font-weight: bold;
 }
 
-.card-title,
-.card-text {
+.footer .members .card-title,
+.footer .members .card-text {
   color: rgb(239, 225, 209);
 }
 
-.card-body {
+.footer .members .card-body {
   padding: 20px;
 }
 
