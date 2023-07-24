@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Form } from 'react-bootstrap';
+import { Container, Form } from 'react-bootstrap';
 import './Category.css';
 
 function Category({ setSearchData }) {

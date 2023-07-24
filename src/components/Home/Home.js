@@ -54,16 +54,6 @@ function Home() {
             <section className='home'>
 
                 <Container>
-                    {/* <Row>
-                        <Col className='d-flex justify-content-center mt-3'>
-                            <ButtonGroup size="md" className="button-group">
-                                <Button onClick={getAllBooks}>Books</Button>
-                                <Button onClick={getQoutes}>Quotes</Button>
-                            </ButtonGroup>
-                            <br />
-                        </Col>
-
-                    </Row> */}
                     <Row>
                         <Col>
                             <Category setSearchData={setSearchDataHandler} className="category-list" />
@@ -84,6 +74,9 @@ function Home() {
                     </Row>
                     <Container className="book-list">
                         <BookList data={data} />
+                    </Container>
+                    <Container>
+
                     </Container>
                 </Container>
             </section>
