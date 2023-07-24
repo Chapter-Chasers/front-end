@@ -6,15 +6,11 @@ import Books  from './components/Books/Books';
 
 
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from './components/footer/Footer';
-
-import './components/footer/Footer.css';
-
+import Home from './components/Home';
+import React from 'react';
 function App() {
   return (
     <div className="App">
-
    <Routes>
    <Route  path="/" element={<Home/>} />
    <Route  path="/allBooks" element={<Home/>} />
