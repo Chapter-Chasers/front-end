@@ -1,9 +1,10 @@
 import Book from './Book';
+import './BookListStyle.css'
 function BookList(props) {
     const bookArray = props?.data?.items;
 
     return (
-        <div>
+        <div className='Book-list'>
             {bookArray?.map((obj, i) => (
                 <Book book={obj} key={i}/>
             ))

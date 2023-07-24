@@ -55,7 +55,7 @@ function Home() {
                 </Row>
                 <Row>
                     <Col>
-                        <Category />
+                        <Category setSearchData={setSearchDataHandler} />
                     </Col>
                     <Col md="auto">
 
