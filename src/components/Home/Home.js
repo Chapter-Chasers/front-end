@@ -50,38 +50,32 @@ function Home() {
     }
     return (
         <>
-            <Header />
-            <section className='home'>
-
-                <Container>
-                    <Row>
-                        <Col>
-                            <Category setSearchData={setSearchDataHandler} className="category-list" />
-                        </Col>
-                        <Col md="auto">
-
-                            <Container className="search-box">
-                                <Row>
-                                    <Col sm={16}>
-                                        <Search setSearchData={setSearchDataHandler} />
-                                    </Col>
-                                </Row>
-                            </Container>
-                        </Col>
-                        <Col xs lg="14">
-
-                        </Col>
-                    </Row>
-                    <Container className="book-list">
-                        <BookList data={data} />
-                    </Container>
-                    <Container>
-
-                    </Container>
-                </Container>
-            </section>
-            <Emailsub />
-        </>
+      <Header />
+      <section className='home'>
+        <Container>
+          <Row>
+                        <Col md={3} className='category-column'>
+              {/* Category component will always be on the left */}
+              <Category setSearchData={setSearchDataHandler} className="category-list" />
+            </Col>
+            <Col md={9}>
+              {/* BookList component will be on the right */}
+              <Container className="search-box">
+                <Row>
+                  <Col sm={12}>
+                    <Search setSearchData={setSearchDataHandler} />
+                  </Col>
+                </Row>
+              </Container>
+              <Container className="book-list">
+                <BookList data={data} />
+              </Container>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+      <Emailsub />
+    </>
 
     )
 }
