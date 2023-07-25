@@ -35,7 +35,7 @@ const categories = [
   'All',
   'Art',
   'Biography',
-  'Fitness',
+  'Cooking',
   'Fiction',
   'History',
   'Music',
