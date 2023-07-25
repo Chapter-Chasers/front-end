@@ -1,57 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
-// import ListGroup from 'react-bootstrap/ListGroup';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import "./Cart.css";
+import Swal from "sweetalert2";
 
-export default function paymenttest() {
-  const handleButtonClick = () => {
-    console.log("Button clicked!");
+export default function PaymentTest() {
+  const [formData, setFormData] = useState({
+    cardNumber: "",
+    expirationDate: "",
+    cvv: "",
+  });
+
+  const handleFormChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleButtonClick = (event) => {
+    event.preventDefault();
+    const { cardNumber, expirationDate, cvv } = formData;
+    
+    if (cardNumber && expirationDate && cvv) {
+      // Form is valid, show success alert
+      Swal.fire({
+        icon: 'success',
+        title: 'Thanks For Shopping ^^',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      });
+    } else {
+      // Form is incomplete, show error alert
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please fill in all the required fields.',
+      });
+    }
   };
 
   return (
     <>
-      {/* <Card style={{ width: '18rem' }}>
-      <Card.Header>Payment Information:</Card.Header>
-      <ListGroup variant="flush">
-      <form className="payment-form">
-         <ListGroup.Item> 
-            <label htmlFor="cardNumber">Card Number:</label>
-            <input type="text" id="cardNumber" />
-            </ListGroup.Item>
-        <ListGroup.Item><label htmlFor="expiration">Expiration Date:</label>
-            <input type="text" id="expiration" /></ListGroup.Item>
-        <ListGroup.Item> <label htmlFor="cvv">CVV:</label><br/>
-            <input type="text" id="cvv" /></ListGroup.Item>
-               
-        </form>
-             <Button variant="-dark">Submit</Button>{' '}
-      </ListGroup>
-    </Card> */}
-
-      {/* <Card className="payment-card">
-      <Card.Header className="payment-card-header">Payment Information:</Card.Header>
-      <Card.Body>
-        <form className="payment-form">
-          <div className="form-group">
-            <label htmlFor="cardNumber">Card Number:</label>
-            <input type="text" id="cardNumber" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="expiration">Expiration Date:</label>
-            <input type="text" id="expiration" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="cvv">CVV:</label>
-            <input type="text" id="cvv" />
-          </div>
-          <button className="btn btn-dark">Submit</button>
-        </form>
-      </Card.Body>
-    </Card> */}
-
       <form>
-        <Card>
+        <Card style={{ height: "50vh", width: "70vh" }}>
           <Card.Header as="h5">Payment Information:</Card.Header>
           <Card.Body>
             <Card.Title>Please Enter Your Card Information</Card.Title>
@@ -60,6 +58,9 @@ export default function paymenttest() {
               Card Number:
               <Form.Control
                 type="number"
+                name="cardNumber"
+                value={formData.cardNumber}
+                onChange={handleFormChange}
                 placeholder="please enter your card number"
                 required
               />
@@ -69,6 +70,9 @@ export default function paymenttest() {
               Expiration Date:
               <Form.Control
                 type="date"
+                name="expirationDate"
+                value={formData.expirationDate}
+                onChange={handleFormChange}
                 placeholder="expiration date"
                 required
               />
@@ -78,7 +82,10 @@ export default function paymenttest() {
               CVV:
               <Form.Control
                 type="text"
-                placeholder="Please enter your CkkkVV"
+                name="cvv"
+                value={formData.cvv}
+                onChange={handleFormChange}
+                placeholder="Please enter your CVV"
                 pattern="[0-9]{3,4}" // Rg_Ex for only 3 or 4 digit numbers
                 title="Please enter a valid CVV (3 or 4 digits)"
                 required
