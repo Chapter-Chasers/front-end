@@ -43,7 +43,7 @@ function Book({ book }) {
                         ))}
                     </div>
                     <Container className="d-flex flex-wrap">
-                        <Button className="mb-3 mx-1 btn-sm" variant="primary">
+                        <Button className="mb-3 mx-1 btn-sm" variant="primary" >
                             Favorite
                         </Button>
                         <Button className="mb-3 mx-1 btn-sm" variant="primary">

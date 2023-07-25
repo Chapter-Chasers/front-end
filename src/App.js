@@ -9,6 +9,7 @@ import Qoutes from "./components/qoutes/Qoutes";
 import './App.css';
 import React from 'react';
 import BookDetails from './components/bookDetails/BookDetails'
+import AboutUs from './components/aboutUs/AboutUs';
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
         <Route path="/finishedBooks" element={<Home />} />
         <Route path="/qoutes" element={<Qoutes />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/aboutUs" element={<Home />} />
+        <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/bookDetails/:id" element={<BookDetails />} />
       </Routes>
       <Footer />
