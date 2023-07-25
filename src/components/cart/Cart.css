@@ -1,3 +1,8 @@
+.cartCon{
+  margin: 20px;
+  margin-left: 60px;
+}
+
 .cart-wrapper {
     display: flex;
     justify-content: space-between;
@@ -101,25 +106,75 @@
     background-color: #0056b3;
   }
 
-  /* =========Shoping Cart====== */
+  /* =========Shoping Cart ========= */
 
-  /* Add styles for the shopping cart items and total price */
+.shopping-cart {
+  margin-bottom: 1rem;
+}
+
 .cart-items {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
-  
-  .cart-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-  }
-  
-  .total-price {
-    text-align: right;
-    font-weight: bold;
-  }
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.scroll-container {
+  overflow-y: auto;
+  max-height: calc(41vh - 100px);
+}
+
+
+.total-price {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+  /* ========= Payment ========= */
+
+
+.payment-card {
+  width: 18rem;
+  margin: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.payment-card-header {
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+
+.payment-form {
+  padding: 1rem;
+}
+
+.payment-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.payment-form input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.payment-form button {
+  margin-top: 1rem;
+}
+
   
   
