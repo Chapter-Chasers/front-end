@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Image, Spinner } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import RelatedToAuthor from "../Related/RelatedToAuthor";
+import RelatedToCat from "../Related/RelatedToCat";
 
 export default function BookDetails() {
   const idParams = useParams();
   const [detailedObj, setDatiledObj] = useState(null);
-  console.log(idParams.id);
   const id = idParams?.id;
 
   async function getObjById(id) {
@@ -33,11 +34,21 @@ export default function BookDetails() {
             </Col>
             <Col md={8}>
               <h1>{detailedObj?.volumeInfo?.title}</h1>
-              <p><strong>Description:</strong><br />{detailedObj?.volumeInfo?.description}</p>
-              <p><strong>Category:</strong><br />{detailedObj?.volumeInfo?.categories}</p>
-              <p><strong>Aouthar:</strong><br />{detailedObj?.volumeInfo?.authors}</p>
-              <p><strong>pageCount:</strong><br />{detailedObj?.volumeInfo?.pageCount}</p>
-              <p><strong>publishedDate:</strong><br />{detailedObj?.volumeInfo?.publishedDate}</p>
+              <p><strong>Description:</strong><br />{detailedObj?.volumeInfo?.description || "No Description Available for this book"}</p>
+              <p><strong>Preview Link:</strong><br /><Link to={detailedObj?.volumeInfo?.previewLink || "/"}>{detailedObj?.volumeInfo?.previewLink || "/"}</Link>{ }</p>
+              <p><strong>Category:</strong><br />{detailedObj?.volumeInfo?.categories || 'Not in a specific category'}</p>
+              <p><strong>Aouthar:</strong><br />{detailedObj?.volumeInfo?.authors || "Authors"}  </p>
+              <p><strong>pageCount:</strong><br />{detailedObj?.volumeInfo?.pageCount || "200"}</p>
+              <p><strong>publishedDate:</strong><br />{detailedObj?.volumeInfo?.publishedDate || "2015-6-7"}</p>
+              <p><strong>Price:</strong><br />{detailedObj?.saleInfo?.listPrice?.amount || "15"}</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={12} >
+              <RelatedToAuthor author={detailedObj?.volumeInfo?.authors[0] || "milton"}></RelatedToAuthor>
+              {detailedObj?.volumeInfo?.categories && (
+                <RelatedToCat cat={detailedObj.volumeInfo.categories[0]} />
+              )}
             </Col>
           </Row>
         </Container>

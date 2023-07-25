@@ -21,7 +21,7 @@ function NavBar() {
                   <NavDropdown.Item href="/finishedBooks">Finished Books</NavDropdown.Item>
                 </NavDropdown>
               <Nav.Link href='/cart'>Cart</Nav.Link>
-              <Nav.Link href='/about us'>About Us</Nav.Link>
+              <Nav.Link href='/aboutUs'>About Us</Nav.Link>
             </Nav>
 
           </Navbar.Collapse>

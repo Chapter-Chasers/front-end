@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import React from 'react';
 import BookDetails from './components/bookDetails/BookDetails'
+import AboutUs from './components/aboutUs/AboutUs';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
         <Route path="/currentBooks" element={<Home />} />
         <Route path="/finishedBooks" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/aboutUs" element={<Home />} />
+        <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/bookDetails/:id" element={<BookDetails />} />
       </Routes>
       <Footer />
