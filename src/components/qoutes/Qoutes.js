@@ -1,65 +1,92 @@
-import React, { useState, useEffect } from 'react';
-// import { Carousel } from 'react-bootstrap';
-import Table from 'react-bootstrap/Table';
-import Card from 'react-bootstrap/Card';
+import React, { useState, useEffect } from "react";
+// import Table from 'react-bootstrap/Table';
+import Header from "../Header/Header";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
-
+import Card from "react-bootstrap/Card";
+import QoutesCategorey from "./QoutesCategorey";
+// import "../Categorey/Category.css";
+import "./qoutes.css";
 
 const Quotes = () => {
-    const [quote, setQuote] = useState('');
+  const [quotes, setQuotes] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
-    useEffect(() => {
-        fetchQuote();
-    }, []);
+  useEffect(() => {
+    fetchQuotes(selectedCategory);
+  }, [selectedCategory]);
 
-    const fetchQuote = async () => {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_QOUTE_URL}`);
-            if (!response.ok) {
-                throw new Error('Network response was not ok.');
-            }
-            const data = await response.json();
-            console.log(data);
-            setQuote(data.content);
-        } catch (error) {
-            console.log('Error fetching quote:', error);
-        }
-    };
- 
-    return (
-        <>
-         <Table striped bordered hover variant="dark">
-      <thead>
-        <tr>
-          <th>quote</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{quote}</td>
-        </tr>
-      </tbody>
-    </Table>
+  const fetchQuotes = async (category) => {
+    try {
+      let apiUrl = process.env.REACT_APP_QOUTEPAGE_API_URL;
+      if (category !== "All") {
+        apiUrl += `?tags=${category}`;
+      }
+      const response = await fetch(apiUrl);
+      if (!response.ok) {
+        throw new Error("Network response was not ok.");
+      }
+      const data = await response.json();
+      if (!Array.isArray(data.results)) {
+        throw new Error("Invalid API response.");
+      }
+      setQuotes(data.results);
+    } catch (error) {
+      console.log("Error fetching quotes:", error);
+    }
+  };
 
-    <Card style={{ width: '18rem', height: '25vh'}}>
-      <Card.Body>
-        <Card.Title></Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-        <Card.Text>
-        {quote}
-        </Card.Text>
-      </Card.Body>
-    </Card>
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
 
-        </>
-        // <Carousel>
-        //     <Carousel.Item>
-        //         <div className="carousel-content">
-        //             <p>{quote}</p>
-        //         </div>
-        //     </Carousel.Item>
-        // </Carousel>
-    );
+  return (
+    <>
+      {/* <QoutesCategorey setSearchData={setQuotes} />
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+          {quotes.map((quote) => (
+            <Card key={quote._id} style={{ width: '18rem', marginBottom: '20px' }}>
+              <Card.Body>
+                <Card.Title>{quote.content}</Card.Title>
+                <Card.Text>Author: {quote.author} </Card.Text>
+              </Card.Body>
+            </Card>
+          ))}
+        </div> */}
+
+      <Container >
+        <Row>
+          <Col md={3} className="category-column">
+            <QoutesCategorey setSearchData={setQuotes} />
+          </Col>
+
+          <Col md={9}>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "space-around",
+              }}
+            >
+              {quotes.map((quote) => (
+                <Card
+                  key={quote._id}
+                  style={{ width: "18rem", marginBottom: "20px" }}
+                >
+                  <Card.Body>
+                    <Card.Title>{quote.content}</Card.Title>
+                    {/* <Card.Subtitle className="mb-2 text-muted">ID: {quote._id}</Card.Subtitle> */}
+                    <Card.Text>Author: {quote.author} </Card.Text>
+                  </Card.Body>
+                </Card>
+              ))}
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
 };
-
 export default Quotes;
