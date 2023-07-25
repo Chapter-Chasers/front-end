@@ -2,10 +2,14 @@ import { Badge, Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './book.css'
+import { Link } from 'react-router-dom';
+
 function Book({ book }) {
     const imageSrc = book?.volumeInfo?.imageLinks?.smallThumbnail || "https://plus.unsplash.com/premium_photo-1667251758255-514ef43844fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ym9va3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60";
+    
     return (
-        <div>
+        <div >
+            <Link to={`/bookDetails/${book.id}`}>
             {console.log(book.id)}
             <Card style={{ width: '20rem', minHeight: '20rem' }}>
                 <Card.Img variant="top" style={{ objectFit: 'contain', maxHeight: '300px' }} src={imageSrc} />
@@ -40,6 +44,7 @@ function Book({ book }) {
                     </Container>
                 </Card.Body>
             </Card>
+            </Link>
         </div>
     )
 }
