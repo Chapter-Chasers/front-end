@@ -1,8 +1,10 @@
 .home {
     min-height: 100vh;
-    margin: 22px 0; 
+    margin: 22px 0;
     padding: 20px;
+    background-color: #ddd;
 }
+
 /* Add your custom styles for the Home component here */
 .button-group {
     margin-top: 20px;
@@ -44,4 +46,17 @@
     margin: 0;
     font-size: 14px;
     color: #555;
+}
+
+.category-column {
+    margin-top: 50px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    /* Adjust the height as needed */
+}
+
+.book-list {
+    flex-grow: 1;
+    /* This will make the BookList component take up the remaining width */
 }

@@ -15,7 +15,7 @@ const CarouselWithQuote = () => {
                 throw new Error('Network response was not ok.');
             }
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             setQuote(data.content);
         } catch (error) {
             console.log('Error fetching quote:', error);
