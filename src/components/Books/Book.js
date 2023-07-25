@@ -10,8 +10,9 @@ function Book({ book }) {
     return (
         <div >
             <Link to={`/bookDetails/${book.id}`}>
+            {console.log(book.id)}
             <Card style={{ width: '20rem', minHeight: '20rem' }}>
-                <Card.Img variant="top" style={{ objectFit: 'cover', maxHeight: '300px' }} src={imageSrc} />
+                <Card.Img variant="top" style={{ objectFit: 'contain', maxHeight: '300px' }} src={imageSrc} />
                 <Card.Body>
                     <Card.Title>
                         <Container>

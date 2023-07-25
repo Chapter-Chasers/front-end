@@ -9,7 +9,7 @@ import Category from '../Categorey/Category';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import BookList from '../Books/BooksList/BookList';
-
+import Emailsub from '../emailsub/Emailsub';
 import { useState, useEffect } from "react";
 import { Navbar } from 'react-bootstrap';
 
@@ -54,16 +54,6 @@ function Home() {
             <section className='home'>
 
                 <Container>
-                    {/* <Row>
-                        <Col className='d-flex justify-content-center mt-3'>
-                            <ButtonGroup size="md" className="button-group">
-                                <Button onClick={getAllBooks}>Books</Button>
-                                <Button onClick={getQoutes}>Quotes</Button>
-                            </ButtonGroup>
-                            <br />
-                        </Col>
-
-                    </Row> */}
                     <Row>
                         <Col>
                             <Category setSearchData={setSearchDataHandler} className="category-list" />
@@ -85,8 +75,12 @@ function Home() {
                     <Container className="book-list">
                         <BookList data={data} />
                     </Container>
+                    <Container>
+
+                    </Container>
                 </Container>
             </section>
+            <Emailsub />
         </>
 
     )

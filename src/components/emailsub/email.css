@@ -1,0 +1,31 @@
+.email_sub {
+    min-height: 50vh;
+    background-color: #7C73C0;
+    margin: 30px 0px;
+    border-radius: 20px;
+}
+.email_sub h2 {
+    margin-bottom: 15px;
+    padding: 5px;
+    color: white;
+}
+.email_sub form {
+    background-color: #E8FFCE;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.email_sub .form-group {
+    margin-bottom: 20px;
+}
+
+.email_sub label {
+    font-weight: bold;
+    display: block;
+}
+
+.email_sub button[type="submit"] {
+    margin-top: 20px;
+    width: 100%;
+}
