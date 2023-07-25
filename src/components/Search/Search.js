@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Search.css'
 import { Form, FormControl, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 
 function Search({ setSearchData }) {

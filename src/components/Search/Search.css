@@ -1,0 +1,69 @@
+/* styles.css */
+
+/* Flexbox container for form items */
+.d-flex {
+    display: flex;
+    align-items: center;
+}
+
+/* Search input styles */
+.FormControl {
+    width: 300px;
+    /* Adjust the width as needed */
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    /* Rounded shape */
+    font-size: 16px;
+    outline: none;
+}
+
+/* Dropdown button styles */
+#dropdown-basic-button {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    /* Rounded shape */
+    background-color: #654646;
+    /* Background color */
+    padding: 10px 20px;
+    font-size: 16px;
+    outline: none;
+}
+
+/* Optional: Styling the dropdown items (optional) */
+#dropdown-basic-button .dropdown-item {
+    font-size: 16px;
+}
+
+/* Search button styles */
+.Button {
+    margin-left: 10px;
+    height: 40px;
+    border: 1px solid #007bff;
+    /* Border color */
+    border-radius: 20px;
+    /* Rounded shape */
+    background-color: #007bff;
+    /* Background color */
+    color: #fff;
+    /* Text color */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Optional: Hover and active effects for search button */
+.Button:hover {
+    background-color: #0056b3;
+    /* Darker background color on hover */
+}
+
+.Button:active {
+    background-color: #004080;
+    /* Even darker background color on click */
+}
