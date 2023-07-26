@@ -18,14 +18,14 @@ function Category({ setSearchData }) {
       fetch(`${process.env.REACT_APP_Google_URL}allBooks`)
         .then(response => response.json())
         .then(data => {
-          console.log('Fetched data:', data);
+          // console.log('Fetched data:', data);
           setSearchData(data);
         })
     } else {
       fetch(`${process.env.REACT_APP_Google_URL}searchCategory?cat=${category}`)
         .then(response => response.json())
         .then(data => {
-          console.log('Fetched data:', data);
+          // console.log('Fetched data:', data);
           setSearchData(data);
         })
         .catch(error => console.error('Error fetching data:', error));
