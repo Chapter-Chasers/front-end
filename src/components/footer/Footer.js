@@ -1,138 +1,32 @@
-import React from "react";
-import Card from "react-bootstrap/Card";
-
+import React from "react"
+import { Link } from "react-router-dom"
 import './Footer.css'
 
-export default function Footer() {
-
-    const gmailLink = "https://mail.google.com/mail/u/0/#inbox";
-  const socialMediaLinks = [
-    { name: "LinkedIn", url: "https://www.linkedin.com/" },
-    { name: "Twitter", url: "https://twitter.com/" },
-  ];
-
-  return (
-    <div className="footer">
-      {/* <h3 className="h3">Team members</h3> */}
-      <div className="members">
-        <Card
-          border="light"
-          className="card" 
-          id="NameCard"
-          style={{ width: "10rem", height: "0rem" }}
-        >
-          <Card.Header>Team Members</Card.Header>
-        </Card>
-
-        {/* team lead Mohammad Card */}
-        <Card
-          border="light"
-          className="card"
-          style={{ width: "10rem", height: "8rem" }}
-        >
-          <Card.Header>Mohammad</Card.Header>
-          <Card.Body>
-            <Card.Title>Team Lead</Card.Title>
-            {/* <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text> */}
-          </Card.Body>
-        </Card>
-
-        {/* team member Ghaidaa card */}
-        <Card
-          border="light"
-          className="card"
-          style={{ width: "10rem", height: "8rem" }}
-        >
-          <Card.Header>Ghaidaa</Card.Header>
-          <Card.Body>
-            <Card.Title>Team Member</Card.Title>
-            {/* <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text> */}
-          </Card.Body>
-        </Card>
-
-        {/* team member Haya Card */}
-        <Card
-          border="light"
-          className="card"
-          style={{ width: "10rem", height: "8rem" }}
-        >
-          <Card.Header>Haya</Card.Header>
-          <Card.Body>
-            <Card.Title>Team Member</Card.Title>
-            {/* <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text> */}
-          </Card.Body>
-        </Card>
-
-        {/* team member Zaid Card */}
-        <Card
-          border="light"
-          className="card"
-          style={{ width: "10rem", height: "8rem" }}
-        >
-          <Card.Header>Zaid</Card.Header>
-          <Card.Body>
-            <Card.Title>Team Member</Card.Title>
-            {/* <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text> */}
-          </Card.Body>
-        </Card>
-
-        {/* team member Ahmad Card */}
-        <Card
-          border="light"
-          className="card"
-          style={{ width: "10rem", height: "8rem" }}
-        >
-          <Card.Header>Ahmad</Card.Header>
-          <Card.Body>
-            <Card.Title>Team Member</Card.Title>
-            {/* <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text> */}
-          </Card.Body>
-        </Card>
+const Footer = () => <footer className="page-footer bg-dark text-white font-small blue pt-4">
+  <div className="container-fluid text-center text-md-left">
+    <div className="row">
+      <div className="col-md-6 mt-md-0 mt-3">
+        <h5 className="text-uppercase text-info">Social Media</h5>
+        <ul className="list-unstyled">
+          <li><Link to={'/'} className="link-footer mb-3 text-white text-decoration-none" >Facebook</Link></li>
+          <li><Link to={'/aboutUs'} className="link-footer text-white text-decoration-none" >LinkedIn</Link></li>
+        </ul>
       </div>
 
-      <div className="contact-info">
-        {/* <h4>Contact Information</h4> */}
-        {/* <Card
-          border="light"
-        //   className="card"
-          style={{ width: "10rem", height: "0rem"}}
-        >
-          <Card.Header>Contact Information</Card.Header>
-        </Card> */}
-        <div className="contact-links">
-          <a href={gmailLink} className="contact-link">
-          chapterChasers@gmail.com {/* Gmail Link */}
-          </a>
-          {socialMediaLinks.map((socialMedia) => (
-            <a
-              key={socialMedia.name}
-              href={socialMedia.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-link"
-            >
-              {socialMedia.name} {/* Social Media Links */}
-            </a>
-          ))}
-        </div>
-        
+      <hr className="clearfix w-100 d-md-none pb-0" />
+      <div className="col-md-6 mb-md-0 mb-3">
+        <h5 className="text-uppercase text-info">Links</h5>
+        <ul className="list-unstyled">
+          <li><Link to={'/'} className="link-footer mb-3 text-white text-decoration-none" >Home</Link></li>
+          <li><Link to={'/aboutUs'} className="link-footer text-white text-decoration-none" >About Us</Link></li>
+        </ul>
+      </div>
     </div>
-    </div>
+  </div>
 
-  );
-}
+  <div className="footer-copyright text-center py-3">© 2023 Copyright: ChapterChasers
+  </div>
+
+</footer>
+
+export default Footer

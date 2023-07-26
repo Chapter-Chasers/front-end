@@ -15,8 +15,8 @@ const CarouselWithQuote = () => {
                 throw new Error('Network response was not ok.');
             }
             const data = await response.json();
-            // console.log(data);
-            setQuote(data.content);
+            setQuote(data.content, data.author);
+
         } catch (error) {
             console.log('Error fetching quote:', error);
         }
@@ -30,9 +30,9 @@ const CarouselWithQuote = () => {
             <Carousel.Item>
                 <div className="carousel-content">
                     <p>{quote}</p>
+                    <p>{quote.author}</p>
                 </div>
             </Carousel.Item>
-            {/* Add more Carousel items if needed */}
         </Carousel>
     );
 };

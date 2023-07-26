@@ -1,0 +1,46 @@
+/* RelatedBook.css */
+.related-book-card {
+    display: flex;
+    gap: 2;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    transition: box-shadow 0.3s ease-in-out;
+    width: 250px;
+    /* Set the desired fixed width here */
+
+    /* If you want the card to have a fixed height, you can add the following style: */
+    /* height: 180px; */
+}
+
+.related-book-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.book-image {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.book-details {
+    flex: 1;
+}
+
+.book-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.book-category {
+    margin-top: 5px;
+    color: #888;
+    font-size: 0.9rem;
+}

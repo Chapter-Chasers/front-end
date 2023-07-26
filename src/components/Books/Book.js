@@ -32,18 +32,17 @@ function Book({ book }) {
                                     <Badge key={auth} className="ms-2" bg="success">
                                         {auth}
                                     </Badge>
-                                ))}
+                                )) || 'Author'}
                             </h5>
                         </Container>
                     </Card.Text>
                     <div className="container d-flex">
-                        {book.volumeInfo.categories?.map((cat) => (
+                        {book?.volumeInfo?.categories?.map((cat) => (
                             <h6 key={cat}>
                                 <Badge bg="secondary">{cat}</Badge>
                             </h6>
-                        ))}
+                        )) || 'No specific cat'}
                     </div>
-
                 </Card.Body>
             </Card>
             

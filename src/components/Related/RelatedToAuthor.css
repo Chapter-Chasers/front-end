@@ -1,0 +1,10 @@
+.related-books-heading {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 15px 20px;
+    background-color: #f2f2f2;
+    color: #333;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

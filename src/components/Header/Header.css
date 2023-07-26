@@ -30,6 +30,8 @@
   font-weight: bold;
   color: #ffffff;
   text-align: center;
+  max-width: 50rem;
+  vertical-align: top;
 }
 
 /* .carousel-control-prev-icon,
