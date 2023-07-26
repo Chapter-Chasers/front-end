@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import { NavDropdown } from 'react-bootstrap';
 import { useAuth0 } from '@auth0/auth0-react'
 
+
 function NavBar() {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   console.log(user);
@@ -31,7 +32,7 @@ function NavBar() {
   }
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+       <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
         <Container>
           <Navbar.Brand href="#home">ChapterChasers</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -49,11 +50,9 @@ function NavBar() {
               <Nav.Link href='/aboutUs'>About Us</Nav.Link>
               <Nav.Link href=''>{isAuthenticated ? <Button onClick={() => logout()}>Logout </Button> : <Button onClick={() => loginWithRedirect()}>Login </Button>} </Nav.Link>
             </Nav>
-
           </Navbar.Collapse>
         </Container>
-      </Navbar>
-
+      </Navbar> 
     </>
 
   )

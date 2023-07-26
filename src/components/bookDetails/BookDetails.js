@@ -1,12 +1,50 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Image, Spinner } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 import { Link, useParams } from "react-router-dom";
 import RelatedToAuthor from "../Related/RelatedToAuthor";
 import RelatedToCat from "../Related/RelatedToCat";
 
+
 export default function BookDetails() {
   const idParams = useParams();
+  console.log(idParams);
   const [detailedObj, setDatiledObj] = useState(null);
+
+    async function handleAddBook(status) {
+        const url = process.env.REACT_APP_Google_URL;
+
+        const values = [2.5 , 3 , 3.5 , 4 , 4.5];
+        const randomIndex = Math.floor(Math.random() * values.length);
+        const randomValues = values[randomIndex]
+        let request =
+        {
+            title: detailedObj?.volumeInfo?.title,
+            image: detailedObj?.volumeInfo?.imageLinks?.smallThumbnail,
+            description: detailedObj?.volumeInfo?.description,
+            rating: detailedObj?.volumeInfo?.averageRating || randomValues,
+            price: detailedObj?.saleInfo?.listPrice?.amount || 15,
+            author: detailedObj?.volumeInfo?.authors,
+            category:detailedObj?.volumeInfo?.categories,
+            state: status
+        }
+ 
+        await fetch(`${url}addBook`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(request)
+        }).then((response) => {
+            if (response.status == '201') {
+                return alert(`book added to ${status} succsesfully`)
+            }
+        }).catch(error => {
+            alert(error)
+        })
+
+    }
   const id = idParams?.id;
 
   async function getObjById(id) {
@@ -53,7 +91,22 @@ export default function BookDetails() {
           </Row>
         </Container>
       }
+      <DropdownButton id="dropdown-basic-button" title="Select an item">
+        <Dropdown.Item as="button" onClick={(e) => {handleAddBook('favorite')}} >
+          Add to favorite
+        </Dropdown.Item>
+        <Dropdown.Item as="button" onClick={(e) => {handleAddBook('current')}}>
+          Move to current
+        </Dropdown.Item>
+        <Dropdown.Item as="button" onClick={(e) => {handleAddBook('finished')}}>
+          Move to finished
+        </Dropdown.Item>
+        <Dropdown.Item as="button" >
+          Add to cart 
+        </Dropdown.Item>
+      </DropdownButton>
 
     </>
   )
 }
+
