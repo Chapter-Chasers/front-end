@@ -18,7 +18,7 @@ function Emailsub() {
             <Form.Control type="text" placeholder="John Raze" />
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="name@example.com" />
-            <Button type='submit' variant="dark">submit</Button>
+            <Button type='submit' variant="dark">Submit</Button>
           </Form.Group>
         </Form>
       </Container>

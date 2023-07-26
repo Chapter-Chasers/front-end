@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
+import AddQuote from "./AddQoute";
 import Card from "react-bootstrap/Card";
 import QoutesCategorey from "./QoutesCategorey";
 // import "../Categorey/Category.css";
@@ -58,11 +58,11 @@ const Quotes = () => {
 
       <Container >
         <Row>
-          <Col md={3} className="category-column">
+          <Col md={2} className="category-column">
             <QoutesCategorey setSearchData={setQuotes} />
           </Col>
 
-          <Col md={9}>
+          <Col md={7}>
             <div
               style={{
                 display: "flex",
@@ -84,8 +84,16 @@ const Quotes = () => {
               ))}
             </div>
           </Col>
+          <Col md= {3}>
+
+          <AddQuote/>
+         
+          </Col>
+         
         </Row>
+    
       </Container>
+
     </>
   );
 };
