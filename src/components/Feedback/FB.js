@@ -15,11 +15,11 @@ function FB() {
           [name]: value,
         }));
       };
-    // console.log(name+message+value);
+    
       const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData);
-        fetch('/send-feedback', {
+        fetch(`${process.env.REACT_APP_Google_URL}send-feedback`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
