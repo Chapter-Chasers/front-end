@@ -3,7 +3,6 @@ import { Badge, Container } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import './book.css'
 import { Link } from 'react-router-dom';
-import BookDetails from '../bookDetails/BookDetails';
 
 function Book({ book }) {
     const imageSrc = book?.volumeInfo?.imageLinks?.thumbnail || "https://plus.unsplash.com/premium_photo-1667251758255-514ef43844fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ym9va3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60";

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router';
+
 import Navbar from 'react-bootstrap/Navbar';
 import { Container, Button } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
@@ -32,7 +32,7 @@ function NavBar() {
   }
   return (
     <>
-       <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
         <Container>
           <Navbar.Brand href="#home">ChapterChasers</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -48,11 +48,12 @@ function NavBar() {
               <Nav.Link href='/qoutes'>Qoutes</Nav.Link>
               <Nav.Link href='/cart'>Cart</Nav.Link>
               <Nav.Link href='/aboutUs'>About Us</Nav.Link>
-              <Nav.Link href=''>{isAuthenticated ? <Button onClick={() => logout()}>Logout </Button> : <Button onClick={() => loginWithRedirect()}>Login </Button>} </Nav.Link>
+              <Nav.Link href=''>{user ? <Button onClick={() => logout()}>Logout </Button> : <Button onClick={() => loginWithRedirect()}>Login </Button>} </Nav.Link>
             </Nav>
+
           </Navbar.Collapse>
         </Container>
-      </Navbar> 
+      </Navbar>
     </>
 
   )

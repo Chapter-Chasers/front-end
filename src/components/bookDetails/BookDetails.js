@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Image, Spinner } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import { Dropdown, DropdownButton } from 'react-bootstrap';
-import { Link, useParams } from "react-router-dom";
 import RelatedToAuthor from "../Related/RelatedToAuthor";
 import RelatedToCat from "../Related/RelatedToCat";
 
@@ -37,7 +36,7 @@ export default function BookDetails() {
             },
             body: JSON.stringify(request)
         }).then((response) => {
-            if (response.status == '201') {
+            if (response.status === '201') {
                 return alert(`book added to ${status} succsesfully`)
             }
         }).catch(error => {
@@ -79,9 +78,24 @@ export default function BookDetails() {
               <p><strong>pageCount:</strong><br />{detailedObj?.volumeInfo?.pageCount || "200"}</p>
               <p><strong>publishedDate:</strong><br />{detailedObj?.volumeInfo?.publishedDate || "2015-6-7"}</p>
               <p><strong>Price:</strong><br />{detailedObj?.saleInfo?.listPrice?.amount || "15"}</p>
+              <DropdownButton id="dropdown-basic-button" title="Select an item">
+                <Dropdown.Item as="button" onClick={(e) => { handleAddBook('favorite') }} >
+                  Add to favorite
+                </Dropdown.Item>
+                <Dropdown.Item as="button" onClick={(e) => { handleAddBook('current') }}>
+                  Move to current
+                </Dropdown.Item>
+                <Dropdown.Item as="button" onClick={(e) => { handleAddBook('finished') }}>
+                  Move to finished
+                </Dropdown.Item>
+                <Dropdown.Item as="button" >
+                  Add to cart
+                </Dropdown.Item>
+              </DropdownButton>
             </Col>
           </Row>
           <Row>
+            
             <Col md={12} >
               <RelatedToAuthor author={detailedObj?.volumeInfo?.authors[0] || "milton"}></RelatedToAuthor>
               {detailedObj?.volumeInfo?.categories && (
@@ -91,21 +105,6 @@ export default function BookDetails() {
           </Row>
         </Container>
       }
-      <DropdownButton id="dropdown-basic-button" title="Select an item">
-        <Dropdown.Item as="button" onClick={(e) => {handleAddBook('favorite')}} >
-          Add to favorite
-        </Dropdown.Item>
-        <Dropdown.Item as="button" onClick={(e) => {handleAddBook('current')}}>
-          Move to current
-        </Dropdown.Item>
-        <Dropdown.Item as="button" onClick={(e) => {handleAddBook('finished')}}>
-          Move to finished
-        </Dropdown.Item>
-        <Dropdown.Item as="button" >
-          Add to cart 
-        </Dropdown.Item>
-      </DropdownButton>
-
     </>
   )
 }
