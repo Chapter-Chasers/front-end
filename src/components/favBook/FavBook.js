@@ -9,8 +9,6 @@ export default function FavBooks(){
         <>
         <div className="cardsWrapper">
             <section className="sectionMain">
-                <title>Card with Image</title>
-                <link rel="stylesheet" href="styles.css" />
                 <section className="cardB">
                     <img src="https://via.placeholder.com/300" alt="Card Image" />
                     <section className="cardContent">

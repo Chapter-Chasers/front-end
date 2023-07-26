@@ -46,6 +46,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "daisyui": "^3.5.0",
     "react-scripts": "^5.0.1"
   }
 }

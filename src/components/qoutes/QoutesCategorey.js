@@ -34,6 +34,7 @@ export default function QoutesCategorey({ setSearchData }) {
     'Virtue',
     'Self',
     'Friendship',
+   
   ];
 
   const handleCategoryChange = (event) => {
