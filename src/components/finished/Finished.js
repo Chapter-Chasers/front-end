@@ -30,9 +30,10 @@ export default function Finished() {
                 "Content-Type": "application/json"
             },
         }).then((response) => {
-            if (response.status === 200) {
+            if (response.status === 202) {
+                getFinishedBook();
                 alert("Updated sucessfully");
-                handleDelete(id);
+                
             }
         }).catch((error) => {
             alert(error);
@@ -47,9 +48,10 @@ export default function Finished() {
             }
         }).then((response) => {
             if (response.status === 204) {
+                getFinishedBook();
                 alert('Movie deleted sucessfully');
             }
-            getFinishedBook();
+            
         }).catch((error) => {
             alert((error));
         });
@@ -57,7 +59,7 @@ export default function Finished() {
 
     useEffect(() => {
         getFinishedBook()
-    }, [updateState])
+    }, [])
 
 
     return (

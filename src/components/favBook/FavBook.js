@@ -30,13 +30,15 @@ export default function FavBooks() {
                 "Content-Type": "application/json"
             }
         }).then((response) => {
-            if (response.status === 200) {
+            if (response.status === 202) {
+                getFavBook();
                 alert("Updated sucessfully");
-                handleDelete(id);
+                
             }
         }).catch((error) => {
             alert(error);
         });
+       
     }
 
     async function handleDelete(bookId) {
@@ -47,9 +49,11 @@ export default function FavBooks() {
             }
         }).then((response) => {
             if (response.status === 204) {
+                getFavBook();
                 alert('Book deleted sucessfully');
+                
             }
-            getFavBook();
+            
         }).catch((error) => {
             alert((error));
         });
@@ -57,7 +61,7 @@ export default function FavBooks() {
 
     useEffect(() => {
         getFavBook()
-    }, [updateState])
+    }, [])
 
 
     return (

@@ -30,10 +30,11 @@ export default function Current() {
             },
   
         }).then((response) => {
-            if (response.status === 200) {
+            if (response.status === 202) {
+                getCurrentBook();
                 alert("Updated sucessfully");
-                handleDelete(id);
             }
+            
         }).catch((error) => {
             alert(error);
         });
@@ -47,17 +48,32 @@ export default function Current() {
             }
         }).then((response) => {
             if (response.status === 204) {
+                getCurrentBook();
                 alert('Book deleted sucessfully');
+                
             }
-            getCurrentBook();
+            
         }).catch((error) => {
             alert((error));
         });
     }
 
+    async function handleAddToCart(obj){
+        const storedItems = localStorage.getItem("cartItems");
+        
+        const book = {
+            id : obj.id,
+            name: obj.title,
+            price: obj.price
+        };
+        storedItems.push(book);
+
+        localStorage.setItem("cartItems", JSON.stringify(storedItems));
+    }
+
     useEffect(() => {
       getCurrentBook()
-    }, [updateState])
+    }, [])
 
 
     return (
@@ -104,7 +120,7 @@ export default function Current() {
                             <Button onClick={() => { handleDelete(obj.id) }} className="mb-3 mx-1 btn-sm" variant="primary">
                                 delete
                             </Button>
-                            <Button className="mb-3 mx-1 btn-sm" variant="primary">
+                            <Button onClick={() => {handleAddToCart(obj)}} className="mb-3 mx-1 btn-sm" variant="primary">
                                 Cart
                             </Button>
                         </Container>
