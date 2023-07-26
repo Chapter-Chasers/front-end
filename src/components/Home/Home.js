@@ -2,9 +2,11 @@ import Header from "../Header/Header";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+// import FB from
 import "./Home.css";
 import Search from "../Search/Search";
 import Category from "../Categorey/Category";
+import FB from "../Feedback/FB";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import BookList from "../Books/BooksList/BookList";
@@ -76,6 +78,7 @@ function Home() {
         </Container>
       </section>
       <Emailsub />
+      <FB />
     </>
   );
 }
