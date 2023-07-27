@@ -57,7 +57,7 @@ export default function Current() {
 
     useEffect(() => {
       getCurrentBook()
-    }, [updateState])
+    }, [])
 
 
     return (
