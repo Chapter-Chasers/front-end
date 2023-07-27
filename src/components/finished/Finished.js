@@ -1,5 +1,5 @@
 import React, { useEffect, useState,useRef } from "react";
-import '../cardCss/card.css';
+// import '../cardCss/card.css';
 import Button from "react-bootstrap/Button";
 import { Badge, Container } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
