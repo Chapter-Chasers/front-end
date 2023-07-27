@@ -1,3 +1,4 @@
+import BookDetails from '../../bookDetails/BookDetails';
 import Book from '../Book';
 import './BookList.css'
 function BookList(props) {

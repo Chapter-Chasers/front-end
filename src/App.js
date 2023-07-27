@@ -8,6 +8,10 @@ import Qoutes from "./components/qoutes/Qoutes";
 import './App.css';
 import React from 'react';
 import BookDetails from './components/bookDetails/BookDetails'
+import FavBooks from './components/favBook/FavBook';
+import Current from './components/current/Current';
+import Finished from './components/finished/Finished';
+
 import AboutUs from './components/aboutUs/AboutUs';
 import TestNav from './components/testNav/TestNav';
 import FavBook from './components/favBook/FavBook';
@@ -20,9 +24,11 @@ import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 
 
+
 function App() {
   return (
     <div className="App">
+
       {/* <Navbar /> */}
 
             <TestNav/>
@@ -40,6 +46,7 @@ function App() {
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/bookDetails/:id" element={<BookDetails />} />
       </Routes>
+      
       <Footer />
 
     </div>

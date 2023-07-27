@@ -1,5 +1,5 @@
 import { Badge, Container } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
+
 import Card from 'react-bootstrap/Card';
 import './book.css'
 import { Link } from 'react-router-dom';
@@ -10,7 +10,7 @@ function Book({ book }) {
     return (
         <div >
 
-            {console.log(book.id)}
+            {/* {console.log(book.id)} */}
             <Card className="modern-card border-0" style={{ width: '18rem', minHeight: '20rem' }}>
                 <Link to={`/bookDetails/${book.id}`}>
                     <div className="image-container">
@@ -42,25 +42,11 @@ function Book({ book }) {
                             </h6>
                         )) || 'No specific cat'}
                     </div>
-                    <Container className="d-flex flex-wrap">
-                        <Button className="mb-3 mx-1 btn-sm" variant="primary" >
-                            Favorite
-                        </Button>
-                        <Button className="mb-3 mx-1 btn-sm" variant="primary">
-                            Current
-                        </Button>
-                        <Button className="mb-3 mx-1 btn-sm" variant="primary">
-                            Finished
-                        </Button>
-                        <Button className="mb-3 mx-1 btn-sm" variant="primary">
-                            Cart
-                        </Button>
-                    </Container>
                 </Card.Body>
             </Card>
-
-
+            
         </div >
+        
     )
 }
 export default Book;
