@@ -7,10 +7,10 @@ import FB from '../Feedback/FB';
 export default function Forms() {
   return (
     <Row>
-      <Col md={6}>
+      {/* <Col md={6}>
         <Emailsub />
-      </Col>
-      <Col md={6}>
+      </Col> */}
+      <Col >
         <FB />
       </Col>
     </Row>
