@@ -81,10 +81,31 @@ import React, { useState } from 'react';
 import { Menubar } from 'primereact/menubar';
 import { Button } from 'primereact/button';
 import './TestNav.css';
-
+import { useAuth0 } from '@auth0/auth0-react'
 export default function TestNav() {
-
-    const [activeIndex, setActiveIndex] = useState(0);
+    const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
+    console.log(user);
+    if (isAuthenticated) {
+        checkuser();
+    }
+    async function checkuser() {
+        console.log(user.sub);
+        try {
+            await fetch(`${process.env.REACT_APP_Google_URL}user`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    name: user.name,
+                    email: user.email,
+                    id: user.sub
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
     const items = [
         {
             label: 'Chapter Chasers',
@@ -142,7 +163,7 @@ export default function TestNav() {
     };
 
     const end = (
-        <Button label="LogIn" icon="pi pi-sign-in" style={buttonStyle} />
+        user ? <Button icon="pi pi-sign-out" onClick={() => logout()} label="Logout" style={buttonStyle}></Button> : <Button onClick={() => loginWithRedirect()} label="LogIn" icon="pi pi-sign-in" style={buttonStyle} />
     );
     return (
         <>
