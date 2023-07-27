@@ -19,7 +19,7 @@ export default function BookDetails() {
     const values = [2.5, 3, 3.5, 4, 4.5];
     const randomIndex = Math.floor(Math.random() * values.length);
     const randomValues = values[randomIndex]
-    {
+    const request = {
       title: detailedObj?.volumeInfo?.title,
       image: detailedObj?.volumeInfo?.imageLinks?.smallThumbnail,
       description: detailedObj?.volumeInfo?.description,
@@ -74,7 +74,7 @@ export default function BookDetails() {
 
       const jsonString = JSON.stringify(storageArray);
       localStorage.setItem('cartItems', jsonString);
-      
+
       alert(`${detailedObj?.volumeInfo?.title} added to cart `)
     }
     catch {
