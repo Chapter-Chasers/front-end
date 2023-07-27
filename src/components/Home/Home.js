@@ -64,7 +64,7 @@ function Home() {
         <Container>
           <Row>
 
-            <Col md={12} className="category-column">
+            <Col md={12} >
 
               {/* Category component will always be on the left */}
               <Category

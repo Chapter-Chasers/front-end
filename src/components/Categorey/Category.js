@@ -70,7 +70,7 @@
 
 
 import React, { useState } from "react";
-import { Container, Form } from "react-bootstrap";
+import { Container, Form, Button } from "react-bootstrap";
 import { Sidebar } from 'primereact/sidebar';
 import "./Category.css";
 
@@ -86,24 +86,24 @@ function Category({ setSearchData }) {
   };
 
   const fetchData = (category) => {
-      if (category === "All") {
-            fetch(`${process.env.REACT_APP_Google_URL}allBooks`)
-              .then(response => response.json())
-              .then(data => {
-                // console.log('Fetched data:', data);
-                setSearchData(data);
-              });
-          } else {
-            fetch(`${process.env.REACT_APP_Google_URL}searchCategory?cat=${category}`)
-              .then(response => response.json())
-              .then(data => {
-                // console.log('Fetched data:', data);
-                setSearchData(data);
-              })
-              .catch((error) => console.error("Error fetching data:", error));
-          }
+    if (category === "All") {
+      fetch(`${process.env.REACT_APP_Google_URL}allBooks`)
+        .then(response => response.json())
+        .then(data => {
+          // console.log('Fetched data:', data);
+          setSearchData(data);
+        });
+    } else {
+      fetch(`${process.env.REACT_APP_Google_URL}searchCategory?cat=${category}`)
+        .then(response => response.json())
+        .then(data => {
+          // console.log('Fetched data:', data);
+          setSearchData(data);
+        })
+        .catch((error) => console.error("Error fetching data:", error));
+    }
   };
-  
+
   const categories = [
     { name: "All" },
     { name: "Art" },
@@ -116,31 +116,28 @@ function Category({ setSearchData }) {
   ];
 
   return (
-    <div>
       <Container>
         <div className="checkbox-list-frame">
           <Form className="d-flex mx-5">
             {categories.map((cat) => {
               return (
                 <div className="radio-item">
-                  <Form.Check
-                    type="radio"
+                  <Button
+                    type="button"
                     name={cat.name}
-                    label={cat.name}
+                    // label={cat.name}
                     value={cat.name}
                     checked={selectedCategory === cat.name}
-                    onChange={handleCategoryChange}
-                  />
+                    onClick={handleCategoryChange}
+                    className="mx-5"
+                    variant="outline-primary"
+                  >{cat.name} </Button>
                 </div>
               );
             })}
           </Form>
         </div>
       </Container>
-
-      {/* Use the BasicDemo component */}
-      {/* <BasicDemo setSearchData={setSearchData} /> */}
-    </div>
   );
 }
 
