@@ -3,7 +3,7 @@ import { Menubar } from 'primereact/menubar';
 import './TestNav.css'
 
 export default function TestNav() {
-    
+    const [activeIndex,setActiveIndex] = useState(0);
     const items = [
         {
             label: 'Chapter Chasers',
@@ -55,7 +55,7 @@ export default function TestNav() {
     return (
         <>
           <div>
-            <Menubar model={items} />
+                <Menubar model={items} activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)} />
         </div>
         </>
     )

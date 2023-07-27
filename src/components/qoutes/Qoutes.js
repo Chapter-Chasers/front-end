@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Header from "../Header/Header";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -7,6 +6,7 @@ import AddQuote from "./AddQoute";
 import Card from "react-bootstrap/Card";
 import QoutesCategorey from "./QoutesCategorey";
 import "./qoutes.css";
+import QuotesHero from "./Quoteshero";
 
 const Quotes = () => {
   const [quotes, setQuotes] = useState([]);
@@ -42,6 +42,7 @@ const Quotes = () => {
 
   return (
     <>
+    <QuotesHero/>
       <Container>
         <Row>
           <Col md={2} className="category-column" style={{ height: "59vh" }}>
