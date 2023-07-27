@@ -84,20 +84,17 @@ import './TestNav.css';
 
 export default function TestNav() {
 
-  const items = [
-    {
-      label: 'Chapter Chasers',
-      url: '/',
-    },
-    {
-      label: 'Home',
-      url: '/',
-      icon: 'pi pi-fw pi-home',
-    },
-    {
-      label: 'Library',
-      icon: 'pi pi-fw pi-pencil',
-      items: [
+    const [activeIndex,setActiveIndex] = useState(0);
+    const items = [
+        {
+            label: 'Chapter Chasers',
+            url: '/',
+        },
+        {
+            label: 'Home',
+            url: '/',
+            icon: 'pi pi-fw pi-home',
+        },
         {
           label: 'Fav Books',
           url: '/favBooks',
@@ -113,6 +110,7 @@ export default function TestNav() {
           url: '/finishedBooks',
           icon: 'pi pi-book',
         },
+
       ],
     },
     {
@@ -147,7 +145,6 @@ export default function TestNav() {
   const end = (
     <Button label="LogIn" icon="pi pi-sign-in" style={buttonStyle} />
   );
-
   return (
     <>
       <div className="navbar-container">

@@ -63,52 +63,117 @@ export default function BookDetails() {
     getObjById(id);
   }, [idParams]);
   return (
-    <>
-      {detailedObj === null ? <Container className="d-flex justify-content-center mt-5 mb-5">
-        <Spinner animation="grow" />
-      </Container> :
-        <Container className="mt-5 p-3 mb-5">
+    <Container className="book-details mt-5 mb-5">
+      {detailedObj === null ? (
+        <Container className="d-flex justify-content-center mt-5 mb-5">
+          <Spinner animation="grow" />
+        </Container>
+      ) : (
+        <>
           <Row>
             <Col md={4}>
-              <Image style={{ width: 300 }} src={detailedObj?.volumeInfo?.imageLinks?.smallThumbnail || "https://plus.unsplash.com/premium_photo-1667251758255-514ef43844fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ym9va3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"} alt={detailedObj?.volumeInfo?.title} thumbnail />
+              <Image
+                style={{ width: 300 }}
+                src={
+                  detailedObj?.volumeInfo?.imageLinks?.smallThumbnail ||
+                  "https://plus.unsplash.com/premium_photo-1667251758255-514ef43844fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ym9va3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                }
+                alt={detailedObj?.volumeInfo?.title}
+                thumbnail
+              />
             </Col>
             <Col md={8}>
               <h1>{detailedObj?.volumeInfo?.title}</h1>
-              <p><strong>Description:</strong><br />{detailedObj?.volumeInfo?.description || "No Description Available for this book"}</p>
-              <p><strong>Preview Link:</strong><br /><Link to={detailedObj?.volumeInfo?.previewLink || "/"}>{detailedObj?.volumeInfo?.previewLink || "/"}</Link>{ }</p>
-              <p><strong>Category:</strong><br />{detailedObj?.volumeInfo?.categories || 'Not in a specific category'}</p>
-              <p><strong>Aouthar:</strong><br />{detailedObj?.volumeInfo?.authors || "Authors"}  </p>
-              <p><strong>pageCount:</strong><br />{detailedObj?.volumeInfo?.pageCount || "200"}</p>
-              <p><strong>publishedDate:</strong><br />{detailedObj?.volumeInfo?.publishedDate || "2015-6-7"}</p>
-              <p><strong>Price:</strong><br />{detailedObj?.saleInfo?.listPrice?.amount || "15"}</p>
-              <DropdownButton id="dropdown-basic-button" title="Select an item">
-                <Dropdown.Item as="button" onClick={(e) => { handleAddBook('favorite') }} >
+              <div className="description">
+                <strong>Description:</strong>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      detailedObj?.volumeInfo?.description ||
+                      "No Description Available for this book",
+                  }}
+                />
+              </div>
+              <p>
+                <strong>Preview Link:</strong>
+                <br />
+                <Link to={detailedObj?.volumeInfo?.previewLink || "/"}>
+                  {detailedObj?.volumeInfo?.previewLink || "/"}
+                </Link>
+              </p>
+              <p>
+                <strong>Category:</strong>
+                <br />
+                {detailedObj?.volumeInfo?.categories ||
+                  "Not in a specific category"}
+              </p>
+              <p>
+                <strong>Author:</strong>
+                <br />
+                {detailedObj?.volumeInfo?.authors || "Authors"}
+              </p>
+              <p>
+                <strong>Page Count:</strong>
+                <br />
+                {detailedObj?.volumeInfo?.pageCount || "200"}
+              </p>
+              <p>
+                <strong>Published Date:</strong>
+                <br />
+                {detailedObj?.volumeInfo?.publishedDate || "2015-6-7"}
+              </p>
+              <p>
+                <strong>Price:</strong>
+                <br />
+                {detailedObj?.saleInfo?.listPrice?.amount || "15"}
+              </p>
+              <DropdownButton
+                id="dropdown-basic-button"
+                title="Select an item"
+                variant="primary"
+                className="action-button"
+              >
+                <Dropdown.Item
+                  as="button"
+                  onClick={(e) => {
+                    handleAddBook("favorite");
+                  }}
+                >
                   Add to favorite
                 </Dropdown.Item>
-                <Dropdown.Item as="button" onClick={(e) => { handleAddBook('current') }}>
+                <Dropdown.Item
+                  as="button"
+                  onClick={(e) => {
+                    handleAddBook("current");
+                  }}
+                >
                   Move to current
                 </Dropdown.Item>
-                <Dropdown.Item as="button" onClick={(e) => { handleAddBook('finished') }}>
+                <Dropdown.Item
+                  as="button"
+                  onClick={(e) => {
+                    handleAddBook("finished");
+                  }}
+                >
                   Move to finished
                 </Dropdown.Item>
-                <Dropdown.Item as="button" >
-                  Add to cart
-                </Dropdown.Item>
+                <Dropdown.Item as="button">Add to cart</Dropdown.Item>
               </DropdownButton>
             </Col>
           </Row>
           <Row>
-
-            <Col md={12} >
-              <RelatedToAuthor author={detailedObj?.volumeInfo?.authors[0] || "milton"}></RelatedToAuthor>
+            <Col md={12}>
+              <RelatedToAuthor
+                author={detailedObj?.volumeInfo?.authors[0] || "milton"}
+              />
               {detailedObj?.volumeInfo?.categories && (
                 <RelatedToCat cat={detailedObj.volumeInfo.categories[0]} />
               )}
             </Col>
           </Row>
-        </Container>
-      }
-    </>
-  )
+        </>
+      )}
+    </Container>
+  );
 }
 

@@ -58,7 +58,7 @@ function Search({ setSearchData }) {
             <DropdownButton id="dropdown-basic-button" title={selectedOption}>
                 <Dropdown.Item onClick={() => handleOptionSelect('Title')}>Title</Dropdown.Item>
                 <Dropdown.Item onClick={() => handleOptionSelect('Author')}>Author</Dropdown.Item>
-                <Dropdown.Item onClick={() => handleOptionSelect('ISBN')}>ISBN</Dropdown.Item>
+                {/* <Dropdown.Item onClick={() => handleOptionSelect('ISBN')}>ISBN</Dropdown.Item> */}
             </DropdownButton>
 
             <Button

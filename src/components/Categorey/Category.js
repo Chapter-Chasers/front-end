@@ -43,7 +43,7 @@ function Category({ setSearchData }) {
     <div>
       <Container>
         <div className="checkbox-list-frame">
-          <Form className="">
+          <Form className="d-flex mx-5">
             {categories.map((cat) => {
               return (
                 <div className="radio-item">

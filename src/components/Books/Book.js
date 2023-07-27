@@ -11,7 +11,7 @@ function Book({ book }) {
         <div >
 
             {/* {console.log(book.id)} */}
-            <Card className="modern-card border-0" style={{ width: '18rem', minHeight: '20rem' }}>
+            <Card className="modern-card border-0" style={{ width: '18rem', minHeight: '10rem' }}>
                 <Link to={`/bookDetails/${book.id}`}>
                     <div className="image-container">
                         <Card.Img variant="top" className="card-image" src={imageSrc} />
