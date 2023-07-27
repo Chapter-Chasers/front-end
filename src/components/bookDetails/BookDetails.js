@@ -19,7 +19,6 @@ export default function BookDetails() {
     const values = [2.5, 3, 3.5, 4, 4.5];
     const randomIndex = Math.floor(Math.random() * values.length);
     const randomValues = values[randomIndex]
-    const request =
     {
       title: detailedObj?.volumeInfo?.title,
       image: detailedObj?.volumeInfo?.imageLinks?.smallThumbnail,
@@ -30,6 +29,7 @@ export default function BookDetails() {
       category: detailedObj?.volumeInfo?.categories,
       state: status,
       id: user.sub
+
     }
 
     await fetch(`${url}addBook`, {
@@ -59,9 +59,34 @@ export default function BookDetails() {
       console.log(error);
     }
   }
+
+  function handleAddToCart() {
+
+    try {
+      const storageArray = JSON.parse(localStorage.getItem('cartItems') || "[]");
+
+      let bookObj = {
+        id: detailedObj.id,
+        name: detailedObj?.volumeInfo?.title,
+        price: detailedObj?.saleInfo?.listPrice?.amount || 15
+      }
+      storageArray.push(bookObj)
+
+      const jsonString = JSON.stringify(storageArray);
+      localStorage.setItem('cartItems', jsonString);
+      
+      alert(`${detailedObj?.volumeInfo?.title} added to cart `)
+    }
+    catch {
+      alert('there is problem adding items to cart');
+    }
+  }
+
+
   useEffect(() => {
     getObjById(id);
   }, [idParams]);
+
   return (
     <Container className="book-details mt-5 mb-5">
       {detailedObj === null ? (
@@ -157,11 +182,16 @@ export default function BookDetails() {
                 >
                   Move to finished
                 </Dropdown.Item>
-                <Dropdown.Item as="button">Add to cart</Dropdown.Item>
+
+                <Dropdown.Item as="button" onClick={(e) => { handleAddToCart() }}>
+                  Add to cart
+                </Dropdown.Item>
+
               </DropdownButton>
             </Col>
           </Row>
           <Row>
+
             <Col md={12}>
               <RelatedToAuthor
                 author={detailedObj?.volumeInfo?.authors[0] || "milton"}
