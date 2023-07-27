@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import Table from 'react-bootstrap/Table';
 import Header from "../Header/Header";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -7,7 +6,6 @@ import Col from "react-bootstrap/Col";
 import AddQuote from "./AddQoute";
 import Card from "react-bootstrap/Card";
 import QoutesCategorey from "./QoutesCategorey";
-// import "../Categorey/Category.css";
 import "./qoutes.css";
 
 const Quotes = () => {
@@ -44,21 +42,9 @@ const Quotes = () => {
 
   return (
     <>
-      {/* <QoutesCategorey setSearchData={setQuotes} />
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
-          {quotes.map((quote) => (
-            <Card key={quote._id} style={{ width: '18rem', marginBottom: '20px' }}>
-              <Card.Body>
-                <Card.Title>{quote.content}</Card.Title>
-                <Card.Text>Author: {quote.author} </Card.Text>
-              </Card.Body>
-            </Card>
-          ))}
-        </div> */}
-
-      <Container >
+      <Container>
         <Row>
-          <Col md={2} className="category-column">
+          <Col md={2} className="category-column" style={{ height: "59vh" }}>
             <QoutesCategorey setSearchData={setQuotes} />
           </Col>
 
@@ -84,16 +70,11 @@ const Quotes = () => {
               ))}
             </div>
           </Col>
-          <Col md= {3}>
-
-          <AddQuote/>
-         
+          <Col md={3}>
+            <AddQuote />
           </Col>
-         
         </Row>
-    
       </Container>
-
     </>
   );
 };

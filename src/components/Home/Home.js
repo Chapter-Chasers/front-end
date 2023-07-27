@@ -6,13 +6,19 @@ import Col from "react-bootstrap/Col";
 import "./Home.css";
 import Search from "../Search/Search";
 import Category from "../Categorey/Category";
-import FB from "../Feedback/FB";
+// import FB from "../Feedback/FB";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import BookList from "../Books/BooksList/BookList";
-import Emailsub from "../emailsub/Emailsub";
+// import Emailsub from "../emailsub/Emailsub";
 import { useState, useEffect } from "react";
 import { Navbar } from "react-bootstrap";
+
+// import { Button } from 'primereact/button';
+
+
+import Forms from '../forms/Forms'
+
 
 function Home() {
   const [data, setData] = useState([]);
@@ -77,10 +83,13 @@ function Home() {
           </Row>
         </Container>
       </section>
-      <Emailsub />
-      <FB />
+      {/* <Emailsub /> */}
+      {/* <FB /> */}
+      <Forms/>
     </>
   );
 }
 
 export default Home;
+
+

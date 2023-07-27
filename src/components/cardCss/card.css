@@ -1,11 +1,10 @@
-body {
+/* body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
-    /* margin-top: 50px; */
   }
   
   .sectionMain{
@@ -67,4 +66,4 @@ body {
   
   .cardB:hover {
     transform: translateY(-5px);
-  }
+  } */

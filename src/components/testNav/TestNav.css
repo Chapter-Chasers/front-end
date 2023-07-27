@@ -1,0 +1,43 @@
+.p-menubar {
+  background-color: rgb(60, 64, 72);
+  color: rgb(234, 234, 234);
+  height: 70px;
+}
+
+.p-menuitem-active {
+  background-color: rgb(0, 171, 179);
+}
+
+.p-menuitem > .p-menuitem-link:hover {
+  background-color: rgb(178, 178, 178);
+  color: rgb(60, 64, 72);
+}
+
+.p-menuitem > .p-menuitem-link > .p-menuitem-icon {
+  color: rgb(0, 171, 179);
+}
+
+.p-menuitem.p-menuitem-active > .p-menuitem-link:hover {
+  background-color: rgb(178, 178, 178);
+  color: rgb(60, 64, 72);
+}
+
+.p-menuitem.p-menuitem-active > .p-menuitem-link {
+  background-color: rgb(178, 178, 178);
+}
+
+.p-menuitem.p-menuitem-active > .p-menuitem-link:hover > .p-menuitem-icon {
+  color: rgb(60, 64, 72);
+}
+
+.p-menubar .p-menuitem-link {
+  font-size: 20px;
+}
+
+.p-menubar .p-menuitem-link .p-menuitem-text {
+  font-size: 18px;
+}
+
+.p-menubar .p-menuitem-link .p-menuitem-icon {
+  font-size: 22px;
+}
