@@ -1,4 +1,31 @@
-.link-footer:hover {
+.page-footer {
+  background-color: rgb(60, 64, 72);
+}
+
+.page-footer a {
+  text-decoration: none;
+  color: rgb(234, 234, 234);
+}
+
+.page-footer a:hover {
   text-decoration: underline;
-  color: blue;
+  color: rgb(0, 171, 179);
+}
+
+.page-footer h5 {
+  color: rgb(0, 171, 179);
+}
+
+.page-footer .footer-copyright {
+  background-color: rgb(60, 64, 72);
+  color: rgb(178, 178, 178);
+}
+
+li {
+  color: rgb(234, 234, 234);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+li:hover {
+  color: rgb(0, 171, 179);
 }
