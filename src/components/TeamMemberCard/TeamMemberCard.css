@@ -6,6 +6,7 @@
     text-align: center;
     width: 200px;
     margin: 10px;
+    border-color: #3C4048;
 }
 
 .team-member-card img {
@@ -18,14 +19,18 @@
 .team-member-card h2 {
     font-size: 1.2rem;
     margin: 0;
+    color :#3C4048;
 }
 
 .team-member-card p {
     margin: 5px 0;
+    color :#3C4048;
+   
 }
 
 .team-member-card.leader {
-    border-color: #007bff;
+  
+    border-color: blue;
 }
 
 /* Additional styles for the About Us page */

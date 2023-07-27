@@ -60,7 +60,7 @@ function Home() {
       <section className="home">
         <Container>
           <Row>
-            <Col md={3} className="category-column">
+            <Col md={3} style= {{marginTop:'115px', height: "89vh"}}className="category-column"  >
               {/* Category component will always be on the left */}
               <Category
                 setSearchData={setSearchDataHandler}

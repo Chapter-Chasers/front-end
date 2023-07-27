@@ -15,7 +15,7 @@ export default function Cart() {
         <Card.Header>
           <Nav.Item>
           {/* margin-left: '3.5rem' */}
-            <Nav.Link href="/payment">Continue to Payment</Nav.Link>
+            <Nav.Link href="/payment"  style={{margin: ''}} >Continue to Payment</Nav.Link>
           </Nav.Item>
         </Card.Header>
       </Card>
