@@ -59,7 +59,6 @@ export default function FavBooks() {
         getFavBook()
     }, [updateState])
 
-export default function FavBooks() {
     return (
         <>
             {favBook?.map((obj, i) => (

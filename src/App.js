@@ -8,16 +8,11 @@ import Qoutes from "./components/qoutes/Qoutes";
 import './App.css';
 import React from 'react';
 import BookDetails from './components/bookDetails/BookDetails'
-import FavBooks from './components/favBook/FavBook';
-import Current from './components/current/Current';
-import Finished from './components/finished/Finished';
-
-import AboutUs from './components/aboutUs/AboutUs';
-import TestNav from './components/testNav/TestNav';
 import FavBook from './components/favBook/FavBook';
 import Current from './components/current/Current';
 import Finished from './components/finished/Finished';
-
+import AboutUs from './components/aboutUs/AboutUs';
+import TestNav from './components/testNav/TestNav';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
