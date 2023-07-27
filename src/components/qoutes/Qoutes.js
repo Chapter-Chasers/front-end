@@ -44,7 +44,7 @@ const Quotes = () => {
   return (
     <>
 
-    <QuotesHero/>
+    <QuotesHero />
       <Container>
         <Row>
           <Col md={2} className="category-column" style={{ height: "59vh" }}>
