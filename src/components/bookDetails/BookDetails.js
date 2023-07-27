@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Image, Spinner } from "react-bootstrap";
-import { useParams,Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import RelatedToAuthor from "../Related/RelatedToAuthor";
 import RelatedToCat from "../Related/RelatedToCat";
@@ -10,40 +10,41 @@ export default function BookDetails() {
   const idParams = useParams();
   console.log(idParams);
   const [detailedObj, setDatiledObj] = useState(null);
+  console.log(detailedObj);
 
-    async function handleAddBook(status) {
-        const url = process.env.REACT_APP_Google_URL;
+  async function handleAddBook(status) {
+    const url = process.env.REACT_APP_Google_URL;
 
-        const values = [2.5 , 3 , 3.5 , 4 , 4.5];
-        const randomIndex = Math.floor(Math.random() * values.length);
-        const randomValues = values[randomIndex]
-        let request =
-        {
-            title: detailedObj?.volumeInfo?.title,
-            image: detailedObj?.volumeInfo?.imageLinks?.smallThumbnail,
-            description: detailedObj?.volumeInfo?.description,
-            rating: detailedObj?.volumeInfo?.averageRating || randomValues,
-            price: detailedObj?.saleInfo?.listPrice?.amount || 15,
-            author: detailedObj?.volumeInfo?.authors,
-            category:detailedObj?.volumeInfo?.categories,
-            state: status
-        }
- 
-        await fetch(`${url}addBook`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(request)
-        }).then((response) => {
-            if (response.status === '201') {
-                return alert(`book added to ${status} succsesfully`)
-            }
-        }).catch(error => {
-            alert(error)
-        })
-
+    const values = [2.5, 3, 3.5, 4, 4.5];
+    const randomIndex = Math.floor(Math.random() * values.length);
+    const randomValues = values[randomIndex]
+    let request =
+    {
+      title: detailedObj?.volumeInfo?.title,
+      image: detailedObj?.volumeInfo?.imageLinks?.smallThumbnail,
+      description: detailedObj?.volumeInfo?.description,
+      rating: detailedObj?.volumeInfo?.averageRating || randomValues,
+      price: detailedObj?.saleInfo?.listPrice?.amount || 15,
+      author: detailedObj?.volumeInfo?.authors,
+      category: detailedObj?.volumeInfo?.categories,
+      state: status
     }
+
+    await fetch(`${url}addBook`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(request)
+    }).then((response) => {
+      if (response.status === '201') {
+        return alert(`book added to ${status} succsesfully`)
+      }
+    }).catch(error => {
+      alert(error)
+    })
+
+  }
   const id = idParams?.id;
 
   async function getObjById(id) {
@@ -56,9 +57,34 @@ export default function BookDetails() {
       console.log(error);
     }
   }
+
+  function handleAddToCart() {
+
+    try {
+      const storageArray = JSON.parse(localStorage.getItem('cartItems') || "[]");
+
+      let bookObj = {
+        id: detailedObj.id,
+        name: detailedObj?.volumeInfo?.title,
+        price: detailedObj?.saleInfo?.listPrice?.amount || 15
+      }
+      storageArray.push(bookObj)
+
+      const jsonString = JSON.stringify(storageArray);
+      localStorage.setItem('cartItems', jsonString);
+      
+      alert(`${detailedObj?.volumeInfo?.title} added to cart `)
+    }
+    catch {
+      alert('there is problem adding items to cart');
+    }
+  }
+
+
   useEffect(() => {
     getObjById(id);
   }, [idParams]);
+
   return (
     <>
       {detailedObj === null ? <Container className="d-flex justify-content-center mt-5 mb-5">
@@ -88,14 +114,14 @@ export default function BookDetails() {
                 <Dropdown.Item as="button" onClick={(e) => { handleAddBook('finished') }}>
                   Move to finished
                 </Dropdown.Item>
-                <Dropdown.Item as="button" >
+                <Dropdown.Item as="button" onClick={(e) => { handleAddToCart() }}>
                   Add to cart
                 </Dropdown.Item>
               </DropdownButton>
             </Col>
           </Row>
           <Row>
-            
+
             <Col md={12} >
               <RelatedToAuthor author={detailedObj?.volumeInfo?.authors[0] || "milton"}></RelatedToAuthor>
               {detailedObj?.volumeInfo?.categories && (
