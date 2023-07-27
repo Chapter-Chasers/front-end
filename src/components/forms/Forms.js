@@ -8,6 +8,9 @@ export default function Forms() {
   return (
     <Row>
       {/* <Col md={6}>
+
+      <Col sm={12} md={6}>
+
         <Emailsub />
       </Col> */}
       <Col >

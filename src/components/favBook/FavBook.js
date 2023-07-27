@@ -31,7 +31,7 @@ export default function FavBooks() {
         }).then((response) => {
             if (response.status === 200) {
                 alert("Updated sucessfully");
-                handleDelete(id);
+                getFavBook()
             }
         }).catch((error) => {
             alert(error);
@@ -46,9 +46,9 @@ export default function FavBooks() {
             }
         }).then((response) => {
             if (response.status === 204) {
+                getFavBook();
                 alert('Book deleted sucessfully');
             }
-            getFavBook();
         }).catch((error) => {
             alert((error));
         });
@@ -56,11 +56,15 @@ export default function FavBooks() {
 
     useEffect(() => {
         getFavBook()
-    }, [updateState])
+    }, [favBook])
 
     return (
         <>
-            {favBook?.map((obj, i) => (
+            {favBook.length === 0 ? <Container>
+                <div>
+                    <div style={{ height: '75vh', width: '100%' }}>No data found</div>
+                </div>
+            </Container> : favBook?.map((obj, i) => (
                 <Card key={i} className="modern-card border-0" style={{ width: '18rem', minHeight: '20rem' }}>
                     {/* <Link to={`/bookDetails/${obj.id}`}> */}
                     <div className="image-container">

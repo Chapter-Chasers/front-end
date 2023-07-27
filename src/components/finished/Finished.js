@@ -30,8 +30,8 @@ export default function Finished() {
             },
         }).then((response) => {
             if (response.status === 200) {
+                getFinishedBook();
                 alert("Updated sucessfully");
-                handleDelete(id);
             }
         }).catch((error) => {
             alert(error);
@@ -46,9 +46,9 @@ export default function Finished() {
             }
         }).then((response) => {
             if (response.status === 204) {
+                getFinishedBook();
                 alert('Movie deleted sucessfully');
             }
-            getFinishedBook();
         }).catch((error) => {
             alert((error));
         });
@@ -56,12 +56,16 @@ export default function Finished() {
 
     useEffect(() => {
         getFinishedBook()
-    }, [updateState])
+    }, [finishedBook])
 
 
     return (
         <>
-            {finishedBook?.map((obj, i) => (
+            {finishedBook.length === 0 ? <Container>
+                <div>
+                    <div style={{ height: '75vh', width: '100%' }}>No data found</div>
+                </div>
+            </Container> : finishedBook?.map((obj, i) => (
                 <Card key={i} className="modern-card border-0" style={{ width: '18rem', minHeight: '20rem' }}>
                     {/* <Link to={`/bookDetails/${obj.id}`}> */}
                     <div className="image-container">
