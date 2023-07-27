@@ -1,12 +1,19 @@
-import React, { useEffect, useState } from "react";
-import '../cardCss/card.css';
+import React, { useEffect, useState, useRef } from "react";
+// import '../cardCss/card.css';
 import Button from "react-bootstrap/Button";
 import { Badge, Container } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-
+import { Messages } from 'primereact/messages';
+import { useMountEffect } from 'primereact/hooks';
 export default function Current() {
     const [currentBook, setCurrentBook] = useState([]);
+    const msgs = useRef(null);
 
+    useMountEffect(() => {
+        msgs.current.show(
+            { sticky: true, severity: 'info', summary: 'Info', detail: 'No Data Found', closable: false }
+        );
+    });
     const url = process.env.REACT_APP_Google_URL;
 
     async function getCurrentBook() {
@@ -16,7 +23,7 @@ export default function Current() {
             }
             throw new Error('Something went wrong');
         }).then((responseJson) => {
-          setCurrentBook(responseJson);
+            setCurrentBook(responseJson);
         }).catch((error) => {
             alert('fromCurrent' + error);
         });
@@ -28,11 +35,11 @@ export default function Current() {
             headers: {
                 "Content-Type": "application/json"
             },
-  
+
         }).then((response) => {
             if (response.status === 200) {
+                getCurrentBook();
                 alert("Updated sucessfully");
-                handleDelete(id);
             }
         }).catch((error) => {
             alert(error);
@@ -47,22 +54,26 @@ export default function Current() {
             }
         }).then((response) => {
             if (response.status === 204) {
+                getCurrentBook();
                 alert('Book deleted sucessfully');
             }
-            getCurrentBook();
         }).catch((error) => {
             alert((error));
         });
     }
 
     useEffect(() => {
-      getCurrentBook()
-    }, [updateState])
+        getCurrentBook()
+    }, [currentBook])
 
 
     return (
         <>
-            {currentBook?.map((obj, i) => (
+            {currentBook.length === 0 ? <Container>
+                <div className="mt-5" style={{ minHeight: "75vh" }}>
+                    <Messages ref={msgs} />
+                </div>
+            </Container> : currentBook?.map((obj, i) => (
                 <Card key={i} className="modern-card border-0" style={{ width: '18rem', minHeight: '20rem' }}>
                     {/* <Link to={`/bookDetails/${obj.id}`}> */}
                     <div className="image-container">

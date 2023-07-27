@@ -1,6 +1,7 @@
 import React from 'react';
 import TeamMemberCard from '../TeamMemberCard/TeamMemberCard';
 import './Aboutus.css';
+import Features from './Features';
 const AboutUs = () => {
     const teamMembers = [
         {
@@ -36,7 +37,7 @@ const AboutUs = () => {
     ];
 
     return (
-        <div style={{minHeight:'75vh'}}>
+        <div style={{ minHeight: '75vh' }}>
             <section className='overview'>
                 <div className="overview-container">
                     <h2 className="overview-title">Welcome to our Bookstore and Quote Generator App!</h2>
@@ -60,7 +61,11 @@ const AboutUs = () => {
                     </div>
                 </div>
             </section>
-            <h1  className='mt-5'  style={{ color : '#3C4048'}}>About Us</h1>
+
+            <Features />
+            <div className='mb-5' style={{ backgroundColor:'#f2f2f2'}}>
+           <h1  className='mt-5'  style={{ color : '#3C4048'}}>About Us</h1>
+
             <div className="team mb-5">
                 {teamMembers.map((member, index) => (
                     <TeamMemberCard
@@ -71,6 +76,7 @@ const AboutUs = () => {
                         leader={member.leader}
                     />
                 ))}
+            </div>
             </div>
         </div>
     );

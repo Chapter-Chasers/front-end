@@ -58,16 +58,23 @@ function Home() {
     <>
       <Header />
       <section className="home">
+        <Container className="mt-5">
+          <h1 className="heading-1 text-info"> Looking for a Book !   </h1>
+        </Container>
         <Container>
           <Row>
-            <Col md={3} style= {{marginTop:'115px', height: "89vh"}}className="category-column"  >
+
+            <Col md={12} className="category-column">
+
               {/* Category component will always be on the left */}
               <Category
                 setSearchData={setSearchDataHandler}
                 className="category-list"
               />
             </Col>
-            <Col md={9}>
+          </Row>
+          <Row>
+            <Col md={12}>
               {/* BookList component will be on the right */}
               <Container className="search-box">
                 <Row>
@@ -85,7 +92,7 @@ function Home() {
       </section>
       {/* <Emailsub /> */}
       {/* <FB /> */}
-      <Forms/>
+      <Forms />
     </>
   );
 }

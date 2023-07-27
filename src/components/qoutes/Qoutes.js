@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from "react";
-import Header from "../Header/Header";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -8,6 +7,7 @@ import AddQuote from "./AddQoute";
 import Card from "react-bootstrap/Card";
 import QoutesCategorey from "./QoutesCategorey";
 import "./qoutes.css";
+import QuotesHero from "./Quoteshero";
 
 const Quotes = () => {
   const [quotes, setQuotes] = useState([]);
@@ -43,9 +43,11 @@ const Quotes = () => {
 
   return (
     <>
-      <Container >
-        <Row className="mt-4 mb-4"> {/* Add margin to the top and bottom of the row */}
-          <Col md={3} className="category-column" style={{ height: "89vh" }}>
+
+    <QuotesHero/>
+      <Container>
+        <Row>
+          <Col md={2} className="category-column" style={{ height: "59vh" }}>
             <QoutesCategorey setSearchData={setQuotes} />
           </Col>
 

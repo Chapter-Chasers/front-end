@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import "../cardCss/card.css";
 import Button from "react-bootstrap/Button";
 import { Badge, Container } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-
+import { Messages } from 'primereact/messages';
+import { useMountEffect } from 'primereact/hooks';
 export default function FavBooks() {
+    const [isBookDeleted, setIsBookDeleted] = useState(false);
     const [favBook, setFavBook] = useState([]);
+    const msgs = useRef(null);
 
+    useMountEffect(() => {
+        msgs.current.show(
+            { sticky: true, severity: 'info', summary: 'Info', detail: 'No Data Found', closable: false }
+        );
+    });
     const url = process.env.REACT_APP_Google_URL;
 
     async function getFavBook() {
@@ -32,7 +39,7 @@ export default function FavBooks() {
         }).then((response) => {
             if (response.status === 200) {
                 alert("Updated sucessfully");
-                handleDelete(id);
+                getFavBook()
             }
         }).catch((error) => {
             alert(error);
@@ -47,9 +54,9 @@ export default function FavBooks() {
             }
         }).then((response) => {
             if (response.status === 204) {
-                alert('Book deleted sucessfully');
+                getFavBook();
+                setIsBookDeleted(true);
             }
-            getFavBook();
         }).catch((error) => {
             alert((error));
         });
@@ -57,11 +64,16 @@ export default function FavBooks() {
 
     useEffect(() => {
         getFavBook()
-    }, [updateState])
+    }, [favBook])
 
     return (
         <>
-            {favBook?.map((obj, i) => (
+            {isBookDeleted && <Messages ref={msgs} />}
+            {favBook.length === 0 ? <Container>
+                <div className="mt-5" style={{ minHeight: "75vh" }}>
+                    <Messages ref={msgs} />
+                </div>
+            </Container> : favBook?.map((obj, i) => (
                 <Card key={i} className="modern-card border-0" style={{ width: '18rem', minHeight: '20rem' }}>
                     {/* <Link to={`/bookDetails/${obj.id}`}> */}
                     <div className="image-container">
