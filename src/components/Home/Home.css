@@ -1,11 +1,10 @@
-.home {
+/* .home {
     min-height: 100vh;
     margin: 22px 0;
     padding: 20px;
     background-color: #ddd;
 }
 
-/* Add your custom styles for the Home component here */
 .button-group {
     margin-top: 20px;
 }
@@ -22,7 +21,6 @@
     margin-top: 30px;
 }
 
-/* Style for each book item in the book list */
 .book-item {
     padding: 10px;
     border: 1px solid #ddd;
@@ -53,10 +51,150 @@
     position: sticky;
     top: 0;
     height: 100vh;
-    /* Adjust the height as needed */
 }
 
 .book-list {
     flex-grow: 1;
-    /* This will make the BookList component take up the remaining width */
+} */
+
+/* --------------------------------------- */
+
+/* .home {
+    min-height: 100vh;
+    margin: 22px 0;
+    padding: 20px;
+  }
+  
+  .button-group {
+    margin-top: 20px;
+  }
+  
+  .search-box {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 10px; 
+  }
+  
+  .category-list {
+    margin-top: 20px;
+  }
+  
+  .book-item {
+    padding: 10px;
+    border: 1px solid rgb(178, 178, 178); 
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .book-item img {
+    max-width: 100px;
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  .book-item h3 {
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+  
+  .book-item p {
+    margin: 0;
+    font-size: 14px;
+    color: rgb(60, 64, 72); 
+  }
+  
+  .category-column {
+    margin-top: 115px;
+    position: sticky;
+    top: 0;
+    height: 50vh;
+    background-color: rgb(234, 234, 234); 
+    padding-top: 30px;
+    border-radius: 50px;
+  }
+  
+  .book-list {
+    flex-grow: 1;
+  }
+   */
+
+.home {
+  min-height: 100vh;
+  margin: 22px 0;
+  padding: 20px;
+}
+
+.button-group {
+  margin-top: 20px;
+}
+
+.search-box {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding: 10px;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid rgb(178, 178, 178);
+  border-radius: 4px;
+  font-size: 16px;
+  color: rgb(60, 64, 72);
+  background-color: rgb(234, 234, 234);
+}
+
+.search-box .pi-search {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: rgb(60, 64, 72);
+  cursor: pointer;
+}
+
+.category-list {
+  margin-top: 20px;
+}
+
+.book-item {
+  padding: 10px;
+  border: 1px solid rgb(178, 178, 178);
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.book-item img {
+  max-width: 100px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.book-item h3 {
+  margin: 0;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.book-item p {
+  margin: 0;
+  font-size: 14px;
+  color: rgb(60, 64, 72);
+}
+
+.category-column {
+  margin-top: 115px;
+  position: sticky;
+  top: 0;
+  height: 50vh;
+  background-color: rgb(234, 234, 234);
+  padding-top: 30px;
+  border-radius: 50px;
+}
+
+.book-list {
+  flex-grow: 1;
 }
