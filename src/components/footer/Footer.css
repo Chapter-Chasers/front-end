@@ -1,24 +1,37 @@
 .page-footer {
+  /* background-color: rgba(63, 35, 5,0.9); */
   background-color: rgb(60, 64, 72);
+  /* background-color: red; */
+
 }
 
 .page-footer a {
   text-decoration: none;
+  /* color: rgb(234, 234, 234); */
   color: rgb(234, 234, 234);
 }
 
 .page-footer a:hover {
   text-decoration: underline;
   color: rgb(0, 171, 179);
+  /* color: blue; */
 }
 
 .page-footer h5 {
+  /* color: rgb(0, 171, 179); */
   color: rgb(0, 171, 179);
 }
 
 .page-footer .footer-copyright {
+  /* background-color: rgb(60, 64, 72); */
+  /* color: rgb(178, 178, 178); */
+  /* color: rgb(223, 215, 191); */
+  /* color: rgb(171, 196, 170) */
+  /* background-color: rgba(63, 35, 5,0.9); */
+
   background-color: rgb(60, 64, 72);
   color: rgb(178, 178, 178);
+
 }
 
 li {
@@ -27,5 +40,5 @@ li {
 }
 
 li:hover {
-  color: rgb(0, 171, 179);
+  color: rgba(171, 196, 170, 0.5);
 }

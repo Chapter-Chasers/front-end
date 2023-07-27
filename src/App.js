@@ -17,7 +17,9 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
+import './components/testNav/TestNav.css'
 
+// import TestNavBar from './components/testNav/TestNavBar';
 
 
 function App() {
@@ -27,6 +29,7 @@ function App() {
       {/* <Navbar /> */}
 
             <TestNav/>
+            {/* <TestNavBar/> */}
 
         <Routes>
         <Route path="/" element={<Home />} />
