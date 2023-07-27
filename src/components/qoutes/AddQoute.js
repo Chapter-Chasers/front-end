@@ -32,7 +32,7 @@ export default function AddQuote() {
       Swal.fire({
         text: 'Please fill in all the required fields.',
       });
-      return; 
+      return;
     }
     const newQuote = {
       name: name,
@@ -53,10 +53,15 @@ export default function AddQuote() {
     });
     setName('');
     setQuote('');
-    
+
     setQuotes(updatedQuotes);
   };
-
+  function handleDelete(index) {
+    const updatedQuotes = [...quotes];
+    updatedQuotes.splice(index, 1);
+    localStorage.setItem('quotes', JSON.stringify(updatedQuotes));
+    setQuotes(updatedQuotes);
+  }
 
   return (
     <>
@@ -88,8 +93,8 @@ export default function AddQuote() {
                 placeholder="Your Quote.."
                 value={quote}
                 onChange={(event) => setQuote(event.target.value)}
-                rows={3} 
-                required/>
+                rows={3}
+                required />
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -122,6 +127,9 @@ export default function AddQuote() {
                 <Card.Title>{quote.quote}</Card.Title>
                 <Card.Text>Author: {quote.name}</Card.Text>
               </Card.Body>
+              <Card.Footer>
+                <Button className='w-100' variant='danger' onClick={() => handleDelete(index)}>Delete</Button>
+              </Card.Footer>
             </Card>
           ))}
         </div>

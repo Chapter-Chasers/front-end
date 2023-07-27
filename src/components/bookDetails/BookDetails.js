@@ -1,49 +1,52 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Image, Spinner } from "react-bootstrap";
-import { useParams,Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Dropdown, DropdownButton } from 'react-bootstrap';
 import RelatedToAuthor from "../Related/RelatedToAuthor";
 import RelatedToCat from "../Related/RelatedToCat";
+import { useAuth0 } from '@auth0/auth0-react'
 
 
 export default function BookDetails() {
   const idParams = useParams();
   console.log(idParams);
   const [detailedObj, setDatiledObj] = useState(null);
+  const { user } = useAuth0();
 
-    async function handleAddBook(status) {
-        const url = process.env.REACT_APP_Google_URL;
+  async function handleAddBook(status) {
+    const url = process.env.REACT_APP_Google_URL;
 
-        const values = [2.5 , 3 , 3.5 , 4 , 4.5];
-        const randomIndex = Math.floor(Math.random() * values.length);
-        const randomValues = values[randomIndex]
-        let request =
-        {
-            title: detailedObj?.volumeInfo?.title,
-            image: detailedObj?.volumeInfo?.imageLinks?.smallThumbnail,
-            description: detailedObj?.volumeInfo?.description,
-            rating: detailedObj?.volumeInfo?.averageRating || randomValues,
-            price: detailedObj?.saleInfo?.listPrice?.amount || 15,
-            author: detailedObj?.volumeInfo?.authors,
-            category:detailedObj?.volumeInfo?.categories,
-            state: status
-        }
- 
-        await fetch(`${url}addBook`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(request)
-        }).then((response) => {
-            if (response.status === '201') {
-                return alert(`book added to ${status} succsesfully`)
-            }
-        }).catch(error => {
-            alert(error)
-        })
-
+    const values = [2.5, 3, 3.5, 4, 4.5];
+    const randomIndex = Math.floor(Math.random() * values.length);
+    const randomValues = values[randomIndex]
+    const request =
+    {
+      title: detailedObj?.volumeInfo?.title,
+      image: detailedObj?.volumeInfo?.imageLinks?.smallThumbnail,
+      description: detailedObj?.volumeInfo?.description,
+      rating: detailedObj?.volumeInfo?.averageRating || randomValues,
+      price: detailedObj?.saleInfo?.listPrice?.amount || 15,
+      author: detailedObj?.volumeInfo?.authors,
+      category: detailedObj?.volumeInfo?.categories,
+      state: status,
+      id: user.sub
     }
+
+    await fetch(`${url}addBook`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(request)
+    }).then((response) => {
+      if (response.status === '201') {
+        return alert(`book added to ${status} succsesfully`)
+      }
+    }).catch(error => {
+      alert(error)
+    })
+
+  }
   const id = idParams?.id;
 
   async function getObjById(id) {
@@ -95,7 +98,7 @@ export default function BookDetails() {
             </Col>
           </Row>
           <Row>
-            
+
             <Col md={12} >
               <RelatedToAuthor author={detailedObj?.volumeInfo?.authors[0] || "milton"}></RelatedToAuthor>
               {detailedObj?.volumeInfo?.categories && (
