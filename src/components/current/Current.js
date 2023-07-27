@@ -31,8 +31,8 @@ export default function Current() {
   
         }).then((response) => {
             if (response.status === 200) {
+                getCurrentBook();
                 alert("Updated sucessfully");
-                handleDelete(id);
             }
         }).catch((error) => {
             alert(error);
@@ -47,9 +47,9 @@ export default function Current() {
             }
         }).then((response) => {
             if (response.status === 204) {
+                getCurrentBook();
                 alert('Book deleted sucessfully');
             }
-            getCurrentBook();
         }).catch((error) => {
             alert((error));
         });
@@ -57,12 +57,16 @@ export default function Current() {
 
     useEffect(() => {
       getCurrentBook()
-    }, [])
+    }, [currentBook])
 
 
     return (
         <>
-            {currentBook?.map((obj, i) => (
+            {currentBook.length === 0 ? <Container>
+                <div>
+                    <div style={{height:'75vh' , width:'100%'}}>No data found</div>
+                </div>
+            </Container> : currentBook?.map((obj, i) => (
                 <Card key={i} className="modern-card border-0" style={{ width: '18rem', minHeight: '20rem' }}>
                     {/* <Link to={`/bookDetails/${obj.id}`}> */}
                     <div className="image-container">
