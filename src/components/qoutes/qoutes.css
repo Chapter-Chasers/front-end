@@ -1,9 +1,18 @@
 /* .container {
   margin-top: 20px;
 } */
+card-body-custom {
+  height: 150px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .category-column {
   padding-right: 20px;
+  background-color:#00ABB3;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #3C4048;
 }
 
 .card {
@@ -11,14 +20,20 @@
   margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
+  color: #EAEAEA;
+  border-radius: 15px;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgb(171, 179, 179);
 }
 
 .card-body {
+  color:#3C4048;
   padding: 1rem;
+  background-color: #EAEAEA;
+  border-radius: 15px;
+ 
 }
 
 .card-title {

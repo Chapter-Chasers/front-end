@@ -63,7 +63,9 @@ function Home() {
         </Container>
         <Container>
           <Row>
+
             <Col md={12} className="category-column">
+
               {/* Category component will always be on the left */}
               <Category
                 setSearchData={setSearchDataHandler}

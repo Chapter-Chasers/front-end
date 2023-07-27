@@ -1,10 +1,11 @@
 .Container {
   max-width: 600px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .radio-item {
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+  color:#3C4048;
 }
 
 .radio-item .form-check-input[type="radio"] {
