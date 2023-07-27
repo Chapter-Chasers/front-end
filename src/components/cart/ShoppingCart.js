@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import "./Cart.css";
+
+import { Button } from "primereact/button";
 
 export default function ShoppingCart() {
   const initialItems = [
@@ -53,15 +55,18 @@ export default function ShoppingCart() {
             {items.map((item) => (
               <div key={item.id} className="cart-item">
                 <p>{item.name}</p>
-                <Button variant="primary" onClick={() => handleRemoveItem(item.id)}>
-                  -
-                </Button>
+                <Button
+                  variant="primary"
+                  onClick={() => handleRemoveItem(item.id)}
+                  icon="pi pi-trash"
+                ></Button>
+
                 <p>${item.price}</p>
               </div>
             ))}
           </div>
 
-          <div className="total-price" style={{marginTop: '60px'}}>
+          <div className="total-price" style={{ marginTop: "60px" }}>
             <p>Total Price: ${totalPrice}</p>
             <br />
           </div>
@@ -70,4 +75,3 @@ export default function ShoppingCart() {
     </>
   );
 }
-

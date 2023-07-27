@@ -1,0 +1,39 @@
+.p-menubar {
+  background-color: rgb(60, 64, 72);
+  color: rgb(234, 234, 234);
+  height: 70px;
+}
+.navbar-logo {
+  width: 200px; 
+  height: 200px; 
+  background-color: none !important;
+  margin-right: 25%;
+
+}
+
+
+/* .p-menuitem::after {
+  background-color: red !important;
+} */
+
+
+.p-menuitem > .p-menuitem-link:hover {
+  background-color: rgb(178, 178, 178);
+  color: rgb(60, 64, 72);
+}
+
+.p-menubar .p-menuitem-icon {
+  font-size: 22px;
+}
+
+.p-menuitem-icon {
+  color: #00ABB3 !important;
+}
+
+.p-menubar .p-menuitem-text.active-tab-label::after {
+  content: '';
+  display: block;
+  width: 100%;
+  border-bottom: 2px solid #00ABB3;
+}
+

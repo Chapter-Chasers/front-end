@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import '../cardCss/card.css';
+import React, { useEffect, useState,useRef } from "react";
+// import '../cardCss/card.css';
 import Button from "react-bootstrap/Button";
 import { Badge, Container } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-
+import { Messages } from 'primereact/messages';
+import { useMountEffect } from 'primereact/hooks';
 export default function Finished() {
     const [finishedBook, setFinished] = useState([]);
+    const msgs = useRef(null);
 
+    useMountEffect(() => {
+        msgs.current.show(
+            { sticky: true, severity: 'info', summary: 'Info', detail: 'No Data Found', closable: false }
+        );
+    });
     const url = process.env.REACT_APP_Google_URL;
 
     async function getFinishedBook() {
@@ -30,6 +36,7 @@ export default function Finished() {
                 "Content-Type": "application/json"
             },
         }).then((response) => {
+
             if (response.status === 202) {
                 getFinishedBook();
                 alert("Updated sucessfully");
@@ -51,7 +58,6 @@ export default function Finished() {
                 getFinishedBook();
                 alert('Movie deleted sucessfully');
             }
-            
         }).catch((error) => {
             alert((error));
         });
@@ -59,12 +65,17 @@ export default function Finished() {
 
     useEffect(() => {
         getFinishedBook()
-    }, [])
+
+    }, [finishedBook])
 
 
     return (
         <>
-            {finishedBook?.map((obj, i) => (
+            {finishedBook.length === 0 ? <Container>
+                <div className="mt-5" style={{minHeight:"75vh"}}>
+                    <Messages ref={msgs} />
+                </div>
+            </Container> : finishedBook?.map((obj, i) => (
                 <Card key={i} className="modern-card border-0" style={{ width: '18rem', minHeight: '20rem' }}>
                     {/* <Link to={`/bookDetails/${obj.id}`}> */}
                     <div className="image-container">

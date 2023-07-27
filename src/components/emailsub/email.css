@@ -1,31 +1,61 @@
 .email_sub {
-    min-height: 50vh;
-    background-color: #7C73C0;
-    margin: 30px 0px;
-    border-radius: 20px;
+  min-height: 50vh;
+  margin: 30px 0px;
+  border-radius: 20px;
 }
+
 .email_sub h2 {
-    margin-bottom: 15px;
-    padding: 5px;
-    color: white;
+  margin-bottom: 15px;
+  padding: 5px;
+  color: rgb(60, 64, 72);
 }
+
 .email_sub form {
-    background-color: #E8FFCE;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgb(178, 178, 178);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .email_sub .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .email_sub label {
-    font-weight: bold;
-    display: block;
+  font-weight: bold;
+  display: block;
 }
 
 .email_sub button[type="submit"] {
-    margin-top: 20px;
-    width: 100%;
+  margin-top: 20px;
+  width: 100%;
+  background-color: rgb(0, 171, 179);
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.email_sub button[type="submit"]:hover {
+  background-color: rgb(60, 64, 72);
+}
+
+.email_sub input,
+.email_sub textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.email_sub input:hover,
+.email_sub textarea:hover {
+  border-color: rgb(60, 64, 72);
+}
+
+.email_sub input:focus,
+.email_sub textarea:focus {
+  border-color: rgb(0, 171, 179);
+  outline: none;
 }

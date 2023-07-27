@@ -1,11 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
+//import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import { Container } from 'react-bootstrap';
 import Swal from "sweetalert2";
+
+import { Button } from 'primereact/button';
+        
 
 export default function AddQuote() {
   const [name, setName] = useState('');
@@ -32,7 +35,7 @@ export default function AddQuote() {
       Swal.fire({
         text: 'Please fill in all the required fields.',
       });
-      return; 
+      return;
     }
     const newQuote = {
       name: name,
@@ -53,17 +56,29 @@ export default function AddQuote() {
     });
     setName('');
     setQuote('');
-    
+
     setQuotes(updatedQuotes);
   };
-
+  function handleDelete(index) {
+    const updatedQuotes = [...quotes];
+    updatedQuotes.splice(index, 1);
+    localStorage.setItem('quotes', JSON.stringify(updatedQuotes));
+    setQuotes(updatedQuotes);
+  }
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Add Quote
-      </Button>
-      <Modal show={show} onHide={handleClose}>
+    <hr
+  style={{
+    background: '#3C4048',
+    color: '#3C4048',
+    borderColor: '#3C4048',
+    height: '3px',
+  }}
+/>
+
+    <Button  style ={{backgroundColor: 'rgb(0, 171, 179)', marginLeft:'39%',marginTop:'25px',color: '#3C4048'}}className="card flex justify-content-center" onClick={handleShow} label="Add Quote" link />
+      <Modal show={show} onHide={handleClose}   style ={{color: '#3C4048'}}>
         <Modal.Header closeButton>
           <Modal.Title>Add your Qoute</Modal.Title>
         </Modal.Header>
@@ -71,7 +86,7 @@ export default function AddQuote() {
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Your Name</Form.Label>
-              <Form.Control
+              <Form.Control  style ={{backgroundColor:'#F5F5F5'}}
                 type="text"
                 placeholder="Name"
                 value={name}
@@ -84,28 +99,26 @@ export default function AddQuote() {
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Quote</Form.Label>
-              <Form.Control as="textarea"
+              <Form.Control  style ={{backgroundColor:'#F5F5F5'}} as="textarea"
                 placeholder="Your Quote.."
                 value={quote}
                 onChange={(event) => setQuote(event.target.value)}
-                rows={3} 
-                required/>
+                rows={3}
+                required />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleButtonClick} type='submit' variant="dark">
-            Add
-          </Button>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
+
+        <Button  style ={{backgroundColor:'rgb(0, 171, 179)', marginLeft:'39%',color: '#3C4048'}}  className="card flex flex-wrap justify-content-center" onClick={handleButtonClick} label="Add" severity="secondary" text />
+        <Button    style ={{backgroundColor:'rgb(0, 171, 179)', marginLeft:'39%',color: '#3C4048'}} className="card flex flex-wrap justify-content-center" onClick={handleClose} label="Close" severity="secondary" text />
+
         </Modal.Footer>
       </Modal>
 
       <section>
         <Container className='d-flex flex-column'>
-          <h2>My Quotes</h2>
+          <h2 style={{ color: '#3C4048', marginTop:'20px', marginBottom:'20px'}}>My Quotes</h2>
 
         </Container>
 
@@ -122,6 +135,9 @@ export default function AddQuote() {
                 <Card.Title>{quote.quote}</Card.Title>
                 <Card.Text>Author: {quote.name}</Card.Text>
               </Card.Body>
+              <Card.Footer>
+                <Button className='w-100' variant='danger' onClick={() => handleDelete(index)}>Delete</Button>
+              </Card.Footer>
             </Card>
           ))}
         </div>

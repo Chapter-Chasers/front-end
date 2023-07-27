@@ -1,42 +1,43 @@
 import React from 'react';
 import TeamMemberCard from '../TeamMemberCard/TeamMemberCard';
 import './Aboutus.css';
+import Features from './Features';
 const AboutUs = () => {
     const teamMembers = [
         {
             name: 'Mohammad Abushanab',
-            imageSrc: '',
+            imageSrc: 'https://ca.slack-edge.com/TNGRRLUMA-U057XEAQE2Z-f4f32a67b4f6-512',
             major: 'Computer Engineering',
             leader: true,
         },
         {
             name: 'Ghaidaa',
-            imageSrc: 'team_leader.jpg',
-            major: 'Computer Engineering',
+            imageSrc: 'https://ca.slack-edge.com/TNGRRLUMA-U0582T8U2VA-e62be42adf5d-512',
+            major: 'Software Engineering',
             leader: false,
         },
         {
             name: 'Zaid izzeldin',
-            imageSrc: 'team_leader.jpg',
-            major: 'Computer Engineering',
+            imageSrc: 'https://ca.slack-edge.com/TNGRRLUMA-U057TQ4GJBG-198fbff57158-512',
+            major: 'Civil Engineering',
             leader: false,
         },
         {
             name: 'Haya Hassan',
-            imageSrc: 'team_leader.jpg',
-            major: 'Computer Engineering',
+            imageSrc: 'https://ca.slack-edge.com/TNGRRLUMA-U05808X81NX-180914d77df9-512',
+            major: 'Computer Information Systems',
             leader: false,
         },
         {
             name: 'Ahmad Anshasi',
-            imageSrc: 'team_leader.jpg',
-            major: 'Computer Engineering',
+            imageSrc: 'https://ca.slack-edge.com/TNGRRLUMA-U057TQ479TQ-9499e2c77ab9-512',
+            major: 'Multimedia',
             leader: false,
         },
     ];
 
     return (
-        <div style={{minHeight:'75vh'}}>
+        <div style={{ minHeight: '75vh' }}>
             <section className='overview'>
                 <div className="overview-container">
                     <h2 className="overview-title">Welcome to our Bookstore and Quote Generator App!</h2>
@@ -60,7 +61,11 @@ const AboutUs = () => {
                     </div>
                 </div>
             </section>
-            <h1 className='mt-5'>About Us</h1>
+
+            <Features />
+            <div className='mb-5' style={{ backgroundColor:'#f2f2f2'}}>
+           <h1  className='mt-5'  style={{ color : '#3C4048'}}>About Us</h1>
+
             <div className="team mb-5">
                 {teamMembers.map((member, index) => (
                     <TeamMemberCard
@@ -71,6 +76,7 @@ const AboutUs = () => {
                         leader={member.leader}
                     />
                 ))}
+            </div>
             </div>
         </div>
     );
