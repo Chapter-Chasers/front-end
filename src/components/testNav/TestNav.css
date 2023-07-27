@@ -3,6 +3,14 @@
   color: rgb(234, 234, 234);
   height: 70px;
 }
+.navbar-logo {
+  width: 200px; 
+  height: 200px; 
+  background-color: none !important;
+  margin-right: 25%;
+
+}
+
 
 /* .p-menuitem::after {
   background-color: red !important;
