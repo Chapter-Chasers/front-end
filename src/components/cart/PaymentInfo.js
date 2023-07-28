@@ -3,11 +3,13 @@ import Card from "react-bootstrap/Card";
 import './Cart.css';
 
 
+
 export default function PaymentInfo() {
   return (
     <section>
-      <Card.Body>
-        {/* <Card.Title>Payment Information</Card.Title> */}
+      
+      {/* <Card.Body>
+        
         <form className="payment-form">
           <div className="form-group">
             <label htmlFor="cardNumber">Card Number:</label>
@@ -23,7 +25,7 @@ export default function PaymentInfo() {
           </div>
           <button type="submit">Pay Now</button>
         </form>
-      </Card.Body>
+      </Card.Body> */}
     </section>
   );
 }

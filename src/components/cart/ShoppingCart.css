@@ -1,0 +1,62 @@
+/* CartPage.css */
+.table-container {
+    margin-bottom: 20px;
+    /* Add static box shadow to the table container */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Add transition for a smooth animation */
+    transition: box-shadow 0.5s ease;
+  }
+  
+  /* On hover, increase the box shadow to give a stronger appearance */
+  .table-container:hover {
+    box-shadow: 0 4px 6px rgb(60, 64, 72);
+  }
+  
+  .cart-heading {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: rgb(60, 64, 72); /* Dark gray color for the heading */
+    margin-bottom: 20px;
+    text-transform: uppercase; /* Convert text to uppercase */
+  }
+  
+  .total-price {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: end;
+    margin-top: 20px;
+  }
+  
+  .btn-danger {
+    padding: 5px 10px;
+  }
+  
+  .checkout-btn {
+    margin-top: 10px;
+  }
+  
+  /* Custom table style */
+  .table {
+    border-collapse:collapse;
+    border-spacing: 0;
+    border: 3px solid rgba(0, 0, 0, 0.1); /* Add a border to the table */
+    width: 100%; /* Set the table width to take full container width */
+    border-radius: 8px; /* Add a border radius (rounded corners) */
+  }
+  
+  /* Change table header (th) background color */
+  .table th {
+    background-color: rgb(60, 64, 72);
+    color: white; /* Set the font color for the header */
+    padding: 10px;
+  }
+  
+  /* Set a consistent background color for table rows */
+  .table  tbody {
+    background-color: #f9f9f9 !important ;
+  }
+  .table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
