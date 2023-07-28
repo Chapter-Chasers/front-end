@@ -72,7 +72,7 @@
     color: #0056b3;
    
 }
-.card {
+.card-custom {
     background-color: var(--secondary-color);
     border-radius: 1rem;
     padding: 0.5rem;

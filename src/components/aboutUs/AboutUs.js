@@ -3,7 +3,7 @@ import TeamMemberCard from '../TeamMemberCard/TeamMemberCard';
 import './Aboutus.css';
 import Features from './Features';
 import Forms from '../forms/Forms';
-import { linkedin } from 'react-bootstrap-icons';
+// import { linkedin } from 'react-bootstrap-icons';
 const AboutUs = () => {
     const teamMembers = [
         {
