@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
 import "./Cart.css";
 import Swal from "sweetalert2";
 
@@ -23,35 +24,35 @@ export default function PaymentTest() {
   const handleButtonClick = (event) => {
     event.preventDefault();
     const { cardNumber, expirationDate, cvv } = formData;
-    
+
     if (cardNumber && expirationDate && cvv) {
       // Form is valid, show success alert
       Swal.fire({
-        icon: 'success',
-        title: 'Thanks For Shopping ^^',
+        icon: "success",
+        title: "Thanks For Shopping ^^",
         showClass: {
-          popup: 'animate__animated animate__fadeInDown'
+          popup: "animate__animated animate__fadeInDown",
         },
         hideClass: {
-          popup: 'animate__animated animate__fadeOutUp'
-        }
+          popup: "animate__animated animate__fadeOutUp",
+        },
       });
     } else {
       // Form is incomplete, show error alert
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Please fill in all the required fields.',
+        icon: "error",
+        title: "Oops...",
+        text: "Please fill in all the required fields.",
       });
     }
   };
 
   return (
-    <>
+    <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
       <form>
-        <Card style={{ height: "50vh", width: "70vh" }}>
+        <Card style={{ maxWidth: "500px", width: "100%", padding: "10px" , backgroundColor:"#3C4048"}}>
           <Card.Header as="h5">Payment Information:</Card.Header>
-          <Card.Body>
+          <Card.Body >
             <Card.Title>Please Enter Your Card Information</Card.Title>
 
             <Card.Text>
@@ -61,7 +62,7 @@ export default function PaymentTest() {
                 name="cardNumber"
                 value={formData.cardNumber}
                 onChange={handleFormChange}
-                placeholder="please enter your card number"
+                placeholder="Please enter your card number"
                 required
               />
             </Card.Text>
@@ -73,7 +74,7 @@ export default function PaymentTest() {
                 name="expirationDate"
                 value={formData.expirationDate}
                 onChange={handleFormChange}
-                placeholder="expiration date"
+                placeholder="Expiration date"
                 required
               />
             </Card.Text>
@@ -86,18 +87,18 @@ export default function PaymentTest() {
                 value={formData.cvv}
                 onChange={handleFormChange}
                 placeholder="Please enter your CVV"
-                pattern="[0-9]{3,4}" // Rg_Ex for only 3 or 4 digit numbers
+                pattern="[0-9]{3,4}" // Regex for only 3 or 4 digit numbers
                 title="Please enter a valid CVV (3 or 4 digits)"
                 required
               />
             </Card.Text>
-           {/* <Button variant="primary" onClick={handleButtonClick} type="submit"> */}
-            <Button variant="primary" onClick={handleButtonClick} type="submit">
-              Submit
+
+            <Button style={{backgroundColor:"InactiveBorder"}} onClick={handleButtonClick} type="submit">
+              Checkout
             </Button>
           </Card.Body>
         </Card>
       </form>
-    </>
+    </Container>
   );
 }

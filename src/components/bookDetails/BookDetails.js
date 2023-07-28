@@ -62,7 +62,6 @@ export default function BookDetails() {
     }
   }
 
-
   useEffect(() => {
     getObjById(id);
   }, [idParams]);
@@ -89,7 +88,7 @@ export default function BookDetails() {
                 <Dropdown.Item as="button" onClick={(e) => { handleAddBook('finished') }}>
                   Move to finished
                 </Dropdown.Item>
-                <Dropdown.Item style={{color:"#00ABB3"}} as="button" >
+                <Dropdown.Item onClick={() => {handleAddToCart()}} style={{color:"#00ABB3"}} as="button" >
                   Add to cart
                 </Dropdown.Item>
               </DropdownButton>
