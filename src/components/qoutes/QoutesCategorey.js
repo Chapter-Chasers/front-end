@@ -1,8 +1,9 @@
 import React from "react";
-import { Container, Form } from 'react-bootstrap';
-import '../Categorey/Category.css';
+import { Container, Form } from "react-bootstrap";
+import "./CatQutes.css";
 
 export default function QoutesCategorey({ setSearchData }) {
+
     const fetchData = (category) => {
       if (category === 'All') {
         fetch(`${process.env.REACT_APP_QOUTEPAGE_API_URL}`)
@@ -23,18 +24,50 @@ export default function QoutesCategorey({ setSearchData }) {
       }
     };
 
+
   const categories = [
-    'All',
-    'Love',
-    'Happiness',
-    'Technology',
-    'Famous-quotes',
-    'Science',
-    'Wisdom',
-    'Virtue',
-    'Self',
-    'Friendship',
-   
+    {
+      label: "All",
+      icon: '<span class="material-icons-outlined">format_quote</span>',
+    },
+    {
+      label: "Love",
+      icon: '<span class="material-icons-outlined">favorite</span>',
+    },
+    {
+      label: "Happiness",
+      icon: '<span class="material-icons-outlined">sentiment_very_satisfied</span>',
+    },
+
+    {
+      label: "Technology",
+      icon: '<span class="material-icons-outlined">memory</span>',
+    },
+    {
+      label: "Famous-quotes",
+      icon: '<span class="material-icons-outlined">format_quote</span>',
+    },
+
+    {
+      label: "Science",
+      icon: '<span class="material-icons-outlined">biotech</span>',
+    },
+    {
+      label: "Wisdom",
+      icon: '<span class="material-icons-outlined">lightbulb</span>',
+    },
+    {
+      label: "Virtue",
+      icon: '<span class="material-icons-outlined">gesture</span>',
+    },
+    {
+      label: "Self",
+      icon: '<span class="material-icons-outlined">face</span>',
+    },
+    {
+      label: "Friendship",
+      icon: '<span class="material-icons-outlined">people</span>',
+    },
   ];
 
   const handleCategoryChange = (event) => {
@@ -46,16 +79,19 @@ export default function QoutesCategorey({ setSearchData }) {
     <div>
       <Container>
         <div className="checkbox-list-frame">
-          <Form className=''>
+          <Form className="">
             {categories.map((cat) => (
-              <div className="radio-item" key={cat}>
-                <Form.Check
-                  type="radio"
-                  name="category"
-                  label={cat}
-                  value={cat}
-                  onChange={handleCategoryChange}
-                />
+              <div className="radio-item" key={cat.label} id="cat-item">
+                <label className="icon-label-container">
+                  <Form.Check
+                    type="radio"
+                    name="category"
+                    value={cat.label}
+                    onChange={handleCategoryChange}
+                  />
+                  <span dangerouslySetInnerHTML={{ __html: cat.icon }} />
+                  <span className="category-label">{cat.label}</span>
+                </label>
               </div>
             ))}
           </Form>
