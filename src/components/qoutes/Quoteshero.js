@@ -96,7 +96,7 @@ const QuotesHero = () => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Your Quote</Modal.Title>
+          <Modal.Title>Subscribe</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form

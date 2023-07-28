@@ -44,7 +44,7 @@ export default function FavBooks() {
         }).catch((error) => {
             alert(error);
         });
-       
+
     }
 
     async function handleDelete(bookId) {
@@ -76,56 +76,78 @@ export default function FavBooks() {
                 <div className="mt-5" style={{ minHeight: "75vh" }}>
                     <Messages ref={msgs} />
                 </div>
-            </Container> : favBook?.map((obj, i) => (
-                <Card key={i} className="modern-card border-0" style={{ width: '18rem', minHeight: '20rem' }}>
-                    {/* <Link to={`/bookDetails/${obj.id}`}> */}
-                    <div className="image-container">
-                        <Card.Img variant="top" className="card-image" src={obj?.image} />
-                    </div>
-                    {/* </Link> */}
-                    <Card.Body>
-                        <Card.Title>
-                            <Container>
-                                <h4>{obj?.title}</h4>
-                            </Container>
-                        </Card.Title>
-                        <Card.Text>
-                            <Container>
-                                <h5 className="author-name">
-                                    Author:{' '}
-
-                                    <Badge className="ms-2" bg="success">
-                                        {obj?.author}
-                                    </Badge>
-
-                                </h5>
-                            </Container>
-                        </Card.Text>
-                        <div className="container d-flex">
-
-                            <h6>
-                                <Badge bg="secondary">{obj?.category}</Badge>
-                            </h6>
-
-                        </div>
-                        <Container className="d-flex flex-wrap">
-                            <Button onClick={() => { updateState(obj.id, 'current') }} className="mb-3 mx-1 btn-sm" variant="primary">
-                                Move to current
-                            </Button>
-                            <Button onClick={() => { updateState(obj.id, 'finished') }} className="mb-3 mx-1 btn-sm" variant="primary">
-                                Move to Finished
-                            </Button>
-                            <Button onClick={() => { handleDelete(obj.id) }} className="mb-3 mx-1 btn-sm" variant="primary">
-                                delete
-                            </Button>
-                            <Button className="mb-3 mx-1 btn-sm" variant="primary">
-                                Cart
-                            </Button>
-                        </Container>
-                    </Card.Body>
-                </Card>
-            ))
-
+            </Container> :
+                <div className="d-flex flex-row justify-content-center mt-5 gap-4">
+                    {favBook?.map((obj, i) => (
+                        <Card
+                            key={i}
+                            className="modern-card border-0"
+                            style={{ width: "18rem", minHeight: "20rem" }}
+                        >
+                            {/* <Link to={`/bookDetails/${obj.id}`}> */}
+                            <div className="image-container">
+                                <Card.Img variant="top" className="card-image" src={obj?.image} />
+                            </div>
+                            {/* </Link> */}
+                            <Card.Body>
+                                <Card.Title>
+                                    <Container>
+                                        <h4>{obj?.title}</h4>
+                                    </Container>
+                                </Card.Title>
+                                <Card.Text>
+                                    <Container>
+                                        <h5 className="author-name">
+                                            Author:{' '}
+                                            <Badge className="ms-2" bg="success">
+                                                {obj?.author}
+                                            </Badge>
+                                        </h5>
+                                    </Container>
+                                </Card.Text>
+                                <div className="container d-flex">
+                                    <h6>
+                                        <Badge className="text-wrap" bg="secondary">
+                                            {obj?.category}
+                                        </Badge>
+                                    </h6>
+                                </div>
+                                <Container className="d-flex flex-wrap">
+                                    <Button
+                                        onClick={() => {
+                                            updateState(obj.id, "current");
+                                        }}
+                                        className="mb-3 mx-1 btn-sm"
+                                        variant="primary"
+                                    >
+                                        Move to current
+                                    </Button>
+                                    <Button
+                                        onClick={() => {
+                                            updateState(obj.id, "finished");
+                                        }}
+                                        className="mb-3 mx-1 btn-sm"
+                                        variant="primary"
+                                    >
+                                        Move to Finished
+                                    </Button>
+                                    <Button
+                                        onClick={() => {
+                                            handleDelete(obj.id);
+                                        }}
+                                        className="mb-3 mx-1 btn-sm"
+                                        variant="primary"
+                                    >
+                                        delete
+                                    </Button>
+                                    <Button className="mb-3 mx-1 btn-sm" variant="primary">
+                                        Cart
+                                    </Button>
+                                </Container>
+                            </Card.Body>
+                        </Card>
+                    ))}
+                </div>
             }
 
         </>
