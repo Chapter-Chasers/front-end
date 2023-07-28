@@ -59,6 +59,29 @@ export default function BookDetails() {
       console.log(error);
     }
   }
+
+  function handleAddToCart() {
+
+    try {
+      const storageArray = JSON.parse(localStorage.getItem('cartItems') || "[]");
+
+      let bookObj = {
+        id: detailedObj.id,
+        name: detailedObj?.volumeInfo?.title,
+        price: detailedObj?.saleInfo?.listPrice?.amount || 15
+      }
+      storageArray.push(bookObj)
+
+      const jsonString = JSON.stringify(storageArray);
+      localStorage.setItem('cartItems', jsonString);
+
+      alert(`${detailedObj?.volumeInfo?.title} added to cart `)
+    }
+    catch {
+      alert('there is problem adding items to cart');
+    }
+  }
+
   useEffect(() => {
     getObjById(id);
   }, [idParams]);
@@ -157,7 +180,7 @@ export default function BookDetails() {
                 >
                   Move to finished
                 </Dropdown.Item>
-                <Dropdown.Item as="button">Add to cart</Dropdown.Item>
+                <Dropdown.Item onClick={() => {handleAddToCart()}} as="button">Add to cart</Dropdown.Item>
               </DropdownButton>
             </Col>
           </Row>
