@@ -9,7 +9,7 @@ export default function FavBooks() {
     const [isBookDeleted, setIsBookDeleted] = useState(false);
     const [favBook, setFavBook] = useState([]);
     const msgs = useRef(null);
-
+    const userId = sessionStorage.getItem("userId");
     useMountEffect(() => {
         msgs.current.show(
             { sticky: true, severity: 'info', summary: 'Info', detail: 'No Data Found', closable: false }
@@ -18,7 +18,7 @@ export default function FavBooks() {
     const url = process.env.REACT_APP_Google_URL;
 
     async function getFavBook() {
-        await fetch(`${url}getBook/favorite`).then((response) => {
+        await fetch(`${url}getBook/favorite/${userId}`).then((response) => {
             if (response.status === 200) {
                 return response.json();
             }
