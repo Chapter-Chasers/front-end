@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import "./email.css";
 import { Container } from "react-bootstrap";
 import { useRef } from "react";
+import Modal from 'react-bootstrap/Modal';
 
 function Emailsub() {
   const nameRef = useRef('');
@@ -42,14 +43,16 @@ function Emailsub() {
           Subscribe to our Daily Quote
         </h2>
 
-        <Form
+      
+
+        {/* <Form
           onSubmit={() => handleSubmit}
           className="w-50"
           inline
           style={{ backgroundColor: "rgba(151, 254, 237, 0.6)" }}
         >
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label srOnly>Name</Form.Label>
+            <Form.Label srOnly>Name <span style={{color:'red'}}>*</span></Form.Label>
             <Form.Control
               type="text"
               placeholder="Your Name"
@@ -59,7 +62,7 @@ function Emailsub() {
               ref={nameRef}
 
             />
-            <Form.Label srOnly>Email address</Form.Label>
+            <Form.Label srOnly>Email address <span style={{color:'red'}}>*</span></Form.Label>
             <Form.Control
               type="email"
               placeholder="name@example.com"
@@ -74,7 +77,7 @@ function Emailsub() {
               Submit
             </Button>
           </Form.Group>
-        </Form>
+        </Form> */}
       </Container>
     </section>
   );

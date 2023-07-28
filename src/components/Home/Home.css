@@ -22,14 +22,15 @@
   border: 2px solid rgb(178, 178, 178);
   border-radius: 4px;
   font-size: 16px;
+
   color: rgb(60, 64, 72);
   background-color: rgb(234, 234, 234);
 }
 
 .search-box .pi-search {
   position: absolute;
-  top: 50%;
-  right: 10px;
+  top: 42%;
+  right: -40px;
   transform: translateY(-50%);
   font-size: 20px;
   color: rgb(60, 64, 72);

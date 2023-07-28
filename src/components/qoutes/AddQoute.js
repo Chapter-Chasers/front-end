@@ -85,7 +85,7 @@ export default function AddQuote() {
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Your Name</Form.Label>
+              <Form.Label>Your Name <span style={{color:'red'}}>*</span></Form.Label>
               <Form.Control  style ={{backgroundColor:'#F5F5F5'}}
                 type="text"
                 placeholder="Name"
@@ -98,7 +98,7 @@ export default function AddQuote() {
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label>Quote</Form.Label>
+              <Form.Label>Quote <span style={{color:'red'}}>*</span></Form.Label>
               <Form.Control  style ={{backgroundColor:'#F5F5F5'}} as="textarea"
                 placeholder="Your Quote.."
                 value={quote}
@@ -109,10 +109,21 @@ export default function AddQuote() {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-
-        <Button  style ={{backgroundColor:'rgb(0, 171, 179)', marginLeft:'39%',color: '#3C4048'}}  className="card flex flex-wrap justify-content-center" onClick={handleButtonClick} label="Add" severity="secondary" text />
-        <Button    style ={{backgroundColor:'rgb(0, 171, 179)', marginLeft:'39%',color: '#3C4048'}} className="card flex flex-wrap justify-content-center" onClick={handleClose} label="Close" severity="secondary" text />
-
+        <div style={{ display: "flex", justifyContent: "center" }}>
+        {/* <Button  style ={{backgroundColor:'rgb(0, 171, 179)', marginLeft:'39%',color: '#3C4048'}}  className="card flex flex-wrap justify-content-center" onClick={handleButtonClick} label="Add" severity="secondary" text />
+        <Button    style ={{backgroundColor:'rgb(0, 171, 179)', marginLeft:'39%',color: '#3C4048'}} className="card flex flex-wrap justify-content-center" onClick={handleClose} label="Close" severity="secondary" text /> */}
+ <Button
+            variant="secondary"
+            onClick={handleButtonClick}
+            style={{ marginRight: "10px"  ,backgroundColor:'rgb(0, 171, 179)'}}
+          >
+            Add
+          </Button>
+          <Button variant="secondary" onClick={handleClose}
+            style={{ backgroundColor:'rgb(0, 171, 179)'}}>
+            Close
+          </Button>
+</div>
         </Modal.Footer>
       </Modal>
 

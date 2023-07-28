@@ -35,6 +35,7 @@ function FB() {
       .catch((error) => {
         console.error('Error:', error);
       });
+     
   };
 
   return (
@@ -43,7 +44,7 @@ function FB() {
         <h2>Give Us Your Feedback!</h2>
         <Form onSubmit={handleSubmit} className='w-50'>
           <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-            <Form.Label>Name:</Form.Label>
+            <Form.Label>Name: <span style={{color:'red'}}>*</span></Form.Label>
             <Form.Control
               type='text'
               name='name'
@@ -54,7 +55,7 @@ function FB() {
             />
           </Form.Group>
           <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
-            <Form.Label>Message:</Form.Label>
+            <Form.Label>Message: <span style={{color:'red'}}>*</span></Form.Label>
             <Form.Control
               as='textarea'
               name='message'

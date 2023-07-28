@@ -26,17 +26,30 @@ function ShippingForm() {
 
 
     function handleShippingConfirmation(){
+ const {fullName,address,city,state,zipCode,contactNumber} = formData;
+
+      if(fullName && address && city && state && zipCode && contactNumber){
         Swal.fire({
-            icon: "success",
-            title: "Shipping Details Confirmed",
-            text: "Please proceed to payment.",
-            showClass: {
-              popup: "animate__animated animate__fadeInDown",
-            },
-            hideClass: {
-              popup: "animate__animated animate__fadeOutUp",
-            },
-          });
+          icon: "success",
+          title: "Shipping Details Confirmed",
+          text: "Please proceed to payment.",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+      }
+      else {
+        // Form is incomplete, show error alert
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please fill in all the required fields.",
+      });
+      }
+       
     }
     return (
         <>
@@ -46,7 +59,7 @@ function ShippingForm() {
           <Card.Header as="h5">Shipping Information:</Card.Header>
           <Card.Body>
             <Card.Text>
-              Full Name:
+              Full Name: <span style={{color:'red'}}>*</span>
               <Form.Control
                 type="text"
                 name="fullName"
@@ -58,7 +71,7 @@ function ShippingForm() {
             </Card.Text>
 
             <Card.Text>
-              Address:
+              Address: <span style={{color:'red'}}>*</span>
               <Form.Control
                 type="text"
                 name="address"
@@ -70,7 +83,7 @@ function ShippingForm() {
             </Card.Text>
 
             <Card.Text>
-              City:
+              City: <span style={{color:'red'}}>*</span>
               <Form.Control
                 type="text"
                 name="city"
@@ -82,7 +95,7 @@ function ShippingForm() {
             </Card.Text>
 
             <Card.Text>
-              State:
+              State: <span style={{color:'red'}}>*</span>
               <Form.Control
                 type="text"
                 name="state"
@@ -94,7 +107,7 @@ function ShippingForm() {
             </Card.Text>
 
             <Card.Text>
-              Zip Code:
+              Zip Code: <span style={{color:'red'}}>*</span>
               <Form.Control
                 type="text"
                 name="zipCode"
@@ -106,7 +119,7 @@ function ShippingForm() {
             </Card.Text>
 
             <Card.Text>
-              Contact Number:
+              Contact Number: <span style={{color:'red'}}>*</span>
               <Form.Control
                 type="text"
                 name="contactNumber"
@@ -117,7 +130,7 @@ function ShippingForm() {
               />
             </Card.Text>
 
-            <Button style={{backgroundColor:"InactiveBorder"}} onClick={handleShippingConfirmation}>
+            <Button style={{backgroundColor:"InactiveBorder", marginLeft:'25%'}} onClick={handleShippingConfirmation}>
               Confirm Shipping Details
             </Button>
           </Card.Body>

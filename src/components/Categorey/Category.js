@@ -122,7 +122,8 @@ function Category({ setSearchData }) {
             {categories.map((cat) => {
               return (
                 <div className="radio-item">
-                  <Button
+                  <Button 
+                  style ={{backgroundColor: 'rgb(0, 171, 179)', color:'black', borderColor:'white'}}
                     type="button"
                     name={cat.name}
                     // label={cat.name}
