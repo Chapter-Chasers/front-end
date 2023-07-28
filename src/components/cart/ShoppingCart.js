@@ -59,19 +59,18 @@ export default function ShoppingCart() {
                       <td>{item.name}</td>
                       <td>${item.price}</td>
                       <td>
-                        <Button style={{ backgroundColor: "InactiveBorder" }} onClick={() => handleRemoveItem(item.id)} icon="pi pi-trash"></Button>
+                        <Button style={{ backgroundColor: '#8b0000' }} onClick={() => handleRemoveItem(item.id)} icon="pi pi-trash"></Button>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </Table>
             </section>
-            <section className="text-end">
+            <section className="text-end" style={{ marginBottom: "20px" }}>
               <p className="total-price text-end">Total Price: ${totalPrice.toFixed(2)}</p>
               <Card style={{ margin: '0 auto' }}>
                 <Card.Header>
                   <Nav.Item >
-
                     <Nav.Link href="/payment" style={{ color: "#3C4048" , display:"flex" , justifyContent:"center"}} >Continue to Payment</Nav.Link>
                   </Nav.Item>
                 </Card.Header>

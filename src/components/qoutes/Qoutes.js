@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import AddQuote from "./AddQoute";
 import Card from "react-bootstrap/Card";
 import QoutesCategorey from "./QoutesCategorey";
+import Emailsub from "../emailsub/Emailsub";
 import "./qoutes.css";
 import QuotesHero from "./Quoteshero";
 
@@ -72,6 +73,7 @@ const Quotes = () => {
         <Container className="mb-15">
           <AddQuote />
         </Container>
+     
       </Container>
     </>
   );

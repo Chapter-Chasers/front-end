@@ -85,7 +85,7 @@ export default function BookDetails() {
                 width: "300px", height: "440px", borderRadius: "25px",
                 borderColor: "#EAEAEA", borderWidth: "5px",
               }} src={detailedObj?.volumeInfo?.imageLinks?.smallThumbnail || "https://plus.unsplash.com/premium_photo-1667251758255-514ef43844fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ym9va3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"} alt={detailedObj?.volumeInfo?.title} thumbnail />
-              <DropdownButton id="dropdown-basic-button" title="Want to read">
+              <DropdownButton id="dropdown-basic-button" title="Add to">
                 <Dropdown.Item as="button" onClick={(e) => { handleAddBook('favorite') }} >
                   Add to favorite
                 </Dropdown.Item>
@@ -101,7 +101,7 @@ export default function BookDetails() {
               </DropdownButton>
             </Col>
             <Col md={8}>
-              <h1 style={{ backgroundColor: "#3C4048", borderRadius: "15px", color: "white", height: "55px" }} >{detailedObj?.volumeInfo?.title}</h1>
+              <h1 style={{ backgroundColor: "#3C4048", borderRadius: "5px", color: "white", height: "55px" }} >{detailedObj?.volumeInfo?.title}</h1>
               <div className="description mb-3">
                 <strong style={{ fontSize: '24px' }}>Description:</strong>
                 <div

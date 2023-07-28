@@ -59,7 +59,7 @@ function Home() {
       <Header />
       <section className="home">
         <Container className="mt-5">
-          <h1 className="heading-1 text-info"> Looking for a Book !   </h1>
+          <h1 className="heading-1 text-info" > Looking for a Book !   </h1>
         </Container>
         <Container>
           <Row>
@@ -92,7 +92,7 @@ function Home() {
       </section>
       {/* <Emailsub /> */}
       {/* <FB /> */}
-      <Forms />
+     
     </>
   );
 }

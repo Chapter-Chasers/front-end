@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Search.css'
-import { Form, FormControl, Button, Dropdown, DropdownButton } from 'react-bootstrap';
+import { Form, FormControl,Button, Dropdown, DropdownButton } from 'react-bootstrap';
+
 
 function Search({ setSearchData }) {
     const [searchText, setSearchText] = useState('');
@@ -62,12 +63,15 @@ function Search({ setSearchData }) {
             </DropdownButton>
 
             <Button
-                className="rounded-pill"
+             style={{  color:'black', borderColor:'black'}}
+                className="rounded-pill pi pi-search"
                 variant="outline-primary"
                 onClick={handleSearch}
-            >
-                Search
-            </Button>
+             
+           >
+              
+             </Button>
+            
         </Form>
     );
 }

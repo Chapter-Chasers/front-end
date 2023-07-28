@@ -56,7 +56,7 @@ export default function PaymentTest() {
             <Card.Title>Please Enter Your Card Information</Card.Title>
 
             <Card.Text>
-              Card Number:
+              Card Number: <span style={{color:'red'}}>*</span>
               <Form.Control
                 type="number"
                 name="cardNumber"
@@ -68,7 +68,7 @@ export default function PaymentTest() {
             </Card.Text>
 
             <Card.Text>
-              Expiration Date:
+              Expiration Date: <span style={{color:'red'}}>*</span>
               <Form.Control
                 type="date"
                 name="expirationDate"
@@ -80,7 +80,7 @@ export default function PaymentTest() {
             </Card.Text>
 
             <Card.Text>
-              CVV:
+              CVV: <span style={{color:'red'}}>*</span>
               <Form.Control
                 type="text"
                 name="cvv"
@@ -93,7 +93,7 @@ export default function PaymentTest() {
               />
             </Card.Text>
 
-            <Button style={{backgroundColor:"InactiveBorder"}} onClick={handleButtonClick} type="submit">
+            <Button style={{backgroundColor:"InactiveBorder", marginLeft:'33%'}} onClick={handleButtonClick} type="submit">
               Checkout
             </Button>
           </Card.Body>
