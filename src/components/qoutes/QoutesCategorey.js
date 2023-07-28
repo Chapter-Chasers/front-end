@@ -3,26 +3,27 @@ import { Container, Form } from "react-bootstrap";
 import "./CatQutes.css";
 
 export default function QoutesCategorey({ setSearchData }) {
-  const fetchData = (category) => {
-    if (category === "All") {
-      fetch(`${process.env.REACT_APP_QOUTEPAGE_API_URL}/allQuotes`)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Fetched data:", data);
-          setSearchData(data.results);
-        })
-        .catch((error) => console.error("Error fetching data:", error));
-    } 
-    else {
-      fetch(`${process.env.REACT_APP_QOUTEPAGE_API_URL}?tags=${category}`)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Fetched data:", data);
-          setSearchData(data.results);
-        })
-        .catch((error) => console.error("Error fetching data:", error));
-    }
-  };
+
+    const fetchData = (category) => {
+      if (category === 'All') {
+        fetch(`${process.env.REACT_APP_QOUTEPAGE_API_URL}`)
+          .then(response => response.json())
+          .then(data => {
+            console.log('Fetched data:', data);
+            setSearchData(data.results);
+          })
+          .catch(error => console.error('Error fetching data:', error));
+      } else {
+        fetch(`${process.env.REACT_APP_QOUTEPAGE_API_URL}?tags=${category}`)
+          .then(response => response.json())
+          .then(data => {
+            console.log('Fetched data:', data);
+            setSearchData(data.results);
+          })
+          .catch(error => console.error('Error fetching data:', error));
+      }
+    };
+
 
   const categories = [
     {
