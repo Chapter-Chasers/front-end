@@ -24,7 +24,7 @@
 }
 
 .explore-btn {
-    background-color: #FF5733;
+    background-color: rgba(255,87,51,0.5);
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -34,5 +34,5 @@
 }
 
 .explore-btn:hover {
-    background-color: #F74819;
+    background-color: rgba(255,87,51,0.7);
 }

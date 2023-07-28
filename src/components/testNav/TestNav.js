@@ -1,11 +1,10 @@
-
-
 import React, { useState } from 'react';
 import { Menubar } from 'primereact/menubar';
 import { Button } from 'primereact/button';
 import './TestNav.css';
 import { useAuth0 } from '@auth0/auth0-react'
-import logo from './logoo.png'
+import logoFive from './logo 5.png'
+
 export default function TestNav() {
     const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
     console.log(user);
@@ -31,11 +30,6 @@ export default function TestNav() {
         }
     }
     const items = [
-        {
-            url: '/',
-            icon: <img src={logo} style={{ pointerEvents: 'none'}}  alt="Logo" className="navbar-logo"/>
-            
-        },
         {
             label: 'Home',
             url: '/',
@@ -96,6 +90,7 @@ export default function TestNav() {
                 <Menubar
                     className='gg'
                     model={items}
+                    start={<img src={logoFive} alt="Logo" className="navbar-logo" style={{width: '150px', height: '65px', marginRight: '50px', marginLeft: '30px'}}/>} 
                     end={end}
                 />
             </div>
