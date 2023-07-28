@@ -1,6 +1,3 @@
-/* .container {
-  margin-top: 20px;
-} */
 card-body-custom {
   height: 150px; 
   overflow: hidden;
@@ -9,7 +6,8 @@ card-body-custom {
 
 .category-column {
   padding-right: 20px;
-  background-color:#00ABB3;
+  position: sticky;
+  background-color: rgba(0, 171, 179, 0.1);
 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: #3C4048;

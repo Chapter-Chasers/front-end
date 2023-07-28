@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -47,7 +46,7 @@ const Quotes = () => {
     <QuotesHero />
       <Container>
         <Row>
-          <Col md={2} className="category-column" style={{ height: "59vh" }}>
+          <Col md={2} className="category-column" style={{ height: "66vh", marginTop: '35px', width: '35vh'}}>
             <QoutesCategorey setSearchData={setQuotes} />
           </Col>
 
@@ -60,10 +59,9 @@ const Quotes = () => {
               }}
             >
               {quotes.map((quote) => (
-                <Card key={quote._id} style={{ width: "18rem" }} className="mt-4"> {/* Add margin to the top of the card */}
+                <Card key={quote._id} style={{ width: "18rem" }} className="mt-4"> 
                   <Card.Body>
                     <Card.Title>{quote.content}</Card.Title>
-                    {/* <Card.Subtitle className="mb-2 text-muted">ID: {quote._id}</Card.Subtitle> */}
                     <Card.Text>Author: {quote.author} </Card.Text>
                   </Card.Body>
                 </Card>
