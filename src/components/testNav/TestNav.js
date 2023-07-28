@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Menubar } from 'primereact/menubar';
 import { Button } from 'primereact/button';
 import './TestNav.css';
@@ -11,6 +11,14 @@ export default function TestNav() {
     if (isAuthenticated) {
         checkuser();
     }
+    const saveUserIdToSessionStorage = () => {
+        if (user && user.sub) {
+            sessionStorage.setItem("userId", user.sub);
+        }
+    };
+    useEffect(() => {
+        saveUserIdToSessionStorage();
+    }, [user]);
     async function checkuser() {
         console.log(user.sub);
         try {
