@@ -8,7 +8,7 @@ import { useMountEffect } from 'primereact/hooks';
 export default function Finished() {
     const [finishedBook, setFinished] = useState([]);
     const msgs = useRef(null);
-
+    const userId = sessionStorage.getItem("userId");
     useMountEffect(() => {
         msgs.current.show(
             { sticky: true, severity: 'info', summary: 'Info', detail: 'No Data Found', closable: false }
@@ -17,7 +17,7 @@ export default function Finished() {
     const url = process.env.REACT_APP_Google_URL;
 
     async function getFinishedBook() {
-        await fetch(`${url}getBook/finished`).then((response) => {
+        await fetch(`${url}getBook/finished/${userId}`).then((response) => {
             if (response.status === 200) {
                 return response.json();
             }

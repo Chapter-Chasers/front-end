@@ -5,6 +5,7 @@ import { Dropdown, DropdownButton } from 'react-bootstrap';
 import RelatedToAuthor from "../Related/RelatedToAuthor";
 import RelatedToCat from "../Related/RelatedToCat";
 import { useAuth0 } from '@auth0/auth0-react'
+import './BookD.css'
 export default function BookDetails() {
   const idParams = useParams();
   console.log(idParams);

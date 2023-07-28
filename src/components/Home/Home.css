@@ -1,4 +1,3 @@
-
 .home {
   min-height: 100vh;
   margin: 22px 0;
@@ -67,11 +66,9 @@
 }
 
 .category-column {
-  margin-top:20px;
+  margin-top: 20px;
   position: sticky;
   top: 0;
-  height: 50vh;
-  background-color: rgb(234, 234, 234);
   padding-top: 30px;
   border-radius: 30px;
 }
