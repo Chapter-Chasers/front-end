@@ -5,7 +5,7 @@ import '../Categorey/Category.css';
 export default function QoutesCategorey({ setSearchData }) {
     const fetchData = (category) => {
       if (category === 'All') {
-        fetch(`${process.env.REACT_APP_QOUTEPAGE_API_URL}/allQuotes`)
+        fetch(`${process.env.REACT_APP_QOUTEPAGE_API_URL}`)
           .then(response => response.json())
           .then(data => {
             console.log('Fetched data:', data);
