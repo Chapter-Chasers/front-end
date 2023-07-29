@@ -1,33 +1,23 @@
-/* .Container {
-  max-width: 600px;
-}
-
+/* Category.css */
 .radio-item {
-  margin-bottom: 30px;
-  color:#3C4048;
-}
-
-.radio-item .form-check-input[type="radio"] {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  background-color: rgb(234, 234, 234);
-  border: 2px solid rgb(178, 178, 178);
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.radio-item .form-check-input[type="radio"]:checked {
-  background-color: rgb(0, 171, 179); 
-  border-color: rgb(0, 171, 179);
-}
-
-.radio-item .form-check-label {
-  font-size: 16px;
-  cursor: pointer;
-  color: rgb(60, 64, 72);
-}
-
-.radio-item .form-check-label:hover {
-  color: rgb(0, 171, 179); 
-} */
+    display: inline-block;
+    margin: 5px;
+  }
+  
+  .rounded-button-group {
+    border-radius: 20px; /* Rounded border for the button group */
+    overflow: hidden; /* Hide the overflow to keep the buttons within the rounded border */
+  }
+  
+  .custom-button {
+    padding: 4px 20px;
+    font-size: 16px;
+    border-radius: 15px; /* Rounded border for the individual buttons */
+    transition: transform 0.2s, box-shadow 0.2s; /* Apply a smooth transition on hover */
+  }
+  
+  .custom-button:hover {
+    transform: scale(1.05); /* Slightly scale up the button on hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle box-shadow on hover */
+  }
+  

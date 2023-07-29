@@ -1,107 +1,33 @@
-// import React, { useState } from "react";
-// import { Container, Form } from "react-bootstrap";
-// import { Sidebar } from 'primereact/sidebar';
-// import "./Category.css";
-
-// function Category({ setSearchData }) {
-//   const [selectedCategory, setSelectedCategory] = useState("All");
-
-//   const handleCategoryChange = (event) => {
-//     const selectedValue = event.target.value;
-//     setSelectedCategory(selectedValue);
-//     fetchData(selectedValue);
-//   };
-
-//   const fetchData = (category) => {
-//     if (category === "All") {
-//       fetch(`${process.env.REACT_APP_Google_URL}allBooks`)
-//         .then(response => response.json())
-//         .then(data => {
-//           // console.log('Fetched data:', data);
-//           setSearchData(data);
-//         });
-//     } else {
-//       fetch(`${process.env.REACT_APP_Google_URL}searchCategory?cat=${category}`)
-//         .then(response => response.json())
-//         .then(data => {
-//           // console.log('Fetched data:', data);
-//           setSearchData(data);
-//         })
-//         .catch((error) => console.error("Error fetching data:", error));
-//     }
-//   };
-//   const categories = [
-//     "All",
-//     "Art",
-//     "Biography",
-//     "Cooking",
-//     "Fiction",
-//     "History",
-//     "Music",
-//     "Medical",
-//   ];
-//   return (
-//     <div>
-//       <Container>
-//         <div className="checkbox-list-frame">
-//           <Form className="">
-//             {categories.map((cat) => {
-//               return (
-//                 <div className="radio-item">
-//                   <Form.Check
-//                     type="radio"
-//                     name={cat}
-//                     label={cat}
-//                     value={cat}
-//                     checked={selectedCategory === { cat }}
-//                     onChange={handleCategoryChange}
-//                   />
-//                 </div>
-//               );
-//             })}
-//           </Form>
-//         </div>
-//       </Container>
-//     </div>
-//   );
-// }
-
-// export default Category;
-
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Form, Button } from "react-bootstrap";
-import { Sidebar } from 'primereact/sidebar';
 import "./Category.css";
-
-// import { BasicDemo } from "./BasicDemo"; // Import the BasicDemo component
 
 function Category({ setSearchData }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [booksData, setBooksData] = useState([]);
+
+  useEffect(() => {
+    fetchData(selectedCategory);
+  }, [selectedCategory]);
 
   const handleCategoryChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedCategory(selectedValue);
-    fetchData(selectedValue);
   };
 
   const fetchData = (category) => {
-    if (category === "All") {
-      fetch(`${process.env.REACT_APP_Google_URL}allBooks`)
-        .then(response => response.json())
-        .then(data => {
-          // console.log('Fetched data:', data);
-          setSearchData(data);
-        });
-    } else {
-      fetch(`${process.env.REACT_APP_Google_URL}searchCategory?cat=${category}`)
-        .then(response => response.json())
-        .then(data => {
-          // console.log('Fetched data:', data);
-          setSearchData(data);
-        })
-        .catch((error) => console.error("Error fetching data:", error));
-    }
+    const apiUrl =
+      category === "All"
+        ? `${process.env.REACT_APP_Google_URL}allBooks`
+        : `${process.env.REACT_APP_Google_URL}searchCategory?cat=${category}`;
+
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        setBooksData(data);
+        setSearchData(data);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
   };
 
   const categories = [
@@ -116,29 +42,35 @@ function Category({ setSearchData }) {
   ];
 
   return (
-      <Container>
-        <div className="checkbox-list-frame">
-          <Form className="d-flex mx-5">
-            {categories.map((cat) => {
-              return (
-                <div className="radio-item">
-                  <Button 
-                  style ={{backgroundColor: 'rgb(0, 171, 179)', color:'black', borderColor:'white'}}
-                    type="button"
-                    name={cat.name}
-                    // label={cat.name}
-                    value={cat.name}
-                    checked={selectedCategory === cat.name}
-                    onClick={handleCategoryChange}
-                    className="mx-5"
-                    variant="outline-primary"
-                  >{cat.name} </Button>
-                </div>
-              );
-            })}
-          </Form>
-        </div>
-      </Container>
+    <Container>
+      <div className="checkbox-list-frame rounded-button-group">
+        <Form className="d-flex mx-5">
+          {categories.map((cat) => {
+            return (
+              <div className="radio-item" key={cat.name}>
+                <Button
+                  style={{
+                    backgroundColor: "rgb(64 223 241)",
+                    color: "black",
+                    borderColor: "#552b2b",
+                  }}
+                  type="button"
+                  name={cat.name}
+                  value={cat.name}
+                  onClick={handleCategoryChange}
+                  className={`mx-2 custom-button ${
+                    selectedCategory === cat.name ? "active" : ""
+                  }`}
+                  variant="outline-primary"
+                >
+                  {cat.name}
+                </Button>
+              </div>
+            );
+          })}
+        </Form>
+      </div>
+    </Container>
   );
 }
 
