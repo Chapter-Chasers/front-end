@@ -73,12 +73,12 @@ function Home() {
               />
             </Col>
           </Row>
-          <Row>
+          <Row >
             <Col md={12}>
               {/* BookList component will be on the right */}
               <Container className="search-box">
-                <Row>
-                  <Col sm={12}>
+                <Row className="justify-content-center">
+                  <Col sm={12} md={6}>
                     <Search setSearchData={setSearchDataHandler} />
                   </Col>
                 </Row>

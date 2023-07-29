@@ -122,7 +122,7 @@ export default function Current() {
             </Container> :
                 <Container className="d-flex flex-row justify-content-center gap-4 mt-5">
                     {currentBook?.map((obj, i) => (
-                        <Card key={i} className="modern-card border-0" style={{ width: '18rem', minHeight: '20rem' }}>
+                        <Card key={i} className=" border-0" style={{ width: '18rem', minHeight: '20rem' }}>
                             {/* <Link to={`/bookDetails/${obj.id}`}> */}
                             <div className="image-container">
                                 <Card.Img variant="top" className="card-image" src={obj?.image} />
@@ -136,9 +136,8 @@ export default function Current() {
                                 </Card.Title>
                                 <Card.Text>
                                     <Container>
-                                        <h5 className="author-name">
-                                            Author:{' '}
-
+                                        <h5 className="">
+                                            Author:
                                             <Badge className="ms-2" bg="success">
                                                 {obj?.author}
                                             </Badge>

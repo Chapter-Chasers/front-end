@@ -55,7 +55,7 @@ function ShippingForm() {
         <>
  <Container style={{ minHeight: "100vh" }}>
       <form>
-        <Card style={{ maxWidth: "500px", width: "250%", padding: "20px", backgroundColor: "#3C4048" }}>
+        <Card className="text-light" style={{ maxWidth: "500px", width: "250%", padding: "20px", backgroundColor: "#3C4048" }}>
           <Card.Header as="h5">Shipping Information:</Card.Header>
           <Card.Body>
             <Card.Text>
