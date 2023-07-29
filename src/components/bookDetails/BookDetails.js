@@ -44,11 +44,11 @@ export default function BookDetails() {
       if (response.status === 201) {
         Swal.fire({
           icon: 'success',
-          text: 'Moved Successfully',
+          text: `Added to ${status} successfully`,
         });
       } else {
-       console.log('there is problem adding items to cart');
-}
+        console.log('there is problem adding items to cart');
+      }
     } catch (error) {
       console.log('there is problem adding items to cart');
     }
@@ -78,7 +78,7 @@ export default function BookDetails() {
       const jsonString = JSON.stringify(storageArray);
       localStorage.setItem('cartItems', jsonString);
       // alert(`${detailedObj?.volumeInfo?.title} added to cart `)
-      Swal.fire({ 
+      Swal.fire({
         icon: 'success',
         text: 'Added to Cart Successfully',
       });
@@ -108,10 +108,10 @@ export default function BookDetails() {
                   Add to favorite
                 </Dropdown.Item>
                 <Dropdown.Item as="button" style={{ color: "#00ABB3" }} onClick={(e) => { handleAddBook('current') }}>
-                  Move to current
+                  Add to current
                 </Dropdown.Item>
                 <Dropdown.Item as="button" onClick={(e) => { handleAddBook('finished') }}>
-                  Move to finished
+                  Add to finished
                 </Dropdown.Item>
                 <Dropdown.Item onClick={(e) => { handleAddToCart() }} style={{ color: "#00ABB3" }} as="button" >
                   Add to cart

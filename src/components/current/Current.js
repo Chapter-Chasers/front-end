@@ -71,7 +71,7 @@ export default function Current() {
                     }
                 }).then((response) => {
                     if (response.status === 204) {
-                        getCurrentBook(); 
+                        getCurrentBook();
                         Swal.fire({
                             icon: 'success',
                             text: 'Book deleted successfully',
@@ -85,6 +85,9 @@ export default function Current() {
                     text: 'Your book is safe from deletion',
                 });
             }
+        }
+        )
+    };
 
     async function handleAddToCart(obj) {
         const storedItems = localStorage.getItem("cartItems");
