@@ -5,7 +5,10 @@ import { Dropdown, DropdownButton } from 'react-bootstrap';
 import RelatedToAuthor from "../Related/RelatedToAuthor";
 import RelatedToCat from "../Related/RelatedToCat";
 import { useAuth0 } from '@auth0/auth0-react'
+import Swal from 'sweetalert2';
 import './BookD.css'
+
+
 export default function BookDetails() {
   const idParams = useParams();
   console.log(idParams);
@@ -28,20 +31,30 @@ export default function BookDetails() {
       state: status,
       id: user.sub
     }
-    await fetch(`${url}addBook`, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(request)
-    }).then((response) => {
-      if (response.status === '201') {
-        return alert(`book added to ${status} succsesfully`)
-      }
-    }).catch(error => {
-      alert(error)
-    })
+
+
+    try {
+      const response = await fetch(`${url}addBook`, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(request)
+      });
+      if (response.status === 201) {
+        Swal.fire({
+          icon: 'success',
+          text: 'Moved Successfully',
+        });
+      } else {
+       console.log('there is problem adding items to cart');
+}
+    } catch (error) {
+      console.log('there is problem adding items to cart');
+    }
   }
+
+
   const id = idParams?.id;
   async function getObjById(id) {
     try {
@@ -64,10 +77,15 @@ export default function BookDetails() {
       storageArray.push(bookObj)
       const jsonString = JSON.stringify(storageArray);
       localStorage.setItem('cartItems', jsonString);
-      alert(`${detailedObj?.volumeInfo?.title} added to cart `)
+      // alert(`${detailedObj?.volumeInfo?.title} added to cart `)
+      Swal.fire({ 
+        icon: 'success',
+        text: 'Added to Cart Successfully',
+      });
     }
     catch {
-      alert('there is problem adding items to cart');
+      // alert('there is problem adding items to cart');
+      console.log('there is problem adding items to cart');
     }
   }
   useEffect(() => {
