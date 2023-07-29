@@ -6,6 +6,9 @@ import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
 import Swal from "sweetalert2";
 
+import { Message } from 'primereact/message';
+
+
 import { Button } from "primereact/button";
 
 export default function AddQuote() {
@@ -112,7 +115,7 @@ export default function AddQuote() {
           });
         };
 
-        updateQuotes(); 
+        updateQuotes();
       }
     } catch (error) {
       alert(error);
@@ -130,20 +133,6 @@ export default function AddQuote() {
           height: "3px",
         }}
       />
-      <Container className="d-flex justify-content-center">
-        <Button
-          style={{
-            backgroundColor: "rgba(0, 171, 179, 0.3)",
-            color: "#3C4048",
-            marginTop: "25px",
-          }}
-          className="card flex justify-content-center"
-          onClick={handleShow}
-          label="Add Quote"
-          link
-        />
-      </Container>
-
       <Modal show={show} onHide={handleClose} style={{ color: "#3C4048" }}>
         <Modal.Header closeButton>
           <Modal.Title>Add your Qoute</Modal.Title>
@@ -205,7 +194,6 @@ export default function AddQuote() {
             My Quotes
           </h2>
         </Container>
-
         <div
           style={{
             display: "flex",
@@ -213,25 +201,37 @@ export default function AddQuote() {
             justifyContent: "space-around",
           }}
         >
-          {quotes.map((quote, index) => (
-            <Card key={index} style={{ width: "18rem", marginBottom: "20px" }}>
-              <Card.Body>
-                <Card.Title>{quote.quote}</Card.Title>
-                <Card.Text>Author: {quote.author}
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer>
+          {quotes.length === 0 ? <div className="card flex justify-content-center mb-5">
+            <Message text="Try to add A Quote" />
+          </div> : quotes.map((quote, index) => (
+            <Card key={index} style={{ width: "18rem" }} className="mt-4 card-quotes">
+              <Card.Body className="quotes-body">
+                <Card.Title className="quote-title">{quote.quote}</Card.Title>
+                <Card.Text className="quote-text">Author: {quote.author} </Card.Text>
                 <Button
-                  className="w-100"
-                  variant="danger"
+                  className=""
+                  severity="danger"
                   onClick={() => handleDelete(quote.id)}
                 >
                   Delete
                 </Button>
-              </Card.Footer>
+              </Card.Body>
             </Card>
           ))}
         </div>
+        <Container className="d-flex justify-content-center mb-5">
+          <Button
+            style={{
+              backgroundColor: "rgba(0, 171, 179, 0.3)",
+              color: "#3C4048",
+              marginTop: "25px",
+            }}
+            className="card flex justify-content-center"
+            onClick={handleShow}
+            label="Add Quote"
+            link
+          />
+        </Container>
       </section>
     </>
 
