@@ -44,7 +44,7 @@ function Category({ setSearchData }) {
   return (
     <Container>
       <div className="checkbox-list-frame rounded-button-group">
-        <Form className="d-flex mx-5">
+        <Form className="d-flex justify-content-between mx-5">
           {categories.map((cat) => {
             return (
               <div className="radio-item" key={cat.name}>

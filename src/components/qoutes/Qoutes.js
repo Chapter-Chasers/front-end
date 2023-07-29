@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { Button ,OverlayTrigger,Tooltip} from "react-bootstrap";
 import AddQuote from "./AddQoute";
 import Card from "react-bootstrap/Card";
 import QoutesCategorey from "./QoutesCategorey";
@@ -36,18 +37,22 @@ const Quotes = () => {
       console.log("Error fetching quotes:", error);
     }
   };
-
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
+  const handleCopyToClipboard = async (content) => {
+    try {
+      
+      await navigator.clipboard.writeText(content);
+    } catch (error) {
+      
+      console.log("Error copying to clipboard:", error);
+    }
   };
-
   return (
     <>
 
     <QuotesHero />
       <Container>
         <Row>
-          <Col md={2} className="category-column" style={{ height: "66vh", marginTop: '35px', width: '35vh'}}>
+          <Col md={2} className="category-column-quote" >
             <QoutesCategorey setSearchData={setQuotes} />
           </Col>
 
@@ -59,11 +64,17 @@ const Quotes = () => {
                 justifyContent: "space-around",
               }}
             >
-              {quotes.map((quote) => (
-                <Card key={quote._id} style={{ width: "18rem" }} className="mt-4"> 
-                  <Card.Body>
-                    <Card.Title>{quote.content}</Card.Title>
-                    <Card.Text>Author: {quote.author} </Card.Text>
+              {quotes.map((quote ,i) => (
+                <Card key={i} style={{ width: "18rem" }} className="mt-4 card-quotes"> 
+                  <Card.Body className="quotes-body">
+                    <Card.Title className="quote-title">{quote.content}</Card.Title>
+                    <Card.Text className="quote-text">Author: {quote.author} </Card.Text>
+                    <OverlayTrigger
+                      placement="bottom" 
+                      overlay={<Tooltip id={`tooltip-copy-${i}`}>Copy to Clipboard</Tooltip>}
+                    >
+                    <Button onClick={() => handleCopyToClipboard(quote.content)} className="pi pi-copy copy-btn" variant="primary"></Button>
+                    </OverlayTrigger>
                   </Card.Body>
                 </Card>
               ))}

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menubar } from 'primereact/menubar';
 import { Button } from 'primereact/button';
 import './TestNav.css';
@@ -16,6 +16,11 @@ export default function TestNav() {
             sessionStorage.setItem("userId", user.sub);
         }
     };
+    const handleLogOut = () => {
+        sessionStorage.clear();
+        localStorage.clear();
+        logout();
+    }
     useEffect(() => {
         saveUserIdToSessionStorage();
     }, [user]);
@@ -65,7 +70,7 @@ export default function TestNav() {
             ],
         },
         {
-            label: 'Qoutes',
+            label: 'Quotes',
             url: '/qoutes',
             icon: 'pi pi-hashtag',
         },
@@ -90,7 +95,7 @@ export default function TestNav() {
     };
 
     const end = (
-        user ? <Button icon="pi pi-sign-out" onClick={() => logout()} label="Logout" style={buttonStyle}></Button> : <Button onClick={() => loginWithRedirect()} label="LogIn" icon="pi pi-sign-in" style={buttonStyle} />
+        user ? <Button icon="pi pi-sign-out" onClick={() => handleLogOut()} label="Logout" style={buttonStyle}></Button> : <Button onClick={() => loginWithRedirect()} label="LogIn" icon="pi pi-sign-in" style={buttonStyle} />
     );
     return (
         <>
@@ -98,7 +103,7 @@ export default function TestNav() {
                 <Menubar
                     className='gg'
                     model={items}
-                    start={<img src={logoFive} alt="Logo" className="navbar-logo" style={{width: '150px', height: '65px', marginRight: '50px', marginLeft: '30px'}}/>} 
+                    start={<img src={logoFive} alt="Logo" className="navbar-logo" style={{ width: '150px', height: '65px', marginRight: '50px', marginLeft: '30px' }} />}
                     end={end}
                 />
             </div>

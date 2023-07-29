@@ -50,7 +50,7 @@ export default function PaymentTest() {
   return (
     <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
       <form>
-        <Card style={{ maxWidth: "500px", width: "100%", padding: "10px" , backgroundColor:"#3C4048"}}>
+        <Card className="text-light" style={{ maxWidth: "500px", width: "100%", padding: "10px" , backgroundColor:"#3C4048"}}>
           <Card.Header as="h5">Payment Information:</Card.Header>
           <Card.Body >
             <Card.Title>Please Enter Your Card Information</Card.Title>

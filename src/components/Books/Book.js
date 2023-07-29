@@ -1,8 +1,6 @@
 
 import './book.css'
 import { Link } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
-import Badge from 'react-bootstrap';
 
 
 function Book({ book }) {
@@ -10,39 +8,65 @@ function Book({ book }) {
 
     return (
         <>
-            <div class="container py-5">
-        <div class="col">
-                <div class="card">
-                <Link to={`/bookDetails/${book.id}`}>
-                    <img src={imageSrc} class="card-img-top" alt="..."/>
-                    </Link>
-                    <div class="card-body">
-                        <h5 class="card-title">{book?.volumeInfo?.title}</h5>
-                        <p class="card-text"><Container>
-                           <h5 className="author-name" >
-                            <p className='badge'>
-                                 Authors:{' '}
-                                 </p>
-                                 {book?.volumeInfo?.authors.map((auth) => (
-                                    <section  key={auth}>
-                                         {auth}
-                                         </section>
-                                 )) || 'Author'}
-                             </h5>
-                         </Container></p>
-                         <div className="container d-flex">
-                         Category:{' '}
-                         {book?.volumeInfo?.categories?.map((cat) => (
-                             <h6 key={cat}>
-                                {cat} 
-                             </h6>
-                         )) || 'No specific cat'}
-                     </div>
+            <div className="container">
+                <div className="row mt-5">
+
+                    <div className="preview-card">
+                        <div className="preview-card__wrp">
+                            <div className="preview-card__item">
+                                <div className="preview-card__img">
+                                    <img src={imageSrc} alt="" />
+                                </div>
+                                <div className="preview-card__content">
+                                    <span className="preview-card__code text-light">{book?.volumeInfo?.publishedDate}</span>
+                                    <div className="preview-card__title text-wrap text-light">{book?.volumeInfo?.title}</div>
+                                    <div className="preview-card__text text-light">{book?.volumeInfo?.categories?.map((cat) => (
+                                        <h6 key={cat}>
+                                            {cat}
+                                        </h6>
+                                    )) || 'No specific cat'} </div>
+                                    <Link to={`/bookDetails/${book.id}`} className="preview-card__button">READ MORE</Link>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                    
+
                 </div>
             </div>
-            </div>
+            {/* <div className="container py-5">
+                <div className="col">
+                    <div className="card book">
+                        <Link to={`/bookDetails/${book.id}`}>
+                            <img src={imageSrc} className="card-img-top" alt="..." />
+                        </Link>
+                        <div className="card-body book-body">
+                            <h5 className="card-title book-title">{book?.volumeInfo?.title}</h5>
+                            <div className="card-text book-text">
+                                <h5 className="author-name" >
+                                    <p className='badge'>
+                                        Authors:{' '}
+                                    </p>
+                                    {book?.volumeInfo?.authors.map((auth) => (
+                                        <p key={auth}>
+                                            {auth}
+                                        </p>
+                                    )) || 'Author'}
+                                </h5>
+                            </div>
+                            <div className="container d-flex">
+                                Category:{' '}
+                                {book?.volumeInfo?.categories?.map((cat) => (
+                                    <h6 key={cat}>
+                                        {cat}
+                                    </h6>
+                                )) || 'No specific cat'}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div> */}
         </>
     )
 }

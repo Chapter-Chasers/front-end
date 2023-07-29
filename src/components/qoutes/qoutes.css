@@ -1,5 +1,5 @@
 card-body-custom {
-  height: 150px; 
+  height: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -13,33 +13,40 @@ card-body-custom {
   color: #3C4048;
 }
 
-.card {
+.card-quotes {
   width: 18rem;
   margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
   color: #EAEAEA;
+  transition: transform 0.3s;
   border-radius: 15px;
 }
 
-.card:hover {
+.card-quotes:hover {
   box-shadow: 0 8px 16px rgb(171, 179, 179);
+  transform: scale(1.1);
 }
 
-.card-body {
-  color:#3C4048;
+.quotes-body {
+  color: #3C4048;
   padding: 1rem;
   background-color: #EAEAEA;
   border-radius: 15px;
- 
+
 }
 
-.card-title {
+.quote-title {
   font-size: 1.2rem;
   font-weight: bold;
 }
 
-.card-text {
+.quote-text {
   font-size: 1rem;
   color: #555;
+}
+
+.copy-btn {
+  background-color: rgb(255, 87, 51);
+  border-color: #3C4048 ;
 }
