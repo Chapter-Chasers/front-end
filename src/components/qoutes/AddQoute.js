@@ -23,13 +23,12 @@ export default function AddQuote() {
     e.preventDefault();
     handleSubmit();
     handleClose();
-    //  console.log(userQuote.current.value + userName.current.value)
+
   };
 
   useEffect(() => {
-    // Retrieve quotes from localStorage when the component mounts
-    const savedQuotes =getId() || [];
-    setQuotes(savedQuotes);
+    // Call getUserId() inside useEffect, so we don't need to call it again separately
+    getUserId();
   }, []);
 
   const userId = sessionStorage.getItem("userId");
@@ -40,18 +39,11 @@ export default function AddQuote() {
       });
       return;
     }
-
-    const newQuote = {
-      name: name,
-      quote: quote,
-    };
-
-    
     const n = userName.current.value
     const q = userQuote.current.value
     console.log(userId, n, q)
-    let url = `${process.env.REACT_APP_Google_URL}addQuotes`;
-    let response = await fetch(url, {
+    const url = `${process.env.REACT_APP_Google_URL}addQuotes`;
+    const response = await fetch(url, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -60,16 +52,8 @@ export default function AddQuote() {
         qoute: q
       })
     })
-    let recieved = await response.json;
+    const recieved = await response.json;
     console.log(recieved)
-
-
-    //local Storage
-    const existingQuotes = JSON.parse(localStorage.getItem("quotes")) || [];
-    const updatedQuotes = [...existingQuotes, newQuote];
-    localStorage.setItem("quotes", JSON.stringify(updatedQuotes));
-    ////////////////
-
     Swal.fire({
       icon: "success",
       title: "Your Quote Added Successfully",
@@ -80,65 +64,61 @@ export default function AddQuote() {
         popup: "animate__animated animate__fadeOutUp",
       },
     });
-
-
-    const newUserQuote = { n, q };
-    setName("");
-    setQuote("");
-
-    setQuotes(updatedQuotes);
-
-
+    await getUserId();
   };
 
-  async function getId(){
-    let url = `${process.env.REACT_APP_Google_URL}getUserQuote/${userId}`;
-    let response = await fetch(url,{
-      method: 'GET',
-      headers: {
+  async function getUserId() {
+    const url = `${process.env.REACT_APP_Google_URL}getUserQuote/${userId}`;
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
           "Content-Type": "application/json"
-      }
-    }).then((response) => {
+        }
+      });
       if (response.status === 200) {
-          alert('got userId');
+        const data = await response.json();
+        setQuotes(data);
+        // console.log(data); 
+      } else {
+        console.log("Failed to fetch data:", response.status);
       }
-  }).catch((error) => {
-      alert((error));
-  });
+    } catch (error) {
+      alert(error.message);
+    }
   }
-
-  
-//   useEffect(() => {
-//     getId()
-
-// }, [])
-
-
   async function handleDelete(id) {
-    let url = `${process.env.REACT_APP_Google_URL}deleteQuote/id`;
-    let response = await fetch(url, {
-      method: 'DELETE',
-      headers: {
+    const url = `${process.env.REACT_APP_Google_URL}deleteQuote/${id}`;
+    try {
+      const response = await fetch(url, {
+        method: 'DELETE',
+        headers: {
           "Content-Type": "application/json"
+        }
+      });
+
+      if (response.status === 201) {
+        const updateQuotes = async () => {
+          await getUserId();
+          Swal.fire({
+            icon: "success",
+            title: "Your Quote has been deleted Successfully",
+            showClass: {
+              popup: "animate__animated animate__fadeInDown",
+            },
+            hideClass: {
+              popup: "animate__animated animate__fadeOutUp",
+            },
+          });
+        };
+
+        updateQuotes(); 
       }
-  }).then((response) => {
-      if (response.status === 204) {
-          alert('Quote deleted sucessfully');
-      }
-  }).catch((error) => {
-      alert((error));
-  });
+    } catch (error) {
+      alert(error);
+    }
   }
 
-  // function handleDelete(index) {
-  //   //LocalStorage
-  //   const updatedQuotes = [...quotes];
-  //   updatedQuotes.splice(index, 1);
-  //   localStorage.setItem("quotes", JSON.stringify(updatedQuotes));
-  //   setQuotes(updatedQuotes);
-  //   ///
-
-  // }
 
   return (
     <>
@@ -150,22 +130,7 @@ export default function AddQuote() {
           height: "3px",
         }}
       />
-
-      {/* <Button
-        style={{
-          backgroundColor: "rgba(0, 171, 179, 0.3)",
-          marginLeft: "39%",
-          marginTop: "25px",
-          color: "#3C4048",
-        }}
-        className="card flex justify-content-center"
-        onClick={handleShow}
-        label="Add Quote"
-        link
-      /> */}
-
-      
-<Container className="d-flex justify-content-center">
+      <Container className="d-flex justify-content-center">
         <Button
           style={{
             backgroundColor: "rgba(0, 171, 179, 0.3)",
@@ -248,24 +213,24 @@ export default function AddQuote() {
             justifyContent: "space-around",
           }}
         >
-          {console.log(quotes)}
-          {/* {quotes.map((quote, index) => (
+          {quotes.map((quote, index) => (
             <Card key={index} style={{ width: "18rem", marginBottom: "20px" }}>
               <Card.Body>
                 <Card.Title>{quote.quote}</Card.Title>
-                <Card.Text>Author: {quote.name}</Card.Text>
+                <Card.Text>Author: {quote.author}
+                </Card.Text>
               </Card.Body>
               <Card.Footer>
                 <Button
                   className="w-100"
                   variant="danger"
-                  onClick={() => handleDelete()}
+                  onClick={() => handleDelete(quote.id)}
                 >
                   Delete
                 </Button>
               </Card.Footer>
             </Card>
-          ))} */}
+          ))}
         </div>
       </section>
     </>
