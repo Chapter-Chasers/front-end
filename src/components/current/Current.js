@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
-// import '../cardCss/card.css';
 import Button from "react-bootstrap/Button";
 import { Badge, Container } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { Messages } from 'primereact/messages';
 import { useMountEffect } from 'primereact/hooks';
+import Swal from 'sweetalert2';
+
+
 export default function Current() {
     const [currentBook, setCurrentBook] = useState([]);
     const msgs = useRef(null);
@@ -35,12 +37,13 @@ export default function Current() {
             headers: {
                 "Content-Type": "application/json"
             },
-
         }).then((response) => {
             if (response.status === 202) {
-
                 getCurrentBook();
-                alert("Updated sucessfully");
+                Swal.fire({
+                    icon: 'success',
+                    text: 'Book updated successfully',
+                });
             }
 
         }).catch((error) => {
@@ -49,21 +52,39 @@ export default function Current() {
     }
 
     async function handleDelete(bookId) {
-        await fetch(`${url}delete/${bookId}`, {
-            method: 'DELETE',
-            headers: {
-                "Content-Type": "application/json"
+        Swal.fire({
+            title: 'Are you sure?',
+            // text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`${url}delete/${bookId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                }).then((response) => {
+                    if (response.status === 204) {
+                        getCurrentBook(); 
+                        Swal.fire({
+                            icon: 'success',
+                            text: 'Book deleted successfully',
+                        });
+                    }
+                }).catch((error) => {
+                    alert(error);
+                });
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire({
+                    text: 'Your book is safe from deletion',
+                });
             }
-        }).then((response) => {
-            if (response.status === 204) {
-                getCurrentBook();
-                alert('Book deleted sucessfully');
-
-            }
-        }).catch((error) => {
-            alert((error));
-        });
-    }
 
     async function handleAddToCart(obj) {
         const storedItems = localStorage.getItem("cartItems");
@@ -76,6 +97,10 @@ export default function Current() {
         storedItems.push(book);
 
         localStorage.setItem("cartItems", JSON.stringify(storedItems));
+        Swal.fire({
+            icon: 'success',
+            text: 'Book added to cart successfully',
+        });
     }
 
     useEffect(() => {
@@ -148,3 +173,4 @@ export default function Current() {
         </>
     );
 }
+
