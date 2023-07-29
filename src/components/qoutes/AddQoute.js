@@ -151,7 +151,7 @@ export default function AddQuote() {
         }}
       />
 
-      <Button
+      {/* <Button
         style={{
           backgroundColor: "rgba(0, 171, 179, 0.3)",
           marginLeft: "39%",
@@ -162,7 +162,23 @@ export default function AddQuote() {
         onClick={handleShow}
         label="Add Quote"
         link
-      />
+      /> */}
+
+      
+<Container className="d-flex justify-content-center">
+        <Button
+          style={{
+            backgroundColor: "rgba(0, 171, 179, 0.3)",
+            color: "#3C4048",
+            marginTop: "25px",
+          }}
+          className="card flex justify-content-center"
+          onClick={handleShow}
+          label="Add Quote"
+          link
+        />
+      </Container>
+
       <Modal show={show} onHide={handleClose} style={{ color: "#3C4048" }}>
         <Modal.Header closeButton>
           <Modal.Title>Add your Qoute</Modal.Title>
@@ -253,5 +269,9 @@ export default function AddQuote() {
         </div>
       </section>
     </>
+
+
+
+
   );
 }

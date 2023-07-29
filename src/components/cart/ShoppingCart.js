@@ -68,13 +68,13 @@ export default function ShoppingCart() {
             </section>
             <section className="text-end" style={{ marginBottom: "20px" }}>
               <p className="total-price text-end">Total Price: ${totalPrice.toFixed(2)}</p>
-              <Card style={{ margin: '0 auto' }}>
-                <Card.Header>
+              <Button  className="card flex justify-content-center" style={{ margin: '0 auto',  backgroundColor:'rgb(0, 171, 179)', borderColor:'white' }}>
+
                   <Nav.Item >
                     <Nav.Link href="/payment" style={{ color: "#3C4048" , display:"flex" , justifyContent:"center"}} >Continue to Payment</Nav.Link>
                   </Nav.Item>
-                </Card.Header>
-              </Card>
+          
+              </Button>
             </section>
           </>
         )}
