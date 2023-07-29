@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 //import Button from 'react-bootstrap/Button';
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
@@ -9,6 +9,9 @@ import Swal from "sweetalert2";
 import { Button } from "primereact/button";
 
 export default function AddQuote() {
+  const userQuote = useRef();
+  const userName = useRef();
+
   const [name, setName] = useState("");
   const [quote, setQuote] = useState("");
   const [show, setShow] = useState(false);
@@ -20,28 +23,53 @@ export default function AddQuote() {
     e.preventDefault();
     handleSubmit();
     handleClose();
+    //  console.log(userQuote.current.value + userName.current.value)
   };
 
   useEffect(() => {
     // Retrieve quotes from localStorage when the component mounts
-    const savedQuotes = JSON.parse(localStorage.getItem("quotes")) || [];
+    const savedQuotes =getId() || [];
     setQuotes(savedQuotes);
   }, []);
 
-  const handleSubmit = (event) => {
+  const userId = sessionStorage.getItem("userId");
+  const handleSubmit = async (event) => {
     if (name.trim() === "" || quote.trim() === "") {
       Swal.fire({
         text: "Please fill in all the required fields.",
       });
       return;
     }
+
     const newQuote = {
       name: name,
       quote: quote,
     };
+
+    
+    const n = userName.current.value
+    const q = userQuote.current.value
+    console.log(userId, n, q)
+    let url = `${process.env.REACT_APP_Google_URL}addQuotes`;
+    let response = await fetch(url, {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: userId,
+        author: n,
+        qoute: q
+      })
+    })
+    let recieved = await response.json;
+    console.log(recieved)
+
+
+    //local Storage
     const existingQuotes = JSON.parse(localStorage.getItem("quotes")) || [];
     const updatedQuotes = [...existingQuotes, newQuote];
     localStorage.setItem("quotes", JSON.stringify(updatedQuotes));
+    ////////////////
+
     Swal.fire({
       icon: "success",
       title: "Your Quote Added Successfully",
@@ -52,17 +80,65 @@ export default function AddQuote() {
         popup: "animate__animated animate__fadeOutUp",
       },
     });
+
+
+    const newUserQuote = { n, q };
     setName("");
     setQuote("");
 
     setQuotes(updatedQuotes);
+
+
   };
-  function handleDelete(index) {
-    const updatedQuotes = [...quotes];
-    updatedQuotes.splice(index, 1);
-    localStorage.setItem("quotes", JSON.stringify(updatedQuotes));
-    setQuotes(updatedQuotes);
+
+  async function getId(){
+    let url = `${process.env.REACT_APP_Google_URL}getUserQuote/${userId}`;
+    let response = await fetch(url,{
+      method: 'GET',
+      headers: {
+          "Content-Type": "application/json"
+      }
+    }).then((response) => {
+      if (response.status === 200) {
+          alert('got userId');
+      }
+  }).catch((error) => {
+      alert((error));
+  });
   }
+
+  
+//   useEffect(() => {
+//     getId()
+
+// }, [])
+
+
+  async function handleDelete(id) {
+    let url = `${process.env.REACT_APP_Google_URL}deleteQuote/id`;
+    let response = await fetch(url, {
+      method: 'DELETE',
+      headers: {
+          "Content-Type": "application/json"
+      }
+  }).then((response) => {
+      if (response.status === 204) {
+          alert('Quote deleted sucessfully');
+      }
+  }).catch((error) => {
+      alert((error));
+  });
+  }
+
+  // function handleDelete(index) {
+  //   //LocalStorage
+  //   const updatedQuotes = [...quotes];
+  //   updatedQuotes.splice(index, 1);
+  //   localStorage.setItem("quotes", JSON.stringify(updatedQuotes));
+  //   setQuotes(updatedQuotes);
+  //   ///
+
+  // }
 
   return (
     <>
@@ -94,8 +170,8 @@ export default function AddQuote() {
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Your Name <span style={{color:'red'}}>*</span></Form.Label>
-              <Form.Control  style ={{backgroundColor:'#F5F5F5'}}
+              <Form.Label>Your Name <span style={{ color: 'red' }}>*</span></Form.Label>
+              <Form.Control ref={userName} style={{ backgroundColor: '#F5F5F5' }}
                 type="text"
                 placeholder="Name"
                 value={name}
@@ -105,11 +181,9 @@ export default function AddQuote() {
             </Form.Group>
             <Form.Group
               className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
-
-              <Form.Label>Quote <span style={{color:'red'}}>*</span></Form.Label>
-              <Form.Control  style ={{backgroundColor:'#F5F5F5'}} as="textarea"
+              controlId="exampleForm.ControlTextarea1">
+              <Form.Label>Quote <span style={{ color: 'red' }}>*</span></Form.Label>
+              <Form.Control ref={userQuote} style={{ backgroundColor: '#F5F5F5' }} as="textarea"
                 placeholder="Your Quote.."
                 value={quote}
                 onChange={(event) => setQuote(event.target.value)}
@@ -121,19 +195,19 @@ export default function AddQuote() {
         </Modal.Body>
         <Modal.Footer>
 
-        <div style={{ display: "flex", justifyContent: "center" }}>
-        <Button
-            variant="secondary"
-            onClick={handleButtonClick}
-            style={{ marginRight: "10px"  ,backgroundColor:'rgb(0, 171, 179)'}}
-          >
-            Add
-          </Button>
-          <Button variant="secondary" onClick={handleClose}
-            style={{ backgroundColor:'rgb(0, 171, 179)'}}>
-            Close
-          </Button>
-</div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Button
+              variant="secondary"
+              onClick={handleButtonClick}
+              style={{ marginRight: "10px", backgroundColor: 'rgb(0, 171, 179)' }}
+            >
+              Add
+            </Button>
+            <Button variant="secondary" onClick={handleClose}
+              style={{ backgroundColor: 'rgb(0, 171, 179)' }}>
+              Close
+            </Button>
+          </div>
 
         </Modal.Footer>
       </Modal>
@@ -158,7 +232,8 @@ export default function AddQuote() {
             justifyContent: "space-around",
           }}
         >
-          {quotes.map((quote, index) => (
+          {console.log(quotes)}
+          {/* {quotes.map((quote, index) => (
             <Card key={index} style={{ width: "18rem", marginBottom: "20px" }}>
               <Card.Body>
                 <Card.Title>{quote.quote}</Card.Title>
@@ -168,13 +243,13 @@ export default function AddQuote() {
                 <Button
                   className="w-100"
                   variant="danger"
-                  onClick={() => handleDelete(index)}
+                  onClick={() => handleDelete()}
                 >
                   Delete
                 </Button>
               </Card.Footer>
             </Card>
-          ))}
+          ))} */}
         </div>
       </section>
     </>
