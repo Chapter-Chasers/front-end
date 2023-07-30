@@ -16,14 +16,17 @@ export default function TestNav() {
             sessionStorage.setItem("userId", user.sub);
         }
     };
+    
     const handleLogOut = () => {
         sessionStorage.clear();
         localStorage.clear();
         logout();
     }
+
     useEffect(() => {
         saveUserIdToSessionStorage();
     }, [user]);
+
     async function checkuser() {
         console.log(user.sub);
         try {
@@ -42,6 +45,7 @@ export default function TestNav() {
             console.log(error)
         }
     }
+
     const items = [
         {
             label: 'Home',
@@ -85,6 +89,7 @@ export default function TestNav() {
             icon: 'pi pi-users',
         },
     ];
+
     const buttonStyle = {
         fontSize: '16px',
         padding: '0.5rem 1rem',
