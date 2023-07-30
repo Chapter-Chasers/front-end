@@ -35,8 +35,8 @@ export default function ShoppingCart() {
 
   return (
     <>
-      <Container className="mt-4">
-        <h1 className="cart-heading">Shopping Cart</h1>
+      <Container className="mt-4" style={{minHeight:'100vh'}}>
+        <h1 className="mt-5 p-3 cart-heading">Shopping Cart</h1>
         {items.length === 0 ? (
           <p className="text-center">Your cart is empty.</p>
         ) : (

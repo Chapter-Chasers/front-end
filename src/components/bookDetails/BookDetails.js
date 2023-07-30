@@ -29,7 +29,7 @@ export default function BookDetails() {
       author: detailedObj?.volumeInfo?.authors[0],
       category: detailedObj?.volumeInfo?.categories[0],
       state: status,
-      id: user.sub
+      id: user.sub 
     }
 
 
@@ -92,8 +92,8 @@ export default function BookDetails() {
     getObjById(id);
   }, [idParams]);
   return (
-    <div class="back">
-      {detailedObj === null ? <Container className="d-flex justify-content-center mt-5 mb-5">
+    <div class="">
+      {detailedObj === null ? <Container style={{minHeight:'100vh'}} className="d-flex justify-content-center mt-5 mb-5">
         <Spinner animation="grow" />
       </Container> :
         <Container className="mt-5 p-3 mb-5">
@@ -119,10 +119,11 @@ export default function BookDetails() {
               </DropdownButton>
             </Col>
             <Col md={8}>
-              <h1 style={{ backgroundColor: "#3C4048", borderRadius: "5px", color: "white", height: "55px" }} >{detailedObj?.volumeInfo?.title}</h1>
+              <h1 style={{ backgroundColor: "#3C4048", borderRadius: "5px", color: "white", padding:'10px' }} >{detailedObj?.volumeInfo?.title}</h1>
               <div className="description mb-3">
                 <strong style={{ fontSize: '24px' }}>Description:</strong>
                 <div
+                style={{fontSize:'20px'}}
                   dangerouslySetInnerHTML={{
                     __html:
                       detailedObj?.volumeInfo?.description ||
