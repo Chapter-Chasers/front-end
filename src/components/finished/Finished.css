@@ -1,0 +1,38 @@
+/* Current.css */
+
+/* Add custom styles for the buttons */
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    margin: -3px; /* Add margin to create space between buttons */
+  }
+  
+  /* Add custom styles for the button container */
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  /* Add shadow on hover */
+  .btn-sm:hover {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Customize the shadow as per your preference */
+  }
+  
+  /* Add custom styles for the card container */
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Add gap between cards */
+    margin-top: 20px; /* Adjust the top margin as needed */
+  }
+  
+  /* Add shadow to cards on hover with reduced transition time */
+  .card:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, .4, 0.4); /* Customize the shadow as per your preference */
+    transition: box-shadow 0.5s ease; /* Reduced transition time to 0.1 seconds */
+  }
+  

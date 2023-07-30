@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import { Messages } from 'primereact/messages';
 import { useMountEffect } from 'primereact/hooks';
 import Swal from 'sweetalert2';
+import "./FavBook.css";
 
 
 export default function FavBooks() {
@@ -37,19 +38,19 @@ export default function FavBooks() {
         await fetch(`${url}update/${state}/${id}`, {
             method: 'PUT',
             headers: {
-              "Content-Type": "application/json"
+                "Content-Type": "application/json"
             }
-          }).then((response) => {
+        }).then((response) => {
             if (response.status === 202) {
-              getFavBook();
-              Swal.fire({
-                icon: 'success',
-                text: 'Moved Successfully',
-              });
+                getFavBook();
+                Swal.fire({
+                    icon: 'success',
+                    text: 'Moved Successfully',
+                });
             }
-          }).catch((error) => {
+        }).catch((error) => {
             alert(error);
-          });
+        });
 
 
     }
@@ -72,7 +73,7 @@ export default function FavBooks() {
                     }
                 }).then((response) => {
                     if (response.status === 204) {
-                        // getCurrentBook();
+                        getFavBook();
                         Swal.fire({
                             icon: 'success',
                             text: 'Book deleted successfully',
@@ -89,26 +90,35 @@ export default function FavBooks() {
         });
     }
 
-    async function handleAddToCart(obj){
-        const storedItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+    function handleAddToCart(obj) {
 
-        const book = {
-            id: obj.id,
-            name: obj.title,
-            price: obj.price
-        };
-        storedItems.push(book);
+        try {
+            const storageArray = JSON.parse(localStorage.getItem('cartItems') || "[]");
 
-        localStorage.setItem("cartItems", JSON.stringify(storedItems));
-        Swal.fire({
-            icon: 'success',
-            text: 'Book added to cart successfully',
-        });
+            let bookObj = {
+                id: obj.id,
+                name: obj.title,
+                price: obj.price
+            }
+            storageArray.push(bookObj)
+            const jsonString = JSON.stringify(storageArray);
+            localStorage.setItem('cartItems', jsonString);
+
+            Swal.fire({
+                icon: 'success',
+                text: 'Added to Cart Successfully',
+            });
+        }
+        catch {
+            // alert('there is problem adding items to cart');
+            console.log('there is problem adding items to cart');
+        }
     }
 
     useEffect(() => {
         getFavBook()
-    }, [favBook])
+    }, [])
+
 
     return (
         <>
@@ -118,19 +128,17 @@ export default function FavBooks() {
                     <Messages ref={msgs} />
                 </div>
             </Container> :
-                <div className="d-flex flex-row justify-content-center mt-5 gap-4">
+            <Container className="d-flex flex-row justify-content-center gap-4 mt-5">
+                <div className="card-container">
                     {favBook?.map((obj, i) => (
-                        <Card
-                            key={i}
-                            className="modern-card border-0"
-                            style={{ width: "18rem", minHeight: "20rem" }}
-                        >
+                        <Card key={i} className="modern-card border-0" style={{ width: '18rem', minHeight: '20rem' }}>
+
                             {/* <Link to={`/bookDetails/${obj.id}`}> */}
                             <div className="image-container">
                                 <Card.Img variant="top" className="card-image" src={obj?.image} />
                             </div>
                             {/* </Link> */}
-                            <Card.Body>
+                            <Card.Body style={{ backgroundColor: '#f9f9f9' }}>
                                 <Card.Title>
                                     <Container>
                                         <h4>{obj?.title}</h4>
@@ -139,58 +147,44 @@ export default function FavBooks() {
                                 <Card.Text>
                                     <Container>
                                         <h5 className="author-name">
-                                            Author:{' '}
-                                            <Badge className="ms-2" bg="success">
+                                            Author:
+                                            <Badge className="ms-2 text-wrap" bg="badge badge" >
                                                 {obj?.author}
                                             </Badge>
                                         </h5>
                                     </Container>
                                 </Card.Text>
-                                <div className="container d-flex">
-                                    <h6>
-                                        <Badge className="text-wrap" bg="secondary">
-                                            {obj?.category}
-                                        </Badge>
-                                    </h6>
+                                <div className="container">
+                                    <h5>
+
+                                        {obj?.category}
+
+                                    </h5>
                                 </div>
-                                <Container className="d-flex flex-wrap">
+                                <div className="button-container">
+
                                     <Button
-                                        onClick={() => {
-                                            updateState(obj.id, "current");
-                                        }}
-                                        className="mb-3 mx-1 btn-sm"
-                                        variant="primary"
-                                    >
-                                        Move to current
+                                        onClick={() => { updateState(obj.id, "current") }} className="mb-3 btn-sm" style={{ backgroundColor: 'rgb(97 65 163)', margin:'-3px' }} >
+                                        current
                                     </Button>
-                                    <Button
-                                        onClick={() => {
-                                            updateState(obj.id, "finished");
-                                        }}
-                                        className="mb-3 mx-1 btn-sm"
-                                        variant="primary"
-                                    >
-                                        Move to Finished
+                                    <Button onClick={() => { updateState(obj.id, "finished") }} className="mb-3 btn-sm" style={{ backgroundColor: 'rgb(97 65 163)', margin:'-3px' }}>  
+                                        finished
                                     </Button>
-                                    <Button
-                                        onClick={() => {
-                                            handleDelete(obj.id);
-                                        }}
-                                        className="mb-3 mx-1 btn-sm"
-                                        variant="primary"
-                                    >
-                                        delete
+                                    <Button onClick={() => { handleDelete(obj.id) }} className="mb-3 btn-sm" style={{ backgroundColor: 'rgb(97 65 163)',margin:'-3px'  }}>
+                                        Delete
                                     </Button>
-                                    <Button className="mb-3 mx-1 btn-sm" variant="primary">
+                                    <Button onClick={() => { handleAddToCart(obj) }} className="mb-3 btn-sm" style={{ backgroundColor: 'rgb(97 65 163)' ,margin:'-3px' }} >
                                         Cart
                                     </Button>
-                                </Container>
+
+                                </div>
                             </Card.Body>
                         </Card>
                     ))}
                 </div>
+                </Container>
             }
 
         </>
     );
-}
+        }

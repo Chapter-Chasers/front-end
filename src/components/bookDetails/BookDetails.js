@@ -26,8 +26,8 @@ export default function BookDetails() {
       description: detailedObj?.volumeInfo?.description,
       rating: detailedObj?.volumeInfo?.averageRating || randomValues,
       price: detailedObj?.saleInfo?.listPrice?.amount || 15,
-      author: detailedObj?.volumeInfo?.authors,
-      category: detailedObj?.volumeInfo?.categories,
+      author: detailedObj?.volumeInfo?.authors[0],
+      category: detailedObj?.volumeInfo?.categories[0],
       state: status,
       id: user.sub
     }

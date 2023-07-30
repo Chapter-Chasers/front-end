@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import { Messages } from 'primereact/messages';
 import { useMountEffect } from 'primereact/hooks';
 import Swal from 'sweetalert2';
+import './Finished.css'
 
 
 export default function Finished() {
@@ -78,7 +79,7 @@ export default function Finished() {
                 }).catch((error) => {
                     alert(error);
                 });
-            }else if (result.dismiss === Swal.DismissReason.cancel) {
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
                 Swal.fire({
                     text: 'Your book is safe from deletion',
                 });
@@ -86,7 +87,7 @@ export default function Finished() {
         });
     }
 
-    async function handleAddToCart(obj){
+    async function handleAddToCart(obj) {
         const storedItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
 
         const book = {
@@ -106,8 +107,7 @@ export default function Finished() {
     useEffect(() => {
         getFinishedBook()
 
-    }, [finishedBook])
-
+    }, [])
 
     return (
         <>
@@ -117,53 +117,57 @@ export default function Finished() {
                 </div>
             </Container> :
                 <Container className="d-flex flex-row justify-content-center mt-5 gap-4">
-                    {finishedBook?.map((obj, i) => (
-                        <Card key={i} className="modern-card border-0" style={{ width: '18rem', minHeight: '20rem' }}>
-                            {/* <Link to={`/bookDetails/${obj.id}`}> */}
-                            <div className="image-container">
-                                <Card.Img variant="top" className="card-image" src={obj?.image} />
-                            </div>
-                            {/* </Link> */}
-                            <Card.Body>
-                                <Card.Title className="text-wrap">
-                                    <Container>
-                                        <h4>{obj?.title}</h4>
-                                    </Container>
-                                </Card.Title>
-                                <Card.Text>
-                                    <Container>
-                                        <h5 className="author-name">
-                                            Author:
-
-                                            <Badge className="ms-2 text-wrap" bg="success">
-                                                {obj?.author}
-                                            </Badge>
-
-                                        </h5>
-                                    </Container>
-                                </Card.Text>
-                                <div className="container d-flex">
-                                    <h6>
-                                        <Badge className="text-wrap" bg="secondary">{obj?.category}</Badge>
-                                    </h6>
+                    <div className="card-container">
+                        {finishedBook?.map((obj, i) => (
+                            <Card key={i} className="modern-card border-0" style={{ width: '18rem', minHeight: '20rem' }}>
+                                {/* <Link to={`/bookDetails/${obj.id}`}> */}
+                                <div className="image-container">
+                                    <Card.Img variant="top" className="card-image" src={obj?.image} />
                                 </div>
-                                <Container className="d-flex flex-wrap">
-                                    <Button onClick={() => { updateState(obj.id, 'current') }} className="mb-3 mx-1 btn-sm" variant="primary">
-                                        Move to current
-                                    </Button>
-                                    <Button onClick={() => { updateState(obj.id, 'favorite') }} className="mb-3 mx-1 btn-sm" variant="primary">
-                                        Move to Favorite
-                                    </Button>
-                                    <Button onClick={() => { handleDelete(obj.id) }} className="mb-3 mx-1 btn-sm" variant="primary">
-                                        delete
-                                    </Button>
-                                    <Button className="mb-3 mx-1 btn-sm" variant="primary">
-                                        Cart
-                                    </Button>
-                                </Container>
-                            </Card.Body>
-                        </Card>
-                    ))}
+                                {/* </Link> */}
+                                <Card.Body style={{ backgroundColor: '#f9f9f9' }}>
+                                    <Card.Title >
+                                        <Container>
+                                            <h4>{obj?.title}</h4>
+                                        </Container>
+                                    </Card.Title>
+                                    <Card.Text>
+                                        <Container>
+                                            <h5 className="author-name">
+                                                Author:
+                                                <Badge className="ms-2 text-wrap" bg="badge badge">
+                                                    {obj?.author}
+                                                </Badge>
+
+                                            </h5>
+                                        </Container>
+                                    </Card.Text>
+                                    <div className="container">
+                                        <h5>
+                                            {obj?.category}
+                                        </h5>
+                                    </div>
+                                    <div className="button-container">
+                                        <Button onClick={() => { updateState(obj.id, 'current') }} className="mb-3 btn-sm" style={{ backgroundColor: 'rgb(97 65 163)' }}>
+                                            Current
+                                        </Button>
+                                        <Button onClick={() => { updateState(obj.id, 'favorite') }} className="mb-3 btn-sm" style={{ backgroundColor: 'rgb(97 65 163)' }}>
+                                            Favorite
+                                        </Button>
+                                        <Button onClick={() => { handleDelete(obj.id) }} className="mb-3 btn-sm" style={{ backgroundColor: 'rgb(97 65 163)' }}>
+                                            Delete
+                                        </Button>
+                                        <Button className="mb-3 btn-sm" style={{ backgroundColor: 'rgb(97 65 163)' }}
+                                            onClick={() => { handleAddToCart(obj) }}
+                                        >
+                                            Cart
+                                        </Button>
+                                    </div>
+
+                                </Card.Body>
+                            </Card>
+                        ))}
+                    </div>
                 </Container>
             }
 

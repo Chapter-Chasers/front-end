@@ -9,9 +9,11 @@ import { useAuth0 } from '@auth0/auth0-react'
 function NavBar() {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   console.log(user);
+  
   if (isAuthenticated) {
     checkuser();
   }
+
   async function checkuser() {
     console.log(user.sub);
     try {
@@ -30,6 +32,7 @@ function NavBar() {
       console.log(error)
     }
   }
+
   return (
     <>
       <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">

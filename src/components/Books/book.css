@@ -254,7 +254,7 @@
 .card-image {
     height: 200px;
 
-    object-fit: contain;
+    object-fit: cover;
 
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -286,7 +286,6 @@
 .container.d-flex h6 {
     margin: 0;
     font-size: 0.8rem;
-    background-color: #a7b776;
     padding: 0.3rem 0.6rem;
     border-radius: 4px;
     color: #333;
@@ -300,7 +299,8 @@
     border-radius: 4px;
     color: #fff;
     font-weight: bold;
-    background-color: rgb(160, 118, 249);
+    background-color: rgb(97 65 163);
+    
 }
 
 
@@ -319,7 +319,7 @@
 .card-img-top {
     border-radius: 30px;
     padding: 12px;
-    height: 20rem;
+    height: 18rem;
 }
 
 .book {
@@ -346,3 +346,45 @@ h3,
 h5 {
     color: rgb(0, 91, 228);
 }
+
+/* Current.css */
+
+/* Add custom styles for the buttons */
+/* Current.css */
+
+/* Add custom styles for the buttons */
+/* Current.css */
+
+/* Add custom styles for the buttons */
+/* Current.css */
+
+/* Add custom styles for the buttons */
+/* Current.css */
+
+/* Add custom styles for the buttons */
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    margin: 1px; /* Add margin to create space between buttons */
+    transition: box-shadow 0.3s ease; /* Add a smooth transition for the box shadow */
+  }
+  
+  /* Add custom styles for the button container */
+  .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  /* Add shadow on hover using a more specific selector */
+   .btn-sm:hover {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Customize the shadow as per your preference */
+  }
+  
+  
+  
+  
+  
